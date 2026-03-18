@@ -107,8 +107,8 @@ export type SiteContent = {
   cta: CTAConfig;
 };
 
-const SITE_FALLBACK = "https://example.com";
-const BOOKING_PLACEHOLDER = "https://calendly.com/your-team/automation-audit";
+const SITE_FALLBACK = "https://freshstack.ai";
+const BOOKING_PLACEHOLDER = "https://calendly.com/your-team/book-a-call";
 const BOOK_SECTION_ID = "book-a-call";
 const PROCESS_SECTION_ID = "process";
 
@@ -140,9 +140,9 @@ function buildCalendlyEmbedUrl(url: string, enabled: boolean) {
   try {
     const calendlyUrl = new URL(url);
     calendlyUrl.searchParams.set("hide_gdpr_banner", "1");
-    calendlyUrl.searchParams.set("background_color", "f6f0e5");
-    calendlyUrl.searchParams.set("text_color", "18211e");
-    calendlyUrl.searchParams.set("primary_color", "0f5c54");
+    calendlyUrl.searchParams.set("background_color", "f8f7f4");
+    calendlyUrl.searchParams.set("text_color", "0b0b0d");
+    calendlyUrl.searchParams.set("primary_color", "f97316");
     return calendlyUrl.toString();
   } catch {
     return null;
@@ -153,31 +153,31 @@ const siteUrl = normalizeAbsoluteUrl(process.env.NEXT_PUBLIC_SITE_URL, SITE_FALL
 const rawBookingUrl = process.env.NEXT_PUBLIC_CALENDLY_URL?.trim() || "";
 const hasLiveBookingUrl = rawBookingUrl.length > 0;
 const bookingUrl = hasLiveBookingUrl ? rawBookingUrl : BOOKING_PLACEHOLDER;
-const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || "hello@frehstack.com";
+const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL?.trim() || "hello@freshstack.ai";
 
 export const siteContent: SiteContent = {
-  brandName: "FrehStack",
+  brandName: "FreshStack",
   siteUrl,
   meta: {
-    title: "FrehStack | AI automation systems for agencies",
+    title: "FreshStack | AI automation systems for agencies",
     description:
-      "FrehStack helps agency owners improve internal systems, team workflows, reporting, deliverables, and tracking with practical AI automation systems.",
+      "FreshStack helps agency owners improve internal systems, team workflows, reporting, deliverables, and tracking with practical AI automation systems.",
     ogImageUrl: resolveAssetUrl(process.env.NEXT_PUBLIC_OG_IMAGE_URL, siteUrl),
   },
   navigation: {
     links: [
       { label: "Services", href: "#services" },
-      { label: "Case Studies", href: "#case-studies" },
+      { label: "Case studies", href: "#case-studies" },
       { label: "Process", href: "#process" },
       { label: "About", href: "#about" },
-      { label: "Book a Call", href: "#book-a-call" },
+      { label: "Book a call", href: "#book-a-call" },
     ],
   },
   hero: {
     eyebrow: "Operator-built systems",
     title: "AI automation systems for agencies that need better operations.",
     description:
-      "FrehStack helps agency owners improve internal systems, team workflows, reporting, deliverables, and tracking.",
+      "FreshStack helps agency owners improve internal systems, team workflows, reporting, deliverables, and tracking.",
     proof: "Built by agency owners with 10 years of firsthand operational experience.",
     supportTitle: "What the work usually tightens first",
     supportItems: [
@@ -187,7 +187,7 @@ export const siteContent: SiteContent = {
     ],
   },
   painPoints: {
-    eyebrow: "Pain Points",
+    eyebrow: "Pain points",
     title: "Most agency ops issues are repeat friction, not isolated fires.",
     description:
       "The work usually looks busy on the surface, but the drag shows up in the same places every week.",
@@ -225,30 +225,30 @@ export const siteContent: SiteContent = {
       "The stack matters, but the real leverage comes from tightening the way work moves through the business.",
     cards: [
       {
-        title: "Internal Systems & Processes",
+        title: "Internal systems & processes",
         description: "Clarify the operating layer behind delivery, approvals, reporting rhythm, and recurring team responsibilities.",
       },
       {
-        title: "Team Workflows & Handoffs",
+        title: "Team workflows & handoffs",
         description: "Reduce dropped context between sales, account management, strategists, media buyers, and delivery teams.",
       },
       {
-        title: "Client Reporting & Tracking",
+        title: "Client reporting & tracking",
         description: "Create cleaner reporting inputs, more reliable KPI flow, and clearer internal visibility before client-facing output.",
       },
       {
-        title: "AI-Enhanced Deliverables",
+        title: "AI-enhanced deliverables",
         description: "Use AI where it meaningfully improves research, QA, drafting, synthesis, and repeatable production steps.",
       },
       {
-        title: "Automation Stack Setup",
+        title: "Automation stack setup",
         description: "Set up the tooling, automation logic, and documentation required to make the new operating layer stick.",
       },
     ],
     toolChips: ["n8n", "Make", "Notion", "Claude", "Codex", "model-agnostic workflows"],
   },
   caseStudies: {
-    eyebrow: "Case Studies",
+    eyebrow: "Case studies",
     title: "Three proof slots are ready for approved anonymized results.",
     description:
       "The landing-page layout is final now. Replace these placeholders with verified outcomes later without touching the section structure.",
@@ -324,7 +324,7 @@ export const siteContent: SiteContent = {
         description: "Implement the workflows, automations, reporting systems, and documentation that support the agreed design.",
       },
       {
-        title: "Embed & Optimize",
+        title: "Embed & optimize",
         description: "Train the team, observe adoption, tighten weak spots, and improve the system once it is handling live agency work.",
       },
     ],
@@ -333,7 +333,7 @@ export const siteContent: SiteContent = {
     eyebrow: "About",
     title: "Agency-owner experience changes the quality of the solution.",
     description:
-      "FrehStack is positioned for operators who need systems that fit how agencies actually deliver work, not generic automation demos.",
+      "FreshStack is positioned for operators who need systems that fit how agencies actually deliver work, not generic automation demos.",
     paragraphs: [
       "Generic automation shops often start with tooling. Agency owners start with margin pressure, delivery consistency, client expectations, and the reality of team capacity.",
       "That difference matters. Better ops work comes from understanding the points where delivery gets delayed, reporting gets messy, founders become bottlenecks, and teams stop trusting the system around the work.",
@@ -354,7 +354,7 @@ export const siteContent: SiteContent = {
     ],
   },
   faq: {
-    eyebrow: "FAQ",
+    eyebrow: "Questions",
     title: "What agency owners usually want to know before booking.",
     description:
       "The fit is generally strongest when the agency already has traction and needs cleaner operations more than another tool demo.",
@@ -362,7 +362,7 @@ export const siteContent: SiteContent = {
       {
         question: "What kind of agency is this best for?",
         answer:
-          "FrehStack is built for agencies that already have real delivery volume and are feeling operational drag in reporting, handoffs, QA, visibility, or founder load.",
+          "FreshStack is built for agencies that already have real delivery volume and are feeling operational drag in reporting, handoffs, QA, visibility, or founder load.",
       },
       {
         question: "What does the engagement usually look like?",
@@ -377,7 +377,7 @@ export const siteContent: SiteContent = {
       {
         question: "Who owns the implementation after launch?",
         answer:
-          "The target state is shared ownership. FrehStack can build and document the system, but it should be understandable enough for your team to run and evolve.",
+          "The target state is shared ownership. FreshStack can build and document the system, but it should be understandable enough for your team to run and evolve.",
       },
       {
         question: "How long does this take?",
@@ -387,8 +387,8 @@ export const siteContent: SiteContent = {
     ],
   },
   booking: {
-    eyebrow: "Book a Call",
-    title: "Book an Automation Audit.",
+    eyebrow: "Book a call",
+    title: "Book a call.",
     description:
       "Use the booking section to start with a practical conversation about where your operating system is slowing delivery, reporting, or visibility.",
     desktopLabel: "Desktop booking embed",
@@ -402,15 +402,15 @@ export const siteContent: SiteContent = {
   },
   footer: {
     blurb:
-      "FrehStack helps agencies build a tighter operating layer across systems, workflows, reporting, deliverables, and tracking.",
+      "FreshStack helps agencies build a tighter operating layer across systems, workflows, reporting, deliverables, and tracking.",
     contactLabel: "Contact",
-    legal: "© 2026 FrehStack. All rights reserved.",
+    legal: "© 2026 FreshStack. All rights reserved.",
   },
   cta: {
     bookingUrl,
     bookingEmbedUrl: buildCalendlyEmbedUrl(bookingUrl, hasLiveBookingUrl),
     contactEmail,
-    primaryLabel: "Book an Automation Audit",
+    primaryLabel: "Book a call",
     secondaryLabel: "See How We Work",
     bookSectionHref: `#${BOOK_SECTION_ID}`,
     processHref: `#${PROCESS_SECTION_ID}`,

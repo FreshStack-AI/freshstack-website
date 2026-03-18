@@ -1,20 +1,13 @@
 import type { Metadata } from "next";
-import { Fraunces, Manrope } from "next/font/google";
 import Script from "next/script";
 
 import "./globals.css";
 
 import { siteContent } from "@/content/site-content";
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
 
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  variable: "--font-heading",
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-body",
-});
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const metadataBase = new URL(siteContent.siteUrl);
 
@@ -71,6 +64,8 @@ const structuredData = {
       email: siteContent.cta.contactEmail,
       areaServed: "Global",
       knowsAbout: [
+        "AI systems",
+        "AI implementation",
         "Agency operations",
         "Workflow design",
         "Automation systems",
@@ -90,7 +85,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${manrope.variable}`}>
+    <html lang="en" className={cn("font-sans", geist.variable)}>
       <body>
         {children}
         <Script

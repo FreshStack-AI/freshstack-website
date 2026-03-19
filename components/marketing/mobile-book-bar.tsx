@@ -5,10 +5,13 @@ type MobileBookBarProps = {
 
 export function MobileBookBar({ href, label }: MobileBookBarProps) {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[var(--color-border)] bg-[color:rgba(248,247,244,0.98)] px-4 py-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] md:hidden">
+    <div
+      data-mobile-book-bar
+      className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-[rgba(2,2,2,0.78)] px-4 py-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] backdrop-blur-xl md:hidden"
+    >
       <a
         href={href}
-        className="inline-flex w-full items-center justify-center rounded-full border border-[var(--color-accent)] bg-[var(--color-accent)] px-5 py-3.5 text-sm font-medium text-[var(--color-void)] transition-colors duration-150 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-[var(--color-accent-strong)] hover:bg-[var(--color-accent-strong)] hover:text-[var(--color-white)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-paper)]"
+        className="inline-flex w-full items-center justify-center rounded-full border border-white/12 bg-white px-5 py-3.5 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-black transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
       >
         {label}
       </a>

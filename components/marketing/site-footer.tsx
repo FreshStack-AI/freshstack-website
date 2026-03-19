@@ -16,17 +16,17 @@ export function SiteFooter({
   cta,
 }: SiteFooterProps) {
   return (
-    <footer className="border-t border-[var(--color-border)] px-5 py-10 sm:px-6 lg:px-8 lg:py-12">
+    <footer className="relative z-10 border-t border-white/10 px-5 py-10 sm:px-6 lg:px-8 lg:py-12">
       <div className="mx-auto flex max-w-6xl flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
         <div className="max-w-xl">
           <a
             href="#hero"
-            className="brand-lockup wordmark text-[1.35rem] text-[var(--color-ink)] sm:text-[1.5rem]"
+            className="brand-lockup wordmark text-[1.35rem] text-white sm:text-[1.5rem]"
           >
             <BrandMark />
             <span>{brandName}</span>
           </a>
-          <p className="mt-4 max-w-lg text-sm leading-7 text-[var(--color-muted)]">
+          <p className="mt-4 max-w-lg text-sm leading-7 text-white/55">
             {footer.blurb}
           </p>
         </div>
@@ -34,12 +34,12 @@ export function SiteFooter({
         <div className="grid gap-8 sm:grid-cols-2">
           <div>
             <p className="section-label">Navigate</p>
-            <ul className="mt-4 space-y-3 text-sm text-[var(--color-muted)]">
+            <ul className="mt-4 space-y-3 text-sm text-white/55">
               {links.map((item) => (
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="transition-colors duration-150 hover:text-[var(--color-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-paper)]"
+                    className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-150 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                   >
                     {item.label}
                   </a>
@@ -50,11 +50,11 @@ export function SiteFooter({
 
           <div>
             <p className="section-label">{footer.contactLabel}</p>
-            <div className="mt-4 space-y-3 text-sm text-[var(--color-muted)]">
+            <div className="mt-4 space-y-3 text-sm text-white/55">
               <p>
                 <a
                   href={`mailto:${cta.contactEmail}`}
-                  className="transition-colors duration-150 hover:text-[var(--color-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-paper)]"
+                  className="transition-colors duration-150 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                 >
                   {cta.contactEmail}
                 </a>

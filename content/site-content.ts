@@ -12,7 +12,16 @@ export type CTAConfig = {
 export type CaseStudy = {
   id: string;
   clientType: string;
+  automationType: string;
   title: string;
+  summary: string;
+  serviceTags: string[];
+  workflow: {
+    inputs: string[];
+    automationLabel: string;
+    automationSteps: string[];
+    outputs: string[];
+  };
   challenge: string;
   intervention: string;
   outcomes: string[];
@@ -36,8 +45,20 @@ type PainPoint = {
   description: string;
 };
 
-type ServiceCard = {
+type FounderSectionContent = {
+  eyebrow: string;
+  profiles: Array<{
+    name: string;
+    bio: string;
+    imageSrc?: string;
+    imageAlt: string;
+    usePlaceholder?: boolean;
+  }>;
+};
+
+export type ServiceCard = {
   title: string;
+  collapsedTitle: string;
   description: string;
 };
 
@@ -68,6 +89,7 @@ export type SiteContent = {
     links: NavItem[];
   };
   hero: SectionIntro & {
+    displayLines: string[];
     proof: string;
     supportTitle: string;
     supportItems: string[];
@@ -75,6 +97,7 @@ export type SiteContent = {
   painPoints: SectionIntro & {
     items: PainPoint[];
   };
+  founder: FounderSectionContent;
   services: SectionIntro & {
     cards: ServiceCard[];
     toolChips: string[];
@@ -140,9 +163,10 @@ function buildCalendlyEmbedUrl(url: string, enabled: boolean) {
   try {
     const calendlyUrl = new URL(url);
     calendlyUrl.searchParams.set("hide_gdpr_banner", "1");
-    calendlyUrl.searchParams.set("background_color", "f8f7f4");
-    calendlyUrl.searchParams.set("text_color", "0b0b0d");
-    calendlyUrl.searchParams.set("primary_color", "f97316");
+    calendlyUrl.searchParams.set("hide_event_type_details", "1");
+    calendlyUrl.searchParams.set("background_color", "020202");
+    calendlyUrl.searchParams.set("text_color", "f5f5f5");
+    calendlyUrl.searchParams.set("primary_color", "ffffff");
     return calendlyUrl.toString();
   } catch {
     return null;
@@ -159,9 +183,9 @@ export const siteContent: SiteContent = {
   brandName: "FreshStack",
   siteUrl,
   meta: {
-    title: "FreshStack | AI automation systems for agencies",
+    title: "FreshStack | Your AI growth partner",
     description:
-      "FreshStack helps agency owners improve internal systems, team workflows, reporting, deliverables, and tracking with practical AI automation systems.",
+      "Your operations shouldn't depend on people doing what AI can do better.",
     ogImageUrl: resolveAssetUrl(process.env.NEXT_PUBLIC_OG_IMAGE_URL, siteUrl),
   },
   navigation: {
@@ -170,14 +194,15 @@ export const siteContent: SiteContent = {
       { label: "Case studies", href: "#case-studies" },
       { label: "Process", href: "#process" },
       { label: "About", href: "#about" },
-      { label: "Book a call", href: "#book-a-call" },
+      { label: "Let's Talk", href: "#book-a-call" },
     ],
   },
   hero: {
     eyebrow: "Operator-built systems",
-    title: "AI automation systems for agencies that need better operations.",
+    title: "Your AI growth partner",
+    displayLines: ["Your AI", "growth partner"],
     description:
-      "FreshStack helps agency owners improve internal systems, team workflows, reporting, deliverables, and tracking.",
+      "Your operations shouldn't depend on people doing what AI can do better.",
     proof: "Built by agency owners with 10 years of firsthand operational experience.",
     supportTitle: "What the work usually tightens first",
     supportItems: [
@@ -218,6 +243,23 @@ export const siteContent: SiteContent = {
       },
     ],
   },
+  founder: {
+    eyebrow: "Meet the founders",
+    profiles: [
+      {
+        name: "Baptiste",
+        bio: "With over a decade working inside some of the world's largest agencies, including WPP, and delivering for brands like Binance and Adidas, Baptiste has seen how the best operations run at scale. After building and automating his own business with AI, he now helps other agency owners do the same: replace the manual, the slow, and the inconsistent with systems that actually scale.",
+        imageSrc: "/founder-portrait.png",
+        imageAlt: "Black-and-white portrait of Baptiste, founder of FreshStack",
+      },
+      {
+        name: "Lara",
+        bio: "With over a decade working inside some of the world's largest agencies, including WPP, and delivering for brands like Binance and Adidas, Lara has seen how the best operations run at scale. After building and automating her own business with AI, she now helps other agency owners do the same: replace the manual, the slow, and the inconsistent with systems that actually scale.",
+        imageSrc: "/lara-portrait.png",
+        imageAlt: "Black-and-white portrait of Lara, co-founder of FreshStack",
+      },
+    ],
+  },
   services: {
     eyebrow: "Services",
     title: "Built around the operating gaps agency owners actually feel.",
@@ -226,82 +268,188 @@ export const siteContent: SiteContent = {
     cards: [
       {
         title: "Internal systems & processes",
+        collapsedTitle: "Processes",
         description: "Clarify the operating layer behind delivery, approvals, reporting rhythm, and recurring team responsibilities.",
       },
       {
         title: "Team workflows & handoffs",
+        collapsedTitle: "Workflows",
         description: "Reduce dropped context between sales, account management, strategists, media buyers, and delivery teams.",
       },
       {
         title: "Client reporting & tracking",
+        collapsedTitle: "Reporting",
         description: "Create cleaner reporting inputs, more reliable KPI flow, and clearer internal visibility before client-facing output.",
       },
       {
         title: "AI-enhanced deliverables",
+        collapsedTitle: "Deliverables",
         description: "Use AI where it meaningfully improves research, QA, drafting, synthesis, and repeatable production steps.",
       },
       {
         title: "Automation stack setup",
+        collapsedTitle: "Automations",
         description: "Set up the tooling, automation logic, and documentation required to make the new operating layer stick.",
       },
     ],
-    toolChips: ["n8n", "Make", "Notion", "Claude", "Codex", "model-agnostic workflows"],
+    toolChips: [
+      "n8n",
+      "Make",
+      "Notion",
+      "Claude",
+      "Claude Code",
+      "Codex",
+      "Python",
+      "OpenClaw",
+      "React",
+      "Vite",
+      "Supabase",
+      "Slack",
+      "Telegram",
+      "Google Sheets",
+      "Alchemy",
+      "X / Twitter API",
+      "TypeScript",
+      "Cursor",
+      "GitHub",
+      "Postman",
+      "Zapier",
+      "Airtable",
+      "OpenAI API",
+    ],
   },
   caseStudies: {
     eyebrow: "Case studies",
-    title: "Three proof slots are ready for approved anonymized results.",
-    description:
-      "The landing-page layout is final now. Replace these placeholders with verified outcomes later without touching the section structure.",
+    title: "Hear it from our happy clients.",
+    description: "",
     disclaimer:
       "Placeholder content only. Swap in approved anonymized copy, verified metrics, and optional quote/logo text before launch.",
     items: [
       {
         id: "ops-reporting-placeholder",
-        clientType: "Performance marketing agency",
-        title: "Reporting operations placeholder",
+        clientType: "Crypto-native service business",
+        automationType: "Payment intelligence automation",
+        title: "Crypto Payment Intelligence",
+        summary:
+          "By turning wallet scans, invoice matching, and finance alerts into one automated workflow, FreshStack gave the team real-time visibility on stablecoin payments without manual reconciliation.",
+        serviceTags: [
+          "Payment intelligence",
+          "Invoice matching",
+          "Finance alerts",
+        ],
+        workflow: {
+          inputs: [
+            "Stablecoin payments",
+            "Wallet transaction data",
+            "Invoice records in Notion",
+          ],
+          automationLabel: "Payment intelligence layer",
+          automationSteps: [
+            "Scan the wallet for incoming payments",
+            "Match each transaction to the right invoice",
+            "Alert finance the moment a payment lands",
+          ],
+          outputs: [
+            "Slack finance notification",
+            "Invoice marked paid faster",
+            "Real-time payment visibility",
+          ],
+        },
         challenge:
-          "Replace with the approved challenge summary for manual weekly reporting, fragmented KPI ownership, and low leadership visibility.",
+          "The business received multiple stablecoin payments every day, but payment confirmations were scattered across Telegram chats and manual wallet checks. Finance had to reconcile payments by hand, which slowed accounting, obscured cash flow, and created awkward client follow-ups for invoices that had already been paid.",
         intervention:
-          "Replace with the verified intervention summary covering audit findings, reporting workflow redesign, and automation implementation.",
+          "FreshStack built an automated payment intelligence workflow that scans the wallet for incoming stablecoin transactions, matches them against invoice records in Notion, and alerts finance in Slack with the payer, amount, and a direct action to mark the invoice as paid.",
         outcomes: [
-          "Insert verified metric: weekly reporting prep time reduced by ___ hours.",
-          "Insert verified metric: reporting inputs consolidated from ___ sources into one operating view.",
-          "Insert verified metric: internal response time on account risk shortened by ___%.",
+          "$28K per year in revenue upside unlocked through faster payment visibility and cleaner accounting.",
+          "52 hours per year saved by removing manual wallet checks and invoice matching.",
+          "Zero client chasing once paid transactions were detected and surfaced to finance in real time.",
         ],
         quote: null,
-        logoLabel: "Anonymized client",
+        logoLabel: null,
       },
       {
         id: "handoff-delivery-placeholder",
-        clientType: "Creative and strategy agency",
-        title: "Delivery handoff placeholder",
+        clientType: "Creator marketing agency",
+        automationType: "Sales-to-ops workflow automation",
+        title: "Operational Hygiene",
+        summary:
+          "By replacing disconnected databases and manual proposal building with one connected workflow, FreshStack eliminated rate errors, sped up handoffs, and gave sales and operations a shared source of truth.",
+        serviceTags: [
+          "Proposal generation",
+          "Sales ops",
+          "Operational hygiene",
+        ],
+        workflow: {
+          inputs: [
+            "Sales brief and deal data",
+            "Creator rate database",
+            "Client proposal requirements",
+          ],
+          automationLabel: "Sales-to-ops workflow",
+          automationSteps: [
+            "Sync every deal into one source of truth",
+            "Generate proposals from live rate data",
+            "Hand off clean records into operations",
+          ],
+          outputs: [
+            "Client-safe proposal draft",
+            "Accurate creator pricing",
+            "Ops-ready deal record",
+          ],
+        },
         challenge:
-          "Replace with the approved challenge summary for broken intake, inconsistent handoffs, and founder-dependent approvals.",
+          "Sales and Operations were working from disconnected databases for every deal. That duplication created inconsistent rates, slow proposal turnaround, mispayments, and multiple versions of the truth across the process.",
         intervention:
-          "Replace with the verified intervention summary covering intake structure, workflow checkpoints, and team automation support.",
+          "FreshStack replaced the fragmented workflow with a fully connected system from Sales to Operations. Proposal data now flows from a single source of truth, creator rates sync automatically, and client-safe proposals can be generated instantly without copy-paste or cross-checking.",
         outcomes: [
-          "Insert verified metric: project kickoff lag reduced from ___ days to ___.",
-          "Insert verified metric: approval touchpoints removed or automated by ___.",
-          "Insert verified metric: delivery rework rate reduced by ___%.",
+          "$352K per year in revenue upside from faster proposals and fewer operational mistakes.",
+          "650 hours per year saved by removing duplicate data entry and repetitive proposal assembly.",
+          "One shared workflow eliminated rate inconsistencies, mispayments, and handoff friction between Sales and Ops.",
         ],
         quote: null,
         logoLabel: null,
       },
       {
         id: "qa-tracking-placeholder",
-        clientType: "SEO and content agency",
-        title: "Tracking and QA placeholder",
+        clientType: "Social content agency",
+        automationType: "X metrics reporting automation",
+        title: "X Metrics",
+        summary:
+          "By piping X post metrics into a live internal reporting system, FreshStack replaced stale reporting with always-fresh visibility that improved renewals, upsells, and client trust.",
+        serviceTags: [
+          "X metrics",
+          "Reporting automation",
+          "Retention visibility",
+        ],
+        workflow: {
+          inputs: [
+            "Published X posts",
+            "X / Twitter metrics feed",
+            "Internal reporting database",
+          ],
+          automationLabel: "Reporting automation",
+          automationSteps: [
+            "Pull post metrics on a recurring schedule",
+            "Log every result into the reporting layer",
+            "Keep client visibility fresh without admin work",
+          ],
+          outputs: [
+            "Live performance reporting",
+            "Stronger renewal visibility",
+            "Clear upsell opportunities",
+          ],
+        },
         challenge:
-          "Replace with the approved challenge summary for scattered task tracking, unclear QA ownership, and inconsistent client update cadence.",
+          "Clients expected real-time proof that content was performing, but the team was manually collecting post metrics every week. Reporting was outdated almost immediately, accuracy depended on repetitive admin work, and results often looked weaker than they really were.",
         intervention:
-          "Replace with the verified intervention summary covering tracking cleanup, QA workflow design, and reporting automation.",
+          "FreshStack built an automated workflow that pulls X post metrics directly into the internal reporting database. Metrics stay current without recollection, every post is logged accurately at scale, and client reporting reflects the full performance picture.",
         outcomes: [
-          "Insert verified metric: recurring QA checks automated across ___ deliverable types.",
-          "Insert verified metric: client update turnaround improved by ___ hours.",
-          "Insert verified metric: status visibility moved from fragmented trackers to one shared dashboard.",
+          "$84K per year in revenue upside from stronger renewals and upsell opportunities.",
+          "156 hours per year saved by removing weekly manual metric collection.",
+          "Always-fresh performance data improved reporting accuracy, client trust, and retention conversations.",
         ],
         quote: null,
-        logoLabel: "Case study slot",
+        logoLabel: null,
       },
     ],
   },
@@ -387,11 +535,11 @@ export const siteContent: SiteContent = {
     ],
   },
   booking: {
-    eyebrow: "Book a call",
-    title: "Book a call.",
+    eyebrow: "Let's Talk",
+    title: "Let's Talk.",
     description:
       "Use the booking section to start with a practical conversation about where your operating system is slowing delivery, reporting, or visibility.",
-    desktopLabel: "Desktop booking embed",
+    desktopLabel: "Book a call",
     mobileLabel: "Open Calendly",
     fallbackLabel: "Prefer email?",
     checklist: [
@@ -410,7 +558,7 @@ export const siteContent: SiteContent = {
     bookingUrl,
     bookingEmbedUrl: buildCalendlyEmbedUrl(bookingUrl, hasLiveBookingUrl),
     contactEmail,
-    primaryLabel: "Book a call",
+    primaryLabel: "Let's Talk",
     secondaryLabel: "See How We Work",
     bookSectionHref: `#${BOOK_SECTION_ID}`,
     processHref: `#${PROCESS_SECTION_ID}`,

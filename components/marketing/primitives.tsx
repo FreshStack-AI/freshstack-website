@@ -31,17 +31,22 @@ export function SectionShell({
   return (
     <section
       id={id}
-      className={classNames("px-5 py-16 sm:px-6 lg:px-8 lg:py-24", className)}
+      className={classNames("relative z-10 px-5 py-[4.5rem] sm:px-6 lg:px-8 lg:py-24", className)}
     >
       <div className="mx-auto max-w-6xl">
         <div className="max-w-[54rem]">
-          <p className="section-label">{eyebrow}</p>
-          <h2 className="section-title mt-5 max-w-5xl text-3xl text-balance text-[var(--color-ink)] sm:text-4xl lg:text-[3.85rem]">
+          <p className="section-label">
+            {"// "}
+            {eyebrow}
+          </p>
+          <h2 className="section-title mt-5 max-w-5xl text-3xl text-balance text-[var(--color-ink)] sm:text-4xl lg:text-[4.25rem]">
             {title}
           </h2>
-          <p className="mt-5 max-w-3xl text-base leading-8 text-[var(--color-muted)] sm:text-lg">
-            {description}
-          </p>
+          {description ? (
+            <p className="mt-5 max-w-3xl text-base leading-8 text-[var(--color-muted)] sm:text-lg">
+              {description}
+            </p>
+          ) : null}
         </div>
         <div className="mt-10 lg:mt-12">{children}</div>
       </div>
@@ -62,21 +67,21 @@ export function BrandMark({ className }: { className?: string }) {
 export function LinkButton({
   href,
   children,
-  variant = "accent",
+  variant = "primary",
   className,
 }: LinkButtonProps) {
   const shared =
-    "inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3.5 text-sm font-medium tracking-[-0.02em] transition-colors duration-150 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-paper)]";
+    "inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3.5 font-mono text-[11px] font-bold uppercase tracking-[0.2em] transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black";
 
   const variants = {
     primary:
-      "border-[var(--color-void)] bg-[var(--color-void)] text-[var(--color-white)] hover:bg-[var(--color-obsidian)] hover:border-[var(--color-obsidian)]",
+      "border-white/12 bg-white text-black hover:bg-white/90",
     accent:
-      "border-[var(--color-accent)] bg-[var(--color-accent)] text-[var(--color-void)] hover:border-[var(--color-accent-strong)] hover:bg-[var(--color-accent-strong)] hover:text-[var(--color-white)]",
+      "border-white/12 bg-white text-black hover:bg-white/90",
     secondary:
-      "border-[var(--color-border-strong)] bg-[var(--color-white)] text-[var(--color-ink)] hover:border-[var(--color-void)]",
+      "border-white/12 bg-white/5 text-white hover:bg-white hover:text-black",
     ghost:
-      "border-transparent bg-transparent px-0 py-0 text-[var(--color-accent)] hover:text-[var(--color-accent-strong)]",
+      "border-transparent bg-transparent px-0 py-0 text-white/75 hover:text-white",
   } satisfies Record<NonNullable<LinkButtonProps["variant"]>, string>;
 
   return (

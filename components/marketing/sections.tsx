@@ -1,10 +1,17 @@
 import type { CTAConfig, SiteContent } from "@/content/site-content";
+import Image from "next/image";
 
-import { BrandMark, LinkButton, SectionShell } from "@/components/marketing/primitives";
+import { CaseStudiesDialogGrid } from "@/components/marketing/case-studies-dialog-grid";
+import { LinkButton, SectionShell } from "@/components/marketing/primitives";
+import { ServicesExpandRail } from "@/components/marketing/services-expand-rail";
+import { ExperienceHero } from "@/components/ui/experience-hero";
+import { ToolIconCloud } from "@/components/ui/tool-icon-cloud";
+import { cn } from "@/lib/utils";
 
 type HeroSectionProps = {
   hero: SiteContent["hero"];
   cta: CTAConfig;
+  toolLabels: SiteContent["services"]["toolChips"];
 };
 
 type PainPointsSectionProps = {
@@ -13,6 +20,10 @@ type PainPointsSectionProps = {
 
 type ServicesSectionProps = {
   services: SiteContent["services"];
+};
+
+type FounderSectionProps = {
+  founder: SiteContent["founder"];
 };
 
 type CaseStudiesSectionProps = {
@@ -36,61 +47,19 @@ type BookingSectionProps = {
   cta: CTAConfig;
 };
 
-export function HeroSection({ hero, cta }: HeroSectionProps) {
+export function HeroSection({ hero, cta, toolLabels }: HeroSectionProps) {
   return (
-    <section id="hero" className="px-5 pb-16 pt-10 sm:px-6 lg:px-8 lg:pb-24 lg:pt-14">
-      <div className="mx-auto max-w-6xl">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(18rem,24rem)] lg:gap-12">
-          <div className="reveal-up">
-            <p className="section-label">{hero.eyebrow}</p>
-            <h1 className="section-title mt-6 max-w-4xl text-5xl leading-[0.96] text-balance text-[var(--color-ink)] sm:text-6xl lg:text-[4.9rem]">
-              {hero.title}
-            </h1>
-            <p className="mt-6 max-w-3xl text-lg leading-8 text-[var(--color-muted)] sm:text-[1.35rem] sm:leading-9">
-              {hero.description}
-            </p>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <LinkButton href={cta.bookSectionHref}>{cta.primaryLabel}</LinkButton>
-              <LinkButton href={cta.processHref} variant="secondary">
-                {cta.secondaryLabel}
-              </LinkButton>
-            </div>
-
-            <div className="mt-10 max-w-2xl border-l-4 border-[var(--color-accent)] pl-4">
-              <p className="text-sm leading-7 text-[var(--color-ink)] sm:text-base">
-                {hero.proof}
-              </p>
-            </div>
-          </div>
-
-          <div className="reveal-up lg:pt-2" style={{ animationDelay: "120ms" }}>
-            <div className="surface-card border-t-4 border-[var(--color-accent)] p-6 sm:p-7">
-              <div className="flex items-center gap-3">
-                <BrandMark />
-                <p className="text-sm font-medium text-[var(--color-accent)]">FreshStack</p>
-              </div>
-              <p className="section-label mt-5">{hero.supportTitle}</p>
-              <div className="mt-6 space-y-0">
-                {hero.supportItems.map((item, index) => (
-                  <div
-                    key={item}
-                    className="flex gap-4 border-t border-[var(--color-border)] py-4 first:border-t-0 first:pt-0 last:pb-0"
-                  >
-                    <span className="w-8 shrink-0 text-sm font-medium text-[var(--color-accent)]">
-                      0{index + 1}
-                    </span>
-                    <p className="text-sm leading-7 text-[var(--color-muted)] sm:text-base">
-                      {item}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <ExperienceHero
+      eyebrow={hero.eyebrow}
+      displayLines={hero.displayLines}
+      description={hero.description}
+      proof={hero.proof}
+      ctaLabel={cta.primaryLabel}
+      ctaHref={cta.bookSectionHref}
+      supportTitle={hero.supportTitle}
+      supportItems={hero.supportItems}
+      toolLabels={toolLabels}
+    />
   );
 }
 
@@ -106,11 +75,11 @@ export function PainPointsSection({ painPoints }: PainPointsSectionProps) {
         {painPoints.items.map((item, index) => (
           <article
             key={item.title}
-            className="card-stagger border-t border-[var(--color-border)] py-6"
+            className="card-stagger glass-panel p-6 sm:p-7"
             style={{ animationDelay: `${index * 70}ms` }}
           >
-            <p className="text-sm font-medium text-[var(--color-accent)]">0{index + 1}</p>
-            <h3 className="mt-4 text-2xl font-bold tracking-[-0.02em] text-[var(--color-ink)] sm:text-[1.75rem]">
+            <p className="section-label">0{index + 1}</p>
+            <h3 className="mt-4 text-2xl font-bold tracking-[-0.03em] text-[var(--color-ink)] sm:text-[1.75rem]">
               {item.title}
             </h3>
             <p className="mt-3 max-w-2xl text-sm leading-7 text-[var(--color-muted)] sm:text-base">
@@ -123,6 +92,93 @@ export function PainPointsSection({ painPoints }: PainPointsSectionProps) {
   );
 }
 
+export function FounderSection({ founder }: FounderSectionProps) {
+  return (
+    <section
+      id="founder"
+      className="relative z-10 px-5 pb-[4.5rem] sm:px-6 lg:px-8 lg:pb-24"
+    >
+      <div className="mx-auto max-w-6xl">
+        <p className="section-label mb-5">
+          {"// "}
+          {founder.eyebrow}
+        </p>
+        <article className="glass-panel card-stagger p-6 sm:p-8 lg:p-10">
+          <div className="space-y-8 sm:space-y-10">
+            {founder.profiles.map((profile, index) => {
+              const isReverse = index % 2 === 1;
+
+              return (
+                <div
+                  key={profile.name}
+                  className={cn(
+                    "grid gap-6 lg:items-center lg:gap-10",
+                    isReverse
+                      ? "lg:grid-cols-[17rem_minmax(0,1fr)]"
+                      : "lg:grid-cols-[minmax(0,1fr)_17rem]",
+                    index > 0 && "border-t border-white/8 pt-8 sm:pt-10",
+                  )}
+                >
+                  <div
+                    className={cn(
+                      "space-y-5",
+                      isReverse && "lg:order-2 lg:text-right",
+                    )}
+                  >
+                    <div className={cn("inline-flex flex-col gap-2", isReverse && "lg:items-end")}>
+                      <h2 className="section-title text-[1.85rem] uppercase sm:text-[2.2rem]">
+                        {profile.name}
+                      </h2>
+                      <span className="h-[3px] w-28 rounded-full bg-white/75" />
+                    </div>
+
+                    <p
+                      className={cn(
+                        "max-w-4xl text-base leading-8 text-[var(--color-muted)] sm:text-lg",
+                        isReverse && "lg:ml-auto",
+                      )}
+                    >
+                      {profile.bio}
+                    </p>
+                  </div>
+
+                  <div
+                    className={cn(
+                      "overflow-hidden rounded-[1.15rem] bg-black",
+                      isReverse ? "lg:order-1" : "lg:order-2",
+                    )}
+                  >
+                    <div className="relative aspect-[4/5]">
+                      {profile.usePlaceholder || !profile.imageSrc ? (
+                        <div className="flex h-full w-full items-center justify-center bg-black">
+                          <span className="text-[2rem] font-light tracking-[-0.03em] text-white/90">
+                            photo
+                          </span>
+                        </div>
+                      ) : (
+                        <>
+                          <Image
+                            src={profile.imageSrc}
+                            alt={profile.imageAlt}
+                            fill
+                            sizes="(min-width: 1024px) 17rem, (min-width: 640px) 18rem, 100vw"
+                            className="object-cover object-center grayscale"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10" />
+                        </>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </article>
+      </div>
+    </section>
+  );
+}
+
 export function ServicesSection({ services }: ServicesSectionProps) {
   return (
     <SectionShell
@@ -131,40 +187,30 @@ export function ServicesSection({ services }: ServicesSectionProps) {
       title={services.title}
       description={services.description}
     >
-      <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-        {services.cards.map((card, index) => (
-          <article
-            key={card.title}
-            className="surface-card-dark card-stagger flex h-full flex-col p-6"
-            style={{ animationDelay: `${index * 70}ms` }}
-          >
-            <p className="text-sm font-medium text-[var(--color-accent)]">Service</p>
-            <h3 className="mt-5 text-2xl font-bold tracking-[-0.02em] text-[var(--color-white)]">
-              {card.title}
-            </h3>
-            <p className="mt-4 text-sm leading-7 text-[color:rgba(255,255,255,0.72)] sm:text-base">
-              {card.description}
-            </p>
-          </article>
-        ))}
-      </div>
+      <ServicesExpandRail cards={services.cards} />
 
       <div className="mt-10 border-t border-[var(--color-border)] pt-5">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+        <div className="flex flex-col gap-4">
           <p className="section-label">Tool stack</p>
-          <div className="flex max-w-3xl flex-wrap gap-3 text-sm text-[var(--color-muted)] sm:text-base">
-            {services.toolChips.map((chip, index) => (
-              <span
-                key={chip}
-                className={
-                  index === 0
-                    ? "inline-flex rounded-full border border-[rgba(249,115,22,0.18)] bg-[var(--color-accent-tint)] px-3 py-1.5"
-                    : "inline-flex rounded-full border border-[var(--color-border)] bg-[var(--color-white)] px-3 py-1.5"
-                }
-              >
-                {chip}
-              </span>
-            ))}
+          <div className="grid items-start gap-5 md:grid-cols-[minmax(0,1.08fr)_minmax(20rem,28rem)]">
+            <div className="glass-panel p-5 sm:p-6">
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-4">
+              {services.toolChips.map((chip) => (
+                <span
+                  key={chip}
+                    className="inline-flex min-h-11 items-center justify-center rounded-full border border-white/10 bg-white/6 px-4 py-2 text-center font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-white"
+                >
+                  {chip}
+                </span>
+              ))}
+              </div>
+            </div>
+
+            <div className="glass-panel self-start overflow-hidden p-3 sm:p-4 md:aspect-square">
+              <div className="flex h-full min-h-[22rem] items-center justify-center sm:min-h-[24rem]">
+                <ToolIconCloud labels={services.toolChips} />
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -182,68 +228,7 @@ export function CaseStudiesSection({
       title={caseStudies.title}
       description={caseStudies.description}
     >
-      <div className="surface-card-muted border-l-4 border-l-[var(--color-accent)] p-5 sm:p-6">
-        <p className="max-w-3xl text-sm leading-7 text-[var(--color-muted)] sm:text-base">
-          {caseStudies.disclaimer}
-        </p>
-      </div>
-
-      <div className="mt-8 grid gap-5 xl:grid-cols-3">
-        {caseStudies.items.map((study, index) => (
-          <article
-            key={study.id}
-            className="surface-card card-stagger flex h-full flex-col border-t-4 border-[var(--color-accent)] p-6 sm:p-7"
-            style={{ animationDelay: `${index * 90}ms` }}
-          >
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <p className="text-sm font-medium text-[var(--color-accent)]">
-                  {study.clientType}
-                </p>
-                <h3 className="mt-4 text-2xl font-bold tracking-[-0.02em] text-[var(--color-ink)]">
-                  {study.title}
-                </h3>
-              </div>
-
-              {study.logoLabel ? (
-                <span className="rounded-full border border-[var(--color-border)] px-3 py-1 text-xs font-medium text-[var(--color-muted)]">
-                  {study.logoLabel}
-                </span>
-              ) : null}
-            </div>
-
-            <div className="mt-6 space-y-6 text-sm leading-7 text-[var(--color-muted)] sm:text-base">
-              <div>
-                <p className="section-label">Challenge</p>
-                <p className="mt-2">{study.challenge}</p>
-              </div>
-
-              <div>
-                <p className="section-label">Intervention</p>
-                <p className="mt-2">{study.intervention}</p>
-              </div>
-
-              <div>
-                <p className="section-label">Outcomes</p>
-                <ul className="mt-3 space-y-3">
-                  {study.outcomes.map((outcome) => (
-                    <li key={outcome} className="flex gap-3">
-                      <span className="mt-2 h-2 w-2 shrink-0 rounded-sm bg-[var(--color-accent)]" />
-                      <span>{outcome}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-
-            {study.quote ? (
-              <blockquote className="mt-6 border-l-2 border-[var(--color-accent)] pl-4 text-sm italic leading-7 text-[var(--color-ink)]">
-                {study.quote}
-              </blockquote>
-            ) : null}
-          </article>
-        ))}
-      </div>
+      <CaseStudiesDialogGrid items={caseStudies.items} />
     </SectionShell>
   );
 }
@@ -260,11 +245,11 @@ export function ProcessSection({ process }: ProcessSectionProps) {
         {process.steps.map((step, index) => (
           <article
             key={step.title}
-            className="surface-card card-stagger p-6"
+            className="glass-panel card-stagger p-6"
             style={{ animationDelay: `${index * 70}ms` }}
           >
-            <p className="text-sm font-medium text-[var(--color-accent)]">0{index + 1}</p>
-            <h3 className="mt-5 text-2xl font-bold tracking-[-0.02em] text-[var(--color-ink)]">
+            <p className="section-label">0{index + 1}</p>
+            <h3 className="mt-5 text-2xl font-bold tracking-[-0.03em] text-[var(--color-ink)]">
               {step.title}
             </h3>
             <p className="mt-4 text-sm leading-7 text-[var(--color-muted)] sm:text-base">
@@ -286,7 +271,7 @@ export function AboutSection({ about }: AboutSectionProps) {
       description={about.description}
     >
       <div className="grid gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(18rem,0.95fr)] lg:gap-10">
-        <div className="surface-card p-6 sm:p-7">
+        <div className="glass-panel p-6 sm:p-7">
           <div className="space-y-5 text-base leading-8 text-[var(--color-muted)] sm:text-lg">
             {about.paragraphs.map((paragraph, index) => (
               <p
@@ -303,11 +288,11 @@ export function AboutSection({ about }: AboutSectionProps) {
           {about.credibilityPoints.map((point, index) => (
             <article
               key={point.title}
-              className="surface-card card-stagger border-t-4 border-[var(--color-accent)] p-6"
+              className="glass-panel card-stagger p-6"
               style={{ animationDelay: `${index * 70}ms` }}
             >
-              <p className="text-sm font-medium text-[var(--color-accent)]">Reason 0{index + 1}</p>
-              <h3 className="mt-4 text-2xl font-bold tracking-[-0.02em] text-[var(--color-ink)]">
+              <p className="section-label">Reason 0{index + 1}</p>
+              <h3 className="mt-4 text-2xl font-bold tracking-[-0.03em] text-[var(--color-ink)]">
                 {point.title}
               </h3>
               <p className="mt-3 text-sm leading-7 text-[var(--color-muted)] sm:text-base">
@@ -333,7 +318,7 @@ export function FAQSection({ faq }: FAQSectionProps) {
         {faq.items.map((item, index) => (
           <details
             key={item.question}
-            className="detail-toggle card-stagger border-t border-[var(--color-border)] py-6"
+            className="detail-toggle card-stagger glass-panel py-6 px-6 sm:px-7"
             style={{ animationDelay: `${index * 55}ms` }}
           >
             <summary className="cursor-pointer pr-10 text-left text-xl font-bold tracking-[-0.02em] text-[var(--color-ink)] focus-visible:outline-none sm:text-[1.55rem]">
@@ -359,24 +344,24 @@ export function BookingSection({ booking, cta }: BookingSectionProps) {
       className="pb-28 md:pb-24"
     >
       <div className="grid gap-6 xl:grid-cols-[minmax(0,0.78fr)_minmax(22rem,1.22fr)]">
-        <div className="surface-card border-t-4 border-[var(--color-accent)] p-6 sm:p-7">
+        <div className="glass-panel p-6 sm:p-7">
           <p className="section-label">What to expect</p>
           <ul className="mt-6 space-y-4 text-sm leading-7 text-[var(--color-muted)] sm:text-base">
             {booking.checklist.map((item) => (
               <li key={item} className="flex gap-3">
-                <span className="mt-2 h-2 w-2 shrink-0 rounded-sm bg-[var(--color-accent)]" />
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white" />
                 <span>{item}</span>
               </li>
             ))}
           </ul>
 
-          <div className="mt-8 rounded-[1rem] border border-[var(--color-border)] bg-[var(--color-accent-tint)] p-5">
+          <div className="mt-8 rounded-[1.1rem] border border-white/8 bg-white/4 p-5">
             <p className="section-label">{booking.fallbackLabel}</p>
             <p className="mt-3 text-sm leading-7 text-[var(--color-muted)] sm:text-base">
               Reach FreshStack directly at{" "}
               <a
                 href={`mailto:${cta.contactEmail}`}
-                className="font-medium text-[var(--color-ink)] underline decoration-[var(--color-border-strong)] underline-offset-4"
+                className="font-medium text-[var(--color-ink)] underline decoration-white/25 underline-offset-4"
               >
                 {cta.contactEmail}
               </a>
@@ -386,11 +371,11 @@ export function BookingSection({ booking, cta }: BookingSectionProps) {
 
           <div className="mt-8 md:hidden">
             {cta.hasLiveBookingUrl ? (
-              <LinkButton href={cta.bookingUrl} className="w-full">
+              <LinkButton href={cta.bookingUrl} className="w-full" variant="secondary">
                 {cta.primaryLabel}
               </LinkButton>
             ) : (
-              <div className="rounded-[1rem] border border-dashed border-[var(--color-border-strong)] p-5 text-sm leading-7 text-[var(--color-muted)]">
+              <div className="rounded-[1rem] border border-dashed border-white/18 p-5 text-sm leading-7 text-[var(--color-muted)]">
                 Add `NEXT_PUBLIC_CALENDLY_URL` to enable the mobile external
                 booking button.
               </div>
@@ -398,42 +383,41 @@ export function BookingSection({ booking, cta }: BookingSectionProps) {
           </div>
         </div>
 
-        <div className="surface-card hidden min-h-[44rem] overflow-hidden border-t-4 border-[var(--color-accent)] p-2 md:block">
-          {cta.bookingEmbedUrl ? (
-            <iframe
-              title={booking.desktopLabel}
-              src={cta.bookingEmbedUrl}
-              className="h-full min-h-[42rem] w-full rounded-[1rem] border-0 bg-[var(--color-white)]"
-            />
-          ) : (
-            <div className="flex h-full min-h-[42rem] flex-col justify-between rounded-[1rem] border border-dashed border-[var(--color-border-strong)] bg-[var(--color-white)] p-8">
-              <div>
-                <p className="section-label">Calendly not configured yet</p>
-                <h3 className="mt-5 max-w-xl text-3xl font-bold tracking-[-0.02em] text-[var(--color-ink)]">
-                  Add a live booking URL to enable the desktop embed.
-                </h3>
-                <p className="mt-4 max-w-xl text-sm leading-7 text-[var(--color-muted)] sm:text-base">
-                  Set `NEXT_PUBLIC_CALENDLY_URL` at build time. The section is
-                  already wired to render the embed on desktop and the external
-                  button on mobile once the URL is present.
+        <div className="glass-panel hidden p-6 md:block">
+          <p className="section-label text-center">{booking.desktopLabel}</p>
+          <div className="mt-5 flex min-h-[42rem] flex-col justify-between rounded-[1rem] border border-white/8 bg-black/35 p-8">
+            <div>
+              <h3 className="max-w-xl text-3xl font-bold tracking-[-0.02em] text-[var(--color-ink)]">
+                Book a focused working session with FreshStack.
+              </h3>
+              <p className="mt-4 max-w-xl text-sm leading-7 text-[var(--color-muted)] sm:text-base">
+                The desktop experience now opens Calendly directly instead of
+                embedding it inline, which keeps the page faster, cleaner in the
+                console, and more reliable for keyboard users.
+              </p>
+            </div>
+
+            <div className="space-y-5">
+              <div className="rounded-xl border border-white/8 bg-white/4 p-5">
+                <p className="section-label">What happens next</p>
+                <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
+                  Choose a time in Calendly, then continue the conversation over
+                  email if there is any prep work needed beforehand.
                 </p>
               </div>
 
-              <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-white)] p-5">
-                <p className="section-label">Configured fallback</p>
-                <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
-                  Until then, direct outreach can go through{" "}
-                  <a
-                    href={`mailto:${cta.contactEmail}`}
-                    className="font-medium text-[var(--color-ink)] underline decoration-[var(--color-border-strong)] underline-offset-4"
-                  >
-                    {cta.contactEmail}
-                  </a>
-                  .
-                </p>
-              </div>
+              {cta.hasLiveBookingUrl ? (
+                <LinkButton href={cta.bookingUrl} className="w-full" variant="secondary">
+                  {booking.mobileLabel}
+                </LinkButton>
+              ) : (
+                <div className="rounded-[1rem] border border-dashed border-white/18 p-5 text-sm leading-7 text-[var(--color-muted)]">
+                  Add `NEXT_PUBLIC_CALENDLY_URL` to enable the desktop booking
+                  button.
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </div>
     </SectionShell>

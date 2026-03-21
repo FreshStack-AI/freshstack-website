@@ -133,7 +133,7 @@ export function ExperienceHero({
                 </React.Fragment>
               ))}
             </h1>
-            <p className="mt-6 max-w-md font-mono text-[11px] leading-relaxed tracking-[0.35em] text-white/40">
+            <p className="section-label mt-6 max-w-md normal-case leading-[1.9] font-medium tracking-[0.22em]">
               {description}
             </p>
 
@@ -142,7 +142,7 @@ export function ExperienceHero({
           <a
             ref={ctaRef}
             href={ctaHref}
-            className="group mt-8 flex w-fit items-center gap-6 sm:mt-10 lg:mt-14"
+            className="group mt-5 flex w-fit items-center gap-6 sm:mt-6 lg:mt-8"
           >
             <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-white/15 transition-all duration-500 group-hover:bg-white">
               <svg

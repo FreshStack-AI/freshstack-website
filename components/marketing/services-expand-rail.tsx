@@ -7,116 +7,128 @@ import { cn } from "@/lib/utils";
 
 type ServicesExpandRailProps = {
   cards: ServiceCard[];
+  toolLabels: string[];
 };
 
-export function ServicesExpandRail({ cards }: ServicesExpandRailProps) {
-  const [activeIndex, setActiveIndex] = useState(0);
+const DETAIL_FRAMES = [
+  "Clarify the operating model before more people or more tools get layered on top of the chaos.",
+  "Make context move cleanly between teams so the next person does not have to reconstruct the work.",
+  "Create reporting that leadership and clients can both trust without weekly manual rescue missions.",
+  "Use AI where it improves throughput and quality, not where it simply adds more output to review.",
+  "Document the stack and automation logic so the operating layer becomes durable instead of fragile.",
+];
+
+export function ServicesExpandRail({
+  cards,
+  toolLabels,
+}: ServicesExpandRailProps) {
+  const [activeIndex, setActiveIndex] = useState(() =>
+    cards.length > 1 ? 1 : 0,
+  );
 
   if (cards.length === 0) {
     return null;
   }
 
-  const gridTemplateColumns = cards
-    .map((_, index) =>
-      index === activeIndex ? "minmax(0, 2.7fr)" : "minmax(4.75rem, 0.7fr)",
-    )
-    .join(" ");
+  const activeCard = cards[activeIndex] ?? cards[0];
+  const activeTools = toolLabels.slice(activeIndex * 4, activeIndex * 4 + 6);
 
   return (
     <>
-      <div className="grid gap-5 md:grid-cols-2 lg:hidden">
+      <div className="grid gap-5 lg:hidden">
         {cards.map((card, index) => (
           <article
             key={card.title}
-            className="card-stagger glass-panel flex h-full flex-col p-6"
-            style={{ animationDelay: `${index * 70}ms` }}
+            className="card-stagger glass-panel p-6 sm:p-7"
+            style={{ animationDelay: `${index * 60}ms` }}
           >
-            <p className="section-label">Service</p>
-            <h3 className="mt-5 text-2xl font-bold tracking-[-0.03em] text-[var(--color-white)]">
+            <p className="section-label">Service 0{index + 1}</p>
+            <h3 className="mt-4 text-[1.85rem] font-semibold tracking-[-0.045em] text-[var(--color-ink)]">
               {card.title}
             </h3>
-            <p className="mt-4 text-sm leading-7 text-[var(--color-muted)] sm:text-base">
+            <p className="mt-3 text-sm leading-7 text-[var(--color-muted)] sm:text-base">
               {card.description}
             </p>
           </article>
         ))}
       </div>
 
-      <div className="hidden lg:block">
-        <div
-          className="grid min-h-[26.5rem] gap-3 transition-[grid-template-columns] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none"
-          style={{ gridTemplateColumns }}
-        >
-          {cards.map((card, index) => {
-            const isActive = index === activeIndex;
+      <div className="hidden lg:grid lg:grid-cols-[17rem_minmax(0,1fr)] lg:gap-5">
+        <div className="glass-panel p-3">
+          <div className="space-y-2">
+            {cards.map((card, index) => {
+              const isActive = index === activeIndex;
 
-            return (
-              <button
-                key={card.title}
-                type="button"
-                aria-pressed={isActive}
-                aria-label={card.title}
-                onMouseEnter={() => setActiveIndex(index)}
-                onFocus={() => setActiveIndex(index)}
-                onClick={() => setActiveIndex(index)}
-                className={cn(
-                  "card-stagger glass-panel group relative h-full overflow-hidden text-left",
-                  "transition-[border-color,background-color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black",
-                  isActive
-                    ? "border-white/20 bg-white/[0.07] shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_30px_90px_rgba(0,0,0,0.52)]"
-                    : "border-white/8 bg-white/[0.03]",
-                )}
-                style={{ animationDelay: `${index * 70}ms` }}
-              >
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_42%)] opacity-70" />
-
-                <span
-                  aria-hidden="true"
+              return (
+                <button
+                  key={card.title}
+                  type="button"
+                  aria-pressed={isActive}
+                  onMouseEnter={() => setActiveIndex(index)}
+                  onFocus={() => setActiveIndex(index)}
+                  onClick={() => setActiveIndex(index)}
                   className={cn(
-                    "pointer-events-none absolute z-[2] font-mono text-[14px] font-bold uppercase tracking-[0.18em] text-white/72",
-                    "transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+                    "w-full rounded-[0.95rem] border px-4 py-4 text-left transition-[background-color,border-color,color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black",
                     isActive
-                      ? "left-6 top-6 translate-x-0 translate-y-0 opacity-0"
-                      : "left-1/2 top-20 -translate-x-1/2 opacity-100 [text-orientation:upright] [writing-mode:vertical-rl]",
+                      ? "border-[rgba(201,168,106,0.24)] bg-[rgba(201,168,106,0.08)] text-[var(--color-ink)]"
+                      : "border-transparent bg-transparent text-[var(--color-muted)] hover:border-white/8 hover:bg-white/[0.02]",
                   )}
                 >
-                  {card.collapsedTitle}
-                </span>
-
-                <div className="relative z-[3] flex h-full flex-col p-6">
-                  <div
-                    className={cn(
-                      "transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
-                      isActive
-                        ? "translate-y-0 opacity-100 delay-75"
-                        : "translate-y-4 opacity-0",
-                    )}
-                  >
-                    <p className="section-label">Service</p>
-                    <h3 className="mt-4 max-w-[13rem] text-[2.15rem] font-bold leading-[1.02] tracking-[-0.05em] text-[var(--color-white)] xl:max-w-[14rem]">
-                      {card.title}
-                    </h3>
-                  </div>
-
-                  <div className="mt-auto">
-                    <p
-                      className={cn(
-                        "max-w-[16rem] overflow-hidden text-[1rem] leading-7 text-[var(--color-muted)]",
-                        "transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
-                        isActive
-                          ? "max-h-52 translate-y-0 opacity-100 delay-100"
-                          : "max-h-0 translate-y-6 opacity-0",
-                      )}
-                    >
-                      {card.description}
-                    </p>
-                  </div>
-                </div>
-              </button>
-            );
-          })}
+                  <p className="section-label">0{index + 1}</p>
+                  <p className="mt-3 text-base font-semibold tracking-[-0.03em]">
+                    {card.collapsedTitle}
+                  </p>
+                </button>
+              );
+            })}
+          </div>
         </div>
+
+        <article className="glass-panel flex min-h-[26rem] flex-col overflow-hidden p-7">
+          <div className="grid flex-1 content-start gap-6 xl:grid-cols-[minmax(0,1fr)_16rem] xl:gap-8">
+            <div>
+              <p className="section-label">Active scope</p>
+              <h3 className="mt-4 max-w-[12ch] text-[2.6rem] font-semibold leading-[0.94] tracking-[-0.06em] text-[var(--color-ink)]">
+                {activeCard.title}
+              </h3>
+              <p className="mt-5 max-w-2xl text-base leading-8 text-[var(--color-muted)]">
+                {activeCard.description}
+              </p>
+            </div>
+
+            <div className="h-fit self-start rounded-[1.15rem] border border-white/8 bg-white/[0.03] p-5">
+              <p className="section-label">Tooling stays flexible</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {activeTools.map((tool) => (
+                  <span
+                    key={tool}
+                    className="rounded-[0.7rem] border border-white/10 bg-white/[0.03] px-3 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--color-muted)]"
+                  >
+                    {tool}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-auto grid gap-3 pt-6 md:grid-cols-2">
+            <div className="rounded-[1.15rem] border border-white/8 bg-white/[0.03] p-4">
+              <p className="section-label">Primary focus</p>
+              <p className="mt-3 text-sm leading-7 text-[var(--color-ink)]">
+                {activeCard.collapsedTitle}
+              </p>
+            </div>
+
+            <div className="rounded-[1.15rem] border border-white/8 bg-white/[0.03] p-4">
+              <p className="section-label">Why it matters</p>
+              <p className="mt-3 text-sm leading-7 text-[var(--color-ink)]">
+                {activeCard.whyItMatters ||
+                  DETAIL_FRAMES[activeIndex] ||
+                  DETAIL_FRAMES[0]}
+              </p>
+            </div>
+          </div>
+        </article>
       </div>
     </>
   );

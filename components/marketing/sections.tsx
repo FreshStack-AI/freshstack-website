@@ -117,7 +117,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
       title={services.title}
       description={services.description}
     >
-      <ServicesExpandRail cards={services.cards} />
+      <ServicesExpandRail cards={services.cards} toolLabels={services.toolChips} />
     </SectionShell>
   );
 }

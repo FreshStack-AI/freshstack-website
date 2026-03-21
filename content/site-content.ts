@@ -60,6 +60,8 @@ export type ServiceCard = {
   title: string;
   collapsedTitle: string;
   description: string;
+  whyItMatters: string;
+  tooling: string[];
 };
 
 type ProcessStep = {
@@ -269,26 +271,36 @@ export const siteContent: SiteContent = {
         title: "Internal systems & processes",
         collapsedTitle: "Processes",
         description: "Clarify the operating layer behind delivery, approvals, reporting rhythm, and recurring team responsibilities.",
+        whyItMatters: "Make the operating layer repeatable so approvals, reporting, and recurring responsibilities do not rely on memory.",
+        tooling: ["Notion", "Airtable", "Slack", "Make", "n8n"],
       },
       {
         title: "Team workflows & handoffs",
         collapsedTitle: "Workflows",
         description: "Reduce dropped context between sales, account management, strategists, media buyers, and delivery teams.",
+        whyItMatters: "Make context move cleanly between teams so the next person does not have to reconstruct the work.",
+        tooling: ["Claude Code", "Codex", "Python", "OpenClaw", "React", "Vite"],
       },
       {
         title: "Client reporting & tracking",
         collapsedTitle: "Reporting",
         description: "Create cleaner reporting inputs, more reliable KPI flow, and clearer internal visibility before client-facing output.",
+        whyItMatters: "Give leadership and account teams one clearer view of performance before reporting leaves the business.",
+        tooling: ["Google Sheets", "Airtable", "Supabase", "Notion", "X API"],
       },
       {
         title: "AI-enhanced deliverables",
         collapsedTitle: "Deliverables",
         description: "Use AI where it meaningfully improves research, QA, drafting, synthesis, and repeatable production steps.",
+        whyItMatters: "Increase delivery leverage without lowering quality by tightening the repeatable work around each deliverable.",
+        tooling: ["Claude", "Claude Code", "Cursor", "OpenClaw", "GitHub"],
       },
       {
         title: "Automation stack setup",
         collapsedTitle: "Automations",
         description: "Set up the tooling, automation logic, and documentation required to make the new operating layer stick.",
+        whyItMatters: "Make the system durable so the team can run, maintain, and extend it without depending on one operator.",
+        tooling: ["n8n", "Make", "Python", "Telegram", "Supabase"],
       },
     ],
     toolChips: [

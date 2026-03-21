@@ -59,7 +59,7 @@ function LiquidBackground({ reduceMotion }: { reduceMotion: boolean }) {
               (sin(uv.x * 8.0 + t + m.x * 12.0) + sin(uv.y * 6.0 - t + m.y * 12.0)) * 0.5 + 0.5
             );
 
-            gl_FragColor = vec4(mix(vec3(0.005), vec3(0.05), color), 1.0);
+            gl_FragColor = vec4(mix(vec3(0.004), vec3(0.04), color), 1.0);
           }
         `}
       />
@@ -84,7 +84,7 @@ function Monolith({ reduceMotion }: { reduceMotion: boolean }) {
       rotationIntensity={reduceMotion ? 0.12 : 0.5}
       floatIntensity={reduceMotion ? 0.2 : 1}
     >
-      <mesh ref={meshRef} position={[0, -3.5, 0]}>
+      <mesh ref={meshRef} position={[17.5, -3.8, 0]}>
         <icosahedronGeometry args={[13, 1]} />
         <MeshDistortMaterial
           color="#0a0a0a"
@@ -113,8 +113,8 @@ export function SiteWebglBackground() {
   return (
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0">
       <Canvas camera={{ position: [0, 0, 60], fov: 35 }}>
-        <ambientLight intensity={0.4} />
-        <spotLight position={[50, 50, 50]} intensity={3} />
+        <ambientLight intensity={0.32} />
+        <spotLight position={[50, 50, 50]} intensity={2.4} />
         <LiquidBackground reduceMotion={reduceMotion} />
         <Monolith reduceMotion={reduceMotion} />
       </Canvas>

@@ -115,9 +115,9 @@ export function ExperienceHero({
 
       <div
         ref={revealRef}
-        className="relative z-10 flex min-h-screen w-full flex-col gap-10 p-8 md:flex-row md:items-stretch md:p-14 lg:p-20"
+        className="relative z-10 flex min-h-screen w-full flex-col gap-8 px-8 pb-6 pt-[0.8125rem] md:flex-row md:items-stretch md:px-14 md:pb-12 md:pt-[2.125rem] lg:px-20 lg:pb-16 lg:pt-[3.5rem]"
       >
-        <div className="flex min-w-0 flex-1 flex-col justify-between pb-12 md:pb-8">
+        <div className="flex min-w-0 flex-1 flex-col pb-8 md:pb-6">
           <div className="max-w-5xl pr-4 lg:-translate-y-8 lg:pr-12">
             <p className="font-mono text-[11px] uppercase tracking-[0.35em] text-white/40">
               {"// "}
@@ -133,15 +133,16 @@ export function ExperienceHero({
                 </React.Fragment>
               ))}
             </h1>
-            <p className="mt-8 max-w-md font-mono text-[11px] leading-relaxed tracking-[0.35em] text-white/40">
+            <p className="mt-6 max-w-md font-mono text-[11px] leading-relaxed tracking-[0.35em] text-white/40">
               {description}
             </p>
+
           </div>
 
           <a
             ref={ctaRef}
             href={ctaHref}
-            className="group flex w-fit items-center gap-6 lg:-translate-y-20"
+            className="group mt-8 flex w-fit items-center gap-6 sm:mt-10 lg:mt-14"
           >
             <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-white/15 transition-all duration-500 group-hover:bg-white">
               <svg

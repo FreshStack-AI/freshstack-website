@@ -1,9 +1,7 @@
 import { MobileBookBar } from "@/components/marketing/mobile-book-bar";
 import {
-  AboutSection,
   BookingSection,
   CaseStudiesSection,
-  FAQSection,
   FounderSection,
   HeroSection,
   PainPointsSection,
@@ -26,7 +24,7 @@ export default function Home() {
       />
 
       <SiteWebglBackground />
-      <div className="pointer-events-none fixed inset-0 z-[1] bento-mask opacity-10" />
+      <div className="pointer-events-none fixed inset-0 z-[1] bento-mask opacity-20" />
 
       <main className="relative z-10 overflow-x-hidden pb-28 md:pb-0">
         <HeroSection
@@ -35,13 +33,14 @@ export default function Home() {
           toolLabels={siteContent.services.toolChips}
         />
         <PanelGlowController />
-        <PainPointsSection painPoints={siteContent.painPoints} />
+        <PainPointsSection
+          painPoints={siteContent.painPoints}
+          toolLabels={siteContent.services.toolChips}
+        />
         <FounderSection founder={siteContent.founder} />
         <ServicesSection services={siteContent.services} />
         <CaseStudiesSection caseStudies={siteContent.caseStudies} />
         <ProcessSection process={siteContent.process} />
-        <AboutSection about={siteContent.about} />
-        <FAQSection faq={siteContent.faq} />
         <BookingSection booking={siteContent.booking} cta={siteContent.cta} />
       </main>
 

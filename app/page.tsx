@@ -37,9 +37,9 @@ export default function Home() {
           painPoints={siteContent.painPoints}
           toolLabels={siteContent.services.toolChips}
         />
-        <FounderSection founder={siteContent.founder} />
-        <ServicesSection services={siteContent.services} />
         <CaseStudiesSection caseStudies={siteContent.caseStudies} />
+        <ServicesSection services={siteContent.services} />
+        <FounderSection founder={siteContent.founder} />
         <ProcessSection process={siteContent.process} />
         <BookingSection booking={siteContent.booking} cta={siteContent.cta} />
       </main>

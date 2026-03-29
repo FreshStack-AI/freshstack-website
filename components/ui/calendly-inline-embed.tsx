@@ -3,6 +3,8 @@
 import { useCallback, useEffect, useRef } from "react";
 import Script from "next/script";
 
+import { cn } from "@/lib/utils";
+
 declare global {
   interface Window {
     Calendly?: {
@@ -17,9 +19,13 @@ declare global {
 
 type CalendlyInlineEmbedProps = {
   url: string;
+  className?: string;
 };
 
-export function CalendlyInlineEmbed({ url }: CalendlyInlineEmbedProps) {
+export function CalendlyInlineEmbed({
+  url,
+  className,
+}: CalendlyInlineEmbedProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const initWidget = useCallback(() => {
@@ -55,7 +61,10 @@ export function CalendlyInlineEmbed({ url }: CalendlyInlineEmbedProps) {
         strategy="afterInteractive"
         onReady={initWidget}
       />
-      <div ref={containerRef} className="calendly-inline-shell w-full" />
+      <div
+        ref={containerRef}
+        className={cn("calendly-inline-shell w-full", className)}
+      />
     </>
   );
 }

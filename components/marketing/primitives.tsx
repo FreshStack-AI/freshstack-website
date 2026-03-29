@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Image from "next/image";
 
 type SectionShellProps = {
   id: string;
@@ -57,9 +58,13 @@ export function SectionShell({
 export function BrandMark({ className }: { className?: string }) {
   return (
     <span aria-hidden="true" className={classNames("brand-mark", className)}>
-      {Array.from({ length: 6 }, (_, index) => (
-        <span key={index} className="brand-mark-cell" />
-      ))}
+      <Image
+        src="/fs-v2-logo.png"
+        alt=""
+        width={164}
+        height={163}
+        className="brand-mark-image"
+      />
     </span>
   );
 }

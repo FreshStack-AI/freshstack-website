@@ -166,9 +166,9 @@ function buildCalendlyEmbedUrl(url: string, enabled: boolean) {
     const calendlyUrl = new URL(url);
     calendlyUrl.searchParams.set("hide_gdpr_banner", "1");
     calendlyUrl.searchParams.set("hide_event_type_details", "1");
-    calendlyUrl.searchParams.set("background_color", "020202");
-    calendlyUrl.searchParams.set("text_color", "f5f5f5");
-    calendlyUrl.searchParams.set("primary_color", "ffffff");
+    calendlyUrl.searchParams.set("background_color", "0a0a0a");
+    calendlyUrl.searchParams.set("text_color", "ffffff");
+    calendlyUrl.searchParams.set("primary_color", "9c9d9d");
     return calendlyUrl.toString();
   } catch {
     return null;
@@ -187,23 +187,21 @@ export const siteContent: SiteContent = {
   meta: {
     title: "FreshStack | Your AI growth partner",
     description:
-      "Your operations shouldn't depend on people doing what AI can do better.",
+      "FreshStack helps agencies replace operational drag with AI systems that increase leverage, speed delivery, and reduce founder dependency.",
     ogImageUrl: resolveAssetUrl(process.env.NEXT_PUBLIC_OG_IMAGE_URL, siteUrl),
   },
   navigation: {
     links: [
-      { label: "Services", href: "#services" },
       { label: "Case studies", href: "#case-studies" },
+      { label: "Services", href: "#services" },
       { label: "Process", href: "#process" },
-      { label: "Let's Talk", href: "#book-a-call" },
     ],
   },
   hero: {
     eyebrow: "Operator-built systems",
     title: "Your AI growth partner",
     displayLines: ["Your AI", "growth partner"],
-    description:
-      "Your operations shouldn't depend on people doing what AI can do better.",
+    description: "Manual work should not slow growth",
     proof: "Built by agency owners with 10 years of firsthand operational experience.",
     supportTitle: "What the work usually tightens first",
     supportItems: [
@@ -214,33 +212,28 @@ export const siteContent: SiteContent = {
   },
   painPoints: {
     eyebrow: "Pain points",
-    title: "Most agency ops issues are repeat friction, not isolated fires.",
-    description:
-      "The work usually looks busy on the surface, but the drag shows up in the same places every week.",
+    title: "Are you busy with the wrong stuff?",
+    description: "",
     items: [
       {
-        title: "Manual reporting",
-        description: "Updates still depend on someone pulling numbers, formatting decks, and chasing context before clients see anything.",
+        title: "Sales",
+        description:
+          "Too much sales activity still runs on manual follow-up, scattered notes, and inconsistent handoff into delivery.",
       },
       {
-        title: "Broken handoffs",
-        description: "Account, delivery, and leadership teams are working from different assumptions and incomplete records.",
+        title: "Delivery",
+        description:
+          "Weak handoffs and inconsistent execution reduce delivery capacity and create expensive rework.",
       },
       {
-        title: "Inconsistent delivery",
-        description: "Good work happens, but the process around it changes by person, account, or urgency level.",
+        title: "Reporting",
+        description:
+          "Manual reporting wastes time, delays decisions, and weakens client confidence.",
       },
       {
-        title: "Scattered data",
-        description: "Operational signals live across spreadsheets, project boards, inboxes, and chat history with no shared source of truth.",
-      },
-      {
-        title: "Poor visibility",
-        description: "Founders and team leads do not get a clean view of delivery health, capacity, or risk until problems are already expensive.",
-      },
-      {
-        title: "Founder bottlenecks",
-        description: "Critical decisions, approvals, and context still route through the founder because the system is not carrying enough load.",
+        title: "Operations",
+        description:
+          "Disconnected systems and repetitive admin work drag down efficiency, margin, and scalability.",
       },
     ],
   },
@@ -249,13 +242,13 @@ export const siteContent: SiteContent = {
     profiles: [
       {
         name: "Baptiste",
-        bio: "With over a decade working inside some of the world's largest agencies, including WPP, and delivering for brands like Binance and Adidas, Baptiste has seen how the best operations run at scale. After building and automating his own business with AI, he now helps other agency owners do the same: replace the manual, the slow, and the inconsistent with systems that actually scale.",
+        bio: "With over a decade inside some of the world's largest agencies, including WPP, and work delivered for brands like Binance and Adidas, Baptiste has seen how strong operations create speed, leverage, and commercial headroom. After building and automating his own business with AI, he now helps agency owners replace slow manual work with systems that scale delivery, free up leadership time, and create more room to grow.",
         imageSrc: "/founder-portrait.png",
         imageAlt: "Black-and-white portrait of Baptiste, founder of FreshStack",
       },
       {
         name: "Lara",
-        bio: "With over a decade working inside some of the world's largest agencies, including WPP, and delivering for brands like Binance and Adidas, Lara has seen how the best operations run at scale. After building and automating her own business with AI, she now helps other agency owners do the same: replace the manual, the slow, and the inconsistent with systems that actually scale.",
+        bio: "With over a decade in high-pressure agency environments, Lara has seen first-hand how delivery, profitability, and client confidence suffer when the operating layer cannot keep up. She now helps agency owners build clearer systems, tighter workflows, and stronger reporting so growth does not come with more chaos.",
         imageSrc: "/lara-portrait.png",
         imageAlt: "Black-and-white portrait of Lara, co-founder of FreshStack",
       },
@@ -263,43 +256,43 @@ export const siteContent: SiteContent = {
   },
   services: {
     eyebrow: "Services",
-    title: "Built around the operating gaps agency owners actually feel.",
+    title: "What we can help you with",
     description:
-      "The stack matters, but the real leverage comes from tightening the way work moves through the business.",
+      "When the operating layer is tighter, the team moves faster, delivery gets cleaner, and founders get more room to scale the business.",
     cards: [
       {
         title: "Internal systems & processes",
         collapsedTitle: "Processes",
-        description: "Clarify the operating layer behind delivery, approvals, reporting rhythm, and recurring team responsibilities.",
-        whyItMatters: "Make the operating layer repeatable so approvals, reporting, and recurring responsibilities do not rely on memory.",
+        description: "Build a clearer operating layer behind delivery, approvals, reporting rhythm, and recurring team responsibilities so the business can scale without more founder load.",
+        whyItMatters: "Create repeatable execution so delivery quality and pace do not depend on memory, heroics, or constant founder intervention.",
         tooling: ["Notion", "Airtable", "Slack", "Make", "n8n"],
       },
       {
         title: "Team workflows & handoffs",
         collapsedTitle: "Workflows",
-        description: "Reduce dropped context between sales, account management, strategists, media buyers, and delivery teams.",
-        whyItMatters: "Make context move cleanly between teams so the next person does not have to reconstruct the work.",
+        description: "Tighten handoffs between sales, account management, strategists, media buyers, and delivery teams so work moves faster with less rework.",
+        whyItMatters: "Faster handoffs mean fewer delays, less rework, and more delivery capacity across the team.",
         tooling: ["Claude Code", "Codex", "Python", "OpenClaw", "React", "Vite"],
       },
       {
         title: "Client reporting & tracking",
         collapsedTitle: "Reporting",
-        description: "Create cleaner reporting inputs, more reliable KPI flow, and clearer internal visibility before client-facing output.",
-        whyItMatters: "Give leadership and account teams one clearer view of performance before reporting leaves the business.",
+        description: "Create cleaner reporting inputs, more reliable KPI flow, and better internal visibility before anything reaches the client.",
+        whyItMatters: "Better reporting protects renewals, surfaces upsell opportunities, and helps leadership make faster decisions.",
         tooling: ["Google Sheets", "Airtable", "Supabase", "Notion", "X API"],
       },
       {
         title: "AI-enhanced deliverables",
         collapsedTitle: "Deliverables",
-        description: "Use AI where it meaningfully improves research, QA, drafting, synthesis, and repeatable production steps.",
-        whyItMatters: "Increase delivery leverage without lowering quality by tightening the repeatable work around each deliverable.",
+        description: "Use AI where it meaningfully accelerates research, QA, drafting, synthesis, and repeatable production work without lowering quality.",
+        whyItMatters: "Increase throughput and team leverage without needing to add headcount before the business is ready.",
         tooling: ["Claude", "Claude Code", "Cursor", "OpenClaw", "GitHub"],
       },
       {
         title: "Automation stack setup",
         collapsedTitle: "Automations",
-        description: "Set up the tooling, automation logic, and documentation required to make the new operating layer stick.",
-        whyItMatters: "Make the system durable so the team can run, maintain, and extend it without depending on one operator.",
+        description: "Implement the tooling, automation logic, and documentation needed to make the new operating layer durable and scalable.",
+        whyItMatters: "A durable automation layer creates leverage the team can actually own, maintain, and extend.",
         tooling: ["n8n", "Make", "Python", "Telegram", "Supabase"],
       },
     ],
@@ -382,7 +375,7 @@ export const siteContent: SiteContent = {
         id: "handoff-delivery-placeholder",
         clientType: "Creator marketing agency",
         automationType: "Sales-to-ops workflow automation",
-        title: "Operational Hygiene",
+        title: "Sales-to-Ops System",
         summary:
           "By replacing disconnected databases and manual proposal building with one connected workflow, FreshStack eliminated rate errors, sped up handoffs, and gave sales and operations a shared source of truth.",
         serviceTags: [
@@ -421,43 +414,44 @@ export const siteContent: SiteContent = {
         logoLabel: null,
       },
       {
-        id: "qa-tracking-placeholder",
-        clientType: "Social content agency",
-        automationType: "X metrics reporting automation",
-        title: "X Metrics",
+        id: "crm-tracker-movimentum",
+        clientType: "Sales organization",
+        automationType: "CRM workflow automation",
+        title: "Multilayer CRM Tracker",
         summary:
-          "By piping X post metrics into a live internal reporting system, FreshStack replaced stale reporting with always-fresh visibility that improved renewals, upsells, and client trust.",
+          "FreshStack connected Google Calendar, Fireflies, Notion, and Slack into one CRM workflow that auto-logs calls, surfaces follow-ups, and updates weekly sales scorecards with zero manual data entry.",
         serviceTags: [
-          "X metrics",
-          "Reporting automation",
-          "Retention visibility",
+          "CRM tracker",
+          "Follow-up automation",
+          "Sales scorecards",
         ],
         workflow: {
           inputs: [
-            "Published X posts",
-            "X / Twitter metrics feed",
-            "Internal reporting database",
+            "Google Calendar events",
+            "Notion leads and calls databases",
+            "Fireflies transcripts and summaries",
           ],
-          automationLabel: "Reporting automation",
+          automationLabel: "CRM operating layer",
           automationSteps: [
-            "Pull post metrics on a recurring schedule",
-            "Log every result into the reporting layer",
-            "Keep client visibility fresh without admin work",
+            "Log every new call into Notion automatically",
+            "Sync setters, follow-up dates, and Fireflies summaries",
+            "Push reminders and scorecards into Slack on schedule",
           ],
           outputs: [
-            "Live performance reporting",
-            "Stronger renewal visibility",
-            "Clear upsell opportunities",
+            "Auto-updated call records",
+            "Daily follow-up reminders",
+            "Weekly rep scorecards",
           ],
         },
         challenge:
-          "Clients expected real-time proof that content was performing, but the team was manually collecting post metrics every week. Reporting was outdated almost immediately, accuracy depended on repetitive admin work, and results often looked weaker than they really were.",
+          "Sales activity was spread across Google Calendar, Notion, Fireflies, and Slack. New calls had to be logged manually, setter attribution could break, follow-ups were easy to miss, and weekly reporting depended on admin work instead of a live CRM layer.",
         intervention:
-          "FreshStack built an automated workflow that pulls X post metrics directly into the internal reporting database. Metrics stay current without recollection, every post is logged accurately at scale, and client reporting reflects the full performance picture.",
+          "FreshStack built a suite of five connected automations that poll three Google Calendars, create and update call records in Notion, propagate setters from linked leads, attach Fireflies summaries and transcript links, post daily follow-up reminders in Slack, and refresh weekly scorecards for every sales rep.",
         outcomes: [
-          "$84K per year in revenue upside from stronger renewals and upsell opportunities.",
-          "156 hours per year saved by removing weekly manual metric collection.",
-          "Always-fresh performance data improved reporting accuracy, client trust, and retention conversations.",
+          "Zero manual data entry for logging new calls into the CRM.",
+          "Daily Slack digests now surface overdue and due-today follow-ups automatically.",
+          "Weekly rep scorecards update with calls, no-shows, closes, and revenue without manual reporting.",
+          "Fireflies summaries are attached automatically, with a scheduled backfill acting as a safety net if the webhook misses.",
         ],
         quote: null,
         logoLabel: null,
@@ -466,25 +460,24 @@ export const siteContent: SiteContent = {
   },
   process: {
     eyebrow: "Process",
-    title: "A short path from operational audit to embedded improvement.",
-    description:
-      "The goal is not to bolt on tools. It is to make the operating layer simpler, clearer, and easier for the team to run.",
+    title: "A clear timeline",
+    description: "",
     steps: [
       {
         title: "Audit",
-        description: "Map current workflows, friction points, reporting gaps, and founder dependencies so the real operating constraints are clear.",
+        description: "Map the operational bottlenecks slowing delivery, visibility, and growth so we know exactly where the leverage is.",
       },
       {
         title: "Design",
-        description: "Turn the audit into a tighter operating model with clear handoffs, automation logic, ownership, and implementation priorities.",
+        description: "Turn the findings into a leaner operating model with clearer handoffs, smarter automation, and sharper implementation priorities.",
       },
       {
         title: "Build",
-        description: "Implement the workflows, automations, reporting systems, and documentation that support the agreed design.",
+        description: "Implement the workflows, automations, reporting systems, and documentation that make the new operating layer real.",
       },
       {
         title: "Embed & optimize",
-        description: "Train the team, observe adoption, tighten weak spots, and improve the system once it is handling live agency work.",
+        description: "Train the team, watch adoption, and optimize until the system is improving delivery, capacity, and visibility in live work.",
       },
     ],
   },
@@ -549,19 +542,17 @@ export const siteContent: SiteContent = {
     eyebrow: "Let's Talk",
     title: "Let's Talk.",
     description:
-      "Use the booking section to start with a practical conversation about where your operating system is slowing delivery, reporting, or visibility.",
+      "Start with a focused conversation about where your operating layer is slowing delivery, limiting visibility, or capping growth.",
     desktopLabel: "Book a call",
     mobileLabel: "Open Calendly",
     fallbackLabel: "Prefer email?",
     checklist: [
-      "Best for agency owners who already have delivery volume and operational drag.",
-      "Useful if the pain is reporting, handoffs, workflow consistency, or founder bottlenecks.",
-      "The goal of the first call is clarity on fit, scope, and where the operating layer needs work first.",
+      "Book a free 30-minute working session. We’ll audit your operating layer, identify the main bottlenecks, and show you where AI can create the most leverage first.",
     ],
   },
   footer: {
     blurb:
-      "FreshStack helps agencies build a tighter operating layer across systems, workflows, reporting, deliverables, and tracking.",
+      "FreshStack helps agencies use AI to build a stronger operating layer across systems, workflows, reporting, deliverables, and tracking.",
     contactLabel: "Contact",
     legal: "© 2026 FreshStack. All rights reserved.",
   },

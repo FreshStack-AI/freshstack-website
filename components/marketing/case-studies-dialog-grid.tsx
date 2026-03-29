@@ -254,7 +254,7 @@ export function CaseStudiesDialogGrid({
             className="glass-panel card-stagger group flex h-full flex-col justify-between p-6 text-left transition-[border-color,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-white/18 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:p-7"
             style={{ animationDelay: `${index * 90}ms` }}
           >
-            <div className="flex min-h-[15.5rem] flex-col">
+            <div className="flex min-h-[13.75rem] flex-1 flex-col">
               <div className="min-h-[3.7rem]">
                 <p className="section-label max-w-[16rem] leading-[1.5]">
                   {study.clientType}
@@ -263,33 +263,35 @@ export function CaseStudiesDialogGrid({
               <h3 className="mt-5 text-[1.9rem] font-bold tracking-[-0.045em] text-[var(--color-ink)] sm:text-[2.1rem]">
                 {study.title}
               </h3>
-              <p className="mt-3 max-w-[18rem] text-sm leading-6 text-[var(--color-muted)]">
-                {study.automationType}
-              </p>
             </div>
 
-            <div className="mt-10 flex items-center justify-between gap-4">
-              <span className="text-sm text-[var(--color-muted)]">
-                View case study
-              </span>
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/12 text-white transition-colors duration-300 group-hover:bg-white group-hover:text-black">
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M7 17L17 7M17 7H8M17 7V16"
-                    stroke="currentColor"
-                    strokeWidth="2.2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
+            <div className="mt-5">
+              <p className="max-w-[18rem] text-sm leading-6 text-[var(--color-muted)]">
+                {study.automationType}
+              </p>
+              <div className="mt-7 flex items-center justify-between gap-4">
+                <span className="text-sm text-[var(--color-muted)]">
+                  View case study
+                </span>
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/12 text-white transition-colors duration-300 group-hover:bg-white group-hover:text-black">
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M7 17L17 7M17 7H8M17 7V16"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
+              </div>
             </div>
           </button>
         ))}

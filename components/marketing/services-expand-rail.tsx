@@ -7,7 +7,6 @@ import { cn } from "@/lib/utils";
 
 type ServicesExpandRailProps = {
   cards: ServiceCard[];
-  toolLabels: string[];
 };
 
 const DETAIL_FRAMES = [
@@ -20,7 +19,6 @@ const DETAIL_FRAMES = [
 
 export function ServicesExpandRail({
   cards,
-  toolLabels,
 }: ServicesExpandRailProps) {
   const [activeIndex, setActiveIndex] = useState(() =>
     cards.length > 1 ? 1 : 0,
@@ -31,8 +29,6 @@ export function ServicesExpandRail({
   }
 
   const activeCard = cards[activeIndex] ?? cards[0];
-  const activeTools = toolLabels.slice(activeIndex * 4, activeIndex * 4 + 6);
-
   return (
     <>
       <div className="grid gap-5 lg:hidden">
@@ -85,37 +81,23 @@ export function ServicesExpandRail({
         </div>
 
         <article className="glass-panel flex min-h-[26rem] flex-col overflow-hidden p-7">
-          <div className="grid flex-1 content-start gap-6 xl:grid-cols-[minmax(0,1fr)_16rem] xl:gap-8">
+          <div className="flex-1">
             <div>
               <p className="section-label">Active scope</p>
-              <h3 className="mt-4 max-w-[12ch] text-[2.6rem] font-semibold leading-[0.94] tracking-[-0.06em] text-[var(--color-ink)]">
+              <h3 className="mt-4 max-w-[14ch] text-[2.85rem] font-semibold leading-[0.94] tracking-[-0.06em] text-[var(--color-ink)]">
                 {activeCard.title}
               </h3>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-[var(--color-muted)]">
+              <p className="mt-5 max-w-3xl text-base leading-8 text-[var(--color-muted)]">
                 {activeCard.description}
               </p>
-            </div>
-
-            <div className="h-fit self-start rounded-[1.15rem] border border-white/8 bg-white/[0.03] p-5">
-              <p className="section-label">Tooling stays flexible</p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {activeTools.map((tool) => (
-                  <span
-                    key={tool}
-                    className="rounded-[0.7rem] border border-white/10 bg-white/[0.03] px-3 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[var(--color-muted)]"
-                  >
-                    {tool}
-                  </span>
-                ))}
-              </div>
             </div>
           </div>
 
           <div className="mt-auto grid gap-3 pt-6 md:grid-cols-2">
             <div className="rounded-[1.15rem] border border-white/8 bg-white/[0.03] p-4">
-              <p className="section-label">Primary focus</p>
+              <p className="section-label">What it fixes</p>
               <p className="mt-3 text-sm leading-7 text-[var(--color-ink)]">
-                {activeCard.collapsedTitle}
+                {DETAIL_FRAMES[activeIndex] || DETAIL_FRAMES[0]}
               </p>
             </div>
 

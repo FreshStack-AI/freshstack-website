@@ -4,6 +4,7 @@ import { CaseStudiesDialogGrid } from "@/components/marketing/case-studies-dialo
 import { FounderCarousel } from "@/components/marketing/founder-carousel";
 import { LinkButton, SectionShell } from "@/components/marketing/primitives";
 import { ServicesExpandRail } from "@/components/marketing/services-expand-rail";
+import { CalendlyInlineEmbed } from "@/components/ui/calendly-inline-embed";
 import { ExperienceHero } from "@/components/ui/experience-hero";
 import { ToolTypewriterBar } from "@/components/ui/tool-typewriter-bar";
 
@@ -42,7 +43,6 @@ type BookingSectionProps = {
 export function HeroSection({ hero, cta, toolLabels }: HeroSectionProps) {
   return (
     <ExperienceHero
-      eyebrow={hero.eyebrow}
       displayLines={hero.displayLines}
       description={hero.description}
       proof={hero.proof}
@@ -81,11 +81,11 @@ export function PainPointsSection({ painPoints, toolLabels }: PainPointsSectionP
         ))}
       </div>
 
-      <div className="mt-10 w-full max-w-[54rem] px-2 py-2">
+      <div className="mt-10 w-full px-2 py-2">
         <div className="relative px-3 py-3">
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/14" />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-white/14" />
-          <ToolTypewriterBar labels={toolLabels} />
+          <ToolTypewriterBar labels={toolLabels} slotCount={6} />
         </div>
       </div>
     </SectionShell>
@@ -117,7 +117,7 @@ export function ServicesSection({ services }: ServicesSectionProps) {
       title={services.title}
       description={services.description}
     >
-      <ServicesExpandRail cards={services.cards} toolLabels={services.toolChips} />
+      <ServicesExpandRail cards={services.cards} />
     </SectionShell>
   );
 }
@@ -217,38 +217,18 @@ export function BookingSection({ booking, cta }: BookingSectionProps) {
 
         <div className="glass-panel hidden p-6 md:block">
           <p className="section-label text-center">{booking.desktopLabel}</p>
-          <div className="mt-5 flex min-h-[42rem] flex-col justify-between rounded-[1rem] border border-white/8 bg-black/35 p-8">
-            <div>
-              <h3 className="max-w-xl text-3xl font-bold tracking-[-0.02em] text-[var(--color-ink)]">
-                Book a focused working session with FreshStack.
-              </h3>
-              <p className="mt-4 max-w-xl text-sm leading-7 text-[var(--color-muted)] sm:text-base">
-                The desktop experience now opens Calendly directly instead of
-                embedding it inline, which keeps the page faster, cleaner in the
-                console, and more reliable for keyboard users.
-              </p>
-            </div>
-
-            <div className="space-y-5">
-              <div className="rounded-xl border border-white/8 bg-white/4 p-5">
-                <p className="section-label">What happens next</p>
-                <p className="mt-3 text-sm leading-7 text-[var(--color-muted)]">
-                  Choose a time in Calendly, then continue the conversation over
-                  email if there is any prep work needed beforehand.
-                </p>
+          <div className="mt-5 overflow-hidden rounded-[1rem] border border-white/8 bg-black/35 p-2">
+            {cta.bookingEmbedUrl ? (
+              <CalendlyInlineEmbed
+                url={cta.bookingEmbedUrl}
+                className="rounded-[0.9rem]"
+              />
+            ) : (
+              <div className="rounded-[1rem] border border-dashed border-white/18 p-5 text-sm leading-7 text-[var(--color-muted)]">
+                Add `NEXT_PUBLIC_CALENDLY_URL` to enable the desktop booking
+                embed.
               </div>
-
-              {cta.hasLiveBookingUrl ? (
-                <LinkButton href={cta.bookingUrl} className="w-full" variant="secondary">
-                  {booking.mobileLabel}
-                </LinkButton>
-              ) : (
-                <div className="rounded-[1rem] border border-dashed border-white/18 p-5 text-sm leading-7 text-[var(--color-muted)]">
-                  Add `NEXT_PUBLIC_CALENDLY_URL` to enable the desktop booking
-                  button.
-                </div>
-              )}
-            </div>
+            )}
           </div>
         </div>
       </div>

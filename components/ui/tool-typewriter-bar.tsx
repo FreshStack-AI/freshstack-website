@@ -7,9 +7,10 @@ import { cn } from "@/lib/utils";
 type ToolTypewriterBarProps = {
   labels: string[];
   className?: string;
+  slotCount?: number;
 };
 
-const SLOT_COUNT = 4;
+const DEFAULT_SLOT_COUNT = 4;
 const CYCLE_DELAY_MS = 2000;
 const DELETE_STEP_MS = 32;
 const TYPE_STEP_MS = 38;
@@ -19,14 +20,18 @@ type EditingState = {
   text: string;
 };
 
-export function ToolTypewriterBar({ labels, className }: ToolTypewriterBarProps) {
+export function ToolTypewriterBar({
+  labels,
+  className,
+  slotCount = DEFAULT_SLOT_COUNT,
+}: ToolTypewriterBarProps) {
   const visibleLabels = useMemo(() => {
     if (labels.length === 0) {
-      return Array.from({ length: SLOT_COUNT }, () => "");
+      return Array.from({ length: slotCount }, () => "");
     }
 
-    return Array.from({ length: SLOT_COUNT }, (_, index) => labels[index % labels.length]);
-  }, [labels]);
+    return Array.from({ length: slotCount }, (_, index) => labels[index % labels.length]);
+  }, [labels, slotCount]);
 
   const [slots, setSlots] = useState(() => visibleLabels);
   const [editing, setEditing] = useState<EditingState | null>(null);
@@ -67,7 +72,7 @@ export function ToolTypewriterBar({ labels, className }: ToolTypewriterBarProps)
 
     const scheduleNext = () => {
       timeoutId = setTimeout(() => {
-        const slotIndex = slotCursor % SLOT_COUNT;
+        const slotIndex = slotCursor % slotCount;
         slotCursor += 1;
 
         const currentLabel = slotsRef.current[slotIndex] ?? "";
@@ -128,7 +133,7 @@ export function ToolTypewriterBar({ labels, className }: ToolTypewriterBarProps)
         clearTimeout(timeoutId);
       }
     };
-  }, [labels, reduceMotion]);
+  }, [labels, reduceMotion, slotCount]);
 
   return (
     <div className={cn("flex w-full items-center gap-2", className)}>
@@ -144,7 +149,10 @@ export function ToolTypewriterBar({ labels, className }: ToolTypewriterBarProps)
             "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
         }}
       >
-        <div className="grid w-full grid-cols-4 items-center gap-1 sm:gap-1.5">
+        <div
+          className="grid w-full items-center gap-1 sm:gap-1.5"
+          style={{ gridTemplateColumns: `repeat(${slotCount}, minmax(0, 1fr))` }}
+        >
           {slots.map((label, index) => {
             const activeText = editing?.slot === index ? editing.text : label;
 

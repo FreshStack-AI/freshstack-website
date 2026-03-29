@@ -6,7 +6,6 @@ import gsap from "gsap";
 import { ToolIconCloud } from "@/components/ui/tool-icon-cloud";
 
 type ExperienceHeroProps = {
-  eyebrow: string;
   displayLines: string[];
   description: string;
   proof: string;
@@ -18,7 +17,6 @@ type ExperienceHeroProps = {
 };
 
 export function ExperienceHero({
-  eyebrow,
   displayLines,
   description,
   proof,
@@ -119,11 +117,7 @@ export function ExperienceHero({
       >
         <div className="flex min-w-0 flex-1 flex-col pb-8 md:pb-6">
           <div className="max-w-5xl pr-4 lg:-translate-y-8 lg:pr-12">
-            <p className="font-mono text-[11px] uppercase tracking-[0.35em] text-white/40">
-              {"// "}
-              {eyebrow}
-            </p>
-            <h1 className="mt-6 text-[clamp(3.5rem,9.5vw,11.5rem)] leading-[0.87] font-black uppercase tracking-tighter text-white">
+            <h1 className="text-[clamp(3.5rem,9.5vw,11.5rem)] leading-[0.87] font-black uppercase tracking-tighter text-white">
               {displayLines.map((line, index) => (
                 <React.Fragment key={line}>
                   <span className={index === 1 ? "hero-outline-line text-outline" : undefined}>
@@ -136,35 +130,33 @@ export function ExperienceHero({
             <p className="section-label mt-6 max-w-md normal-case leading-[1.9] font-medium tracking-[0.22em]">
               {description}
             </p>
-
+            <a
+              ref={ctaRef}
+              href={ctaHref}
+              className="group mt-4 flex w-fit items-center gap-6 sm:mt-5 lg:mt-6"
+            >
+              <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-white/15 transition-all duration-500 group-hover:bg-white">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="stroke-white transition-colors duration-500 group-hover:stroke-black"
+                >
+                  <path
+                    d="M7 17L17 7M17 7H8M17 7V16"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+              <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-white">
+                {ctaLabel}
+              </span>
+            </a>
           </div>
-
-          <a
-            ref={ctaRef}
-            href={ctaHref}
-            className="group mt-5 flex w-fit items-center gap-6 sm:mt-6 lg:mt-8"
-          >
-            <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-white/15 transition-all duration-500 group-hover:bg-white">
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="stroke-white transition-colors duration-500 group-hover:stroke-black"
-              >
-                <path
-                  d="M7 17L17 7M17 7H8M17 7V16"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </div>
-            <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-white">
-              {ctaLabel}
-            </span>
-          </a>
         </div>
 
         <div className="z-20 flex w-full flex-shrink-0 flex-col gap-4 md:w-80 md:self-start md:justify-start lg:w-[28rem] xl:w-[32rem]">

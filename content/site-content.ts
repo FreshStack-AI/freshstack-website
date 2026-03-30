@@ -56,14 +56,6 @@ type FounderSectionContent = {
   }>;
 };
 
-export type ServiceCard = {
-  title: string;
-  collapsedTitle: string;
-  description: string;
-  whyItMatters: string;
-  tooling: string[];
-};
-
 type ProcessStep = {
   title: string;
   description: string;
@@ -100,10 +92,7 @@ export type SiteContent = {
     items: PainPoint[];
   };
   founder: FounderSectionContent;
-  services: SectionIntro & {
-    cards: ServiceCard[];
-    toolChips: string[];
-  };
+  toolChips: string[];
   caseStudies: SectionIntro & {
     disclaimer: string;
     items: CaseStudy[];
@@ -193,7 +182,6 @@ export const siteContent: SiteContent = {
   navigation: {
     links: [
       { label: "Case studies", href: "#case-studies" },
-      { label: "Services", href: "#services" },
       { label: "Process", href: "#process" },
     ],
   },
@@ -254,74 +242,31 @@ export const siteContent: SiteContent = {
       },
     ],
   },
-  services: {
-    eyebrow: "Services",
-    title: "What we can help you with",
-    description:
-      "When the operating layer is tighter, the team moves faster, delivery gets cleaner, and founders get more room to scale the business.",
-    cards: [
-      {
-        title: "Internal systems & processes",
-        collapsedTitle: "Processes",
-        description: "Build a clearer operating layer behind delivery, approvals, reporting rhythm, and recurring team responsibilities so the business can scale without more founder load.",
-        whyItMatters: "Create repeatable execution so delivery quality and pace do not depend on memory, heroics, or constant founder intervention.",
-        tooling: ["Notion", "Airtable", "Slack", "Make", "n8n"],
-      },
-      {
-        title: "Team workflows & handoffs",
-        collapsedTitle: "Workflows",
-        description: "Tighten handoffs between sales, account management, strategists, media buyers, and delivery teams so work moves faster with less rework.",
-        whyItMatters: "Faster handoffs mean fewer delays, less rework, and more delivery capacity across the team.",
-        tooling: ["Claude Code", "Codex", "Python", "OpenClaw", "React", "Vite"],
-      },
-      {
-        title: "Client reporting & tracking",
-        collapsedTitle: "Reporting",
-        description: "Create cleaner reporting inputs, more reliable KPI flow, and better internal visibility before anything reaches the client.",
-        whyItMatters: "Better reporting protects renewals, surfaces upsell opportunities, and helps leadership make faster decisions.",
-        tooling: ["Google Sheets", "Airtable", "Supabase", "Notion", "X API"],
-      },
-      {
-        title: "AI-enhanced deliverables",
-        collapsedTitle: "Deliverables",
-        description: "Use AI where it meaningfully accelerates research, QA, drafting, synthesis, and repeatable production work without lowering quality.",
-        whyItMatters: "Increase throughput and team leverage without needing to add headcount before the business is ready.",
-        tooling: ["Claude", "Claude Code", "Cursor", "OpenClaw", "GitHub"],
-      },
-      {
-        title: "Automation stack setup",
-        collapsedTitle: "Automations",
-        description: "Implement the tooling, automation logic, and documentation needed to make the new operating layer durable and scalable.",
-        whyItMatters: "A durable automation layer creates leverage the team can actually own, maintain, and extend.",
-        tooling: ["n8n", "Make", "Python", "Telegram", "Supabase"],
-      },
-    ],
-    toolChips: [
-      "n8n",
-      "Make",
-      "Notion",
-      "Claude",
-      "Claude Code",
-      "Codex",
-      "Python",
-      "OpenClaw",
-      "React",
-      "Vite",
-      "Supabase",
-      "Slack",
-      "Telegram",
-      "Google Sheets",
-      "Alchemy",
-      "X API",
-      "TypeScript",
-      "Cursor",
-      "GitHub",
-      "Postman",
-      "Zapier",
-      "Airtable",
-      "OpenAI API",
-    ],
-  },
+  toolChips: [
+    "n8n",
+    "Make",
+    "Notion",
+    "Claude",
+    "Claude Code",
+    "Codex",
+    "Python",
+    "OpenClaw",
+    "React",
+    "Vite",
+    "Supabase",
+    "Slack",
+    "Telegram",
+    "Google Sheets",
+    "Alchemy",
+    "X API",
+    "TypeScript",
+    "Cursor",
+    "GitHub",
+    "Postman",
+    "Zapier",
+    "Airtable",
+    "OpenAI API",
+  ],
   caseStudies: {
     eyebrow: "Case studies",
     title: "Hear it from our happy clients.",

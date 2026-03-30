@@ -6,7 +6,6 @@ import {
   HeroSection,
   PainPointsSection,
   ProcessSection,
-  ServicesSection,
 } from "@/components/marketing/sections";
 import { SiteFooter } from "@/components/marketing/site-footer";
 import { SiteHeader } from "@/components/marketing/site-header";
@@ -30,15 +29,14 @@ export default function Home() {
         <HeroSection
           hero={siteContent.hero}
           cta={siteContent.cta}
-          toolLabels={siteContent.services.toolChips}
+          toolLabels={siteContent.toolChips}
         />
         <PanelGlowController />
         <PainPointsSection
           painPoints={siteContent.painPoints}
-          toolLabels={siteContent.services.toolChips}
+          toolLabels={siteContent.toolChips}
         />
         <CaseStudiesSection caseStudies={siteContent.caseStudies} />
-        <ServicesSection services={siteContent.services} />
         <FounderSection founder={siteContent.founder} />
         <ProcessSection process={siteContent.process} />
         <BookingSection booking={siteContent.booking} cta={siteContent.cta} />

@@ -343,24 +343,10 @@ Ghost button:
 
 Use `.glass-panel` for:
 - founder blocks
-- service cards
 - process cards
 - FAQ items
 - booking panel
 - case study cards and dialog shell
-
-### Services rail
-
-Reference:
-- [`components/marketing/services-expand-rail.tsx`](/Users/kelano/Documents/Codex/Freshstack/components/marketing/services-expand-rail.tsx)
-
-Desktop behavior:
-- one active service expands
-- inactive services compress into tall narrow columns
-- hover and focus both activate the panel
-
-Mobile behavior:
-- collapses to a standard vertical card grid
 
 ### Case study cards and dialog
 
@@ -462,7 +448,6 @@ Use these files as the source of truth:
 - [`components/marketing/site-header.tsx`](/Users/kelano/Documents/Codex/Freshstack/components/marketing/site-header.tsx)
 - [`components/marketing/site-footer.tsx`](/Users/kelano/Documents/Codex/Freshstack/components/marketing/site-footer.tsx)
 - [`components/ui/experience-hero.tsx`](/Users/kelano/Documents/Codex/Freshstack/components/ui/experience-hero.tsx)
-- [`components/marketing/services-expand-rail.tsx`](/Users/kelano/Documents/Codex/Freshstack/components/marketing/services-expand-rail.tsx)
 - [`components/marketing/case-studies-dialog-grid.tsx`](/Users/kelano/Documents/Codex/Freshstack/components/marketing/case-studies-dialog-grid.tsx)
 - [`content/site-content.ts`](/Users/kelano/Documents/Codex/Freshstack/content/site-content.ts)
 

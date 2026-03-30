@@ -3,7 +3,6 @@ import type { CTAConfig, SiteContent } from "@/content/site-content";
 import { CaseStudiesDialogGrid } from "@/components/marketing/case-studies-dialog-grid";
 import { FounderCarousel } from "@/components/marketing/founder-carousel";
 import { LinkButton, SectionShell } from "@/components/marketing/primitives";
-import { ServicesExpandRail } from "@/components/marketing/services-expand-rail";
 import { CalendlyInlineEmbed } from "@/components/ui/calendly-inline-embed";
 import { ExperienceHero } from "@/components/ui/experience-hero";
 import { ToolTypewriterBar } from "@/components/ui/tool-typewriter-bar";
@@ -11,16 +10,12 @@ import { ToolTypewriterBar } from "@/components/ui/tool-typewriter-bar";
 type HeroSectionProps = {
   hero: SiteContent["hero"];
   cta: CTAConfig;
-  toolLabels: SiteContent["services"]["toolChips"];
+  toolLabels: SiteContent["toolChips"];
 };
 
 type PainPointsSectionProps = {
   painPoints: SiteContent["painPoints"];
-  toolLabels: SiteContent["services"]["toolChips"];
-};
-
-type ServicesSectionProps = {
-  services: SiteContent["services"];
+  toolLabels: SiteContent["toolChips"];
 };
 
 type FounderSectionProps = {
@@ -106,19 +101,6 @@ export function FounderSection({ founder }: FounderSectionProps) {
         <FounderCarousel profiles={founder.profiles} />
       </div>
     </section>
-  );
-}
-
-export function ServicesSection({ services }: ServicesSectionProps) {
-  return (
-    <SectionShell
-      id="services"
-      eyebrow={services.eyebrow}
-      title={services.title}
-      description={services.description}
-    >
-      <ServicesExpandRail cards={services.cards} />
-    </SectionShell>
   );
 }
 

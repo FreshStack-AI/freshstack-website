@@ -1,9 +1,6 @@
-"use client";
+import React from "react";
 
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-
-import { ToolIconCloud } from "@/components/ui/tool-icon-cloud";
+import { DeferredToolIconCloud } from "@/components/ui/deferred-tool-icon-cloud";
 
 type ExperienceHeroProps = {
   displayLines: string[];
@@ -26,74 +23,6 @@ export function ExperienceHero({
   supportItems,
   toolLabels,
 }: ExperienceHeroProps) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const revealRef = useRef<HTMLDivElement>(null);
-  const ctaRef = useRef<HTMLAnchorElement>(null);
-
-  useEffect(() => {
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    const ctx = gsap.context(() => {
-      if (!reduceMotion) {
-        gsap.fromTo(
-          revealRef.current,
-          { filter: "blur(24px)", opacity: 0, y: 24 },
-          {
-            filter: "blur(0px)",
-            opacity: 1,
-            y: 0,
-            duration: 1.7,
-            ease: "expo.out",
-          },
-        );
-
-        gsap.from(".command-cell", {
-          x: 42,
-          opacity: 0,
-          stagger: 0.08,
-          duration: 1.2,
-          ease: "power3.out",
-          delay: 0.45,
-          clearProps: "all",
-        });
-      }
-
-      const handleMouseMove = (event: MouseEvent) => {
-        if (reduceMotion || !ctaRef.current) {
-          return;
-        }
-
-        const rect = ctaRef.current.getBoundingClientRect();
-        const dist = Math.hypot(
-          event.clientX - (rect.left + rect.width / 2),
-          event.clientY - (rect.top + rect.height / 2),
-        );
-
-        if (dist < 150) {
-          gsap.to(ctaRef.current, {
-            x: (event.clientX - (rect.left + rect.width / 2)) * 0.35,
-            y: (event.clientY - (rect.top + rect.height / 2)) * 0.35,
-            duration: 0.5,
-            overwrite: true,
-          });
-        } else {
-          gsap.to(ctaRef.current, {
-            x: 0,
-            y: 0,
-            duration: 0.7,
-            ease: "expo.out",
-            overwrite: true,
-          });
-        }
-      };
-
-      window.addEventListener("mousemove", handleMouseMove);
-      return () => window.removeEventListener("mousemove", handleMouseMove);
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
-
   const heroCard = {
     id: "001",
     title: supportTitle,
@@ -103,7 +32,6 @@ export function ExperienceHero({
   return (
     <section
       id="hero"
-      ref={containerRef}
       className="relative min-h-screen w-full overflow-hidden bg-transparent selection:bg-white selection:text-black"
     >
       <div className="pointer-events-none absolute inset-0">
@@ -111,11 +39,8 @@ export function ExperienceHero({
         <div className="absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(180deg,rgba(2,2,2,0),#020202)]" />
       </div>
 
-      <div
-        ref={revealRef}
-        className="relative z-10 flex min-h-screen w-full flex-col gap-8 px-8 pb-6 pt-[0.8125rem] md:flex-row md:items-stretch md:px-14 md:pb-12 md:pt-[2.125rem] lg:px-20 lg:pb-16 lg:pt-[3.5rem]"
-      >
-        <div className="flex min-w-0 flex-1 flex-col pb-8 md:pb-6">
+      <div className="relative z-10 flex min-h-screen w-full flex-col gap-8 px-8 pb-6 pt-[0.8125rem] md:flex-row md:items-stretch md:px-14 md:pb-12 md:pt-[2.125rem] lg:px-20 lg:pb-16 lg:pt-[3.5rem]">
+        <div className="reveal-up flex min-w-0 flex-1 flex-col pb-8 md:pb-6">
           <div className="max-w-5xl pr-4 lg:-translate-y-8 lg:pr-12">
             <h1 className="text-[clamp(3.5rem,9.5vw,11.5rem)] leading-[0.87] font-black uppercase tracking-tighter text-white">
               {displayLines.map((line, index) => (
@@ -131,18 +56,17 @@ export function ExperienceHero({
               {description}
             </p>
             <a
-              ref={ctaRef}
               href={ctaHref}
               className="group mt-4 flex w-fit items-center gap-6 sm:mt-5 lg:mt-6"
             >
-              <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-white/15 transition-all duration-500 group-hover:bg-white">
+              <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-white/15 transition-all duration-300 ease-[var(--ease-standard)] group-hover:bg-white group-active:translate-y-px">
                 <svg
                   width="18"
                   height="18"
                   viewBox="0 0 24 24"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="stroke-white transition-colors duration-500 group-hover:stroke-black"
+                  className="stroke-white transition-colors duration-300 group-hover:stroke-black"
                 >
                   <path
                     d="M7 17L17 7M17 7H8M17 7V16"
@@ -177,7 +101,7 @@ export function ExperienceHero({
           </div>
 
           <div className="hidden min-h-[22rem] w-full items-center justify-center lg:flex xl:min-h-[25rem]">
-            <ToolIconCloud
+            <DeferredToolIconCloud
               labels={toolLabels}
               textFallbackVariant="plain"
               className="h-[22rem] w-full xl:h-[25rem]"

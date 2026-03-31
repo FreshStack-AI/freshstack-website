@@ -9,8 +9,8 @@ import {
 } from "@/components/marketing/sections";
 import { SiteFooter } from "@/components/marketing/site-footer";
 import { SiteHeader } from "@/components/marketing/site-header";
-import { PanelGlowController } from "@/components/ui/panel-glow-controller";
-import { SiteWebglBackground } from "@/components/ui/site-webgl-background";
+import { DeferredPanelGlowController } from "@/components/ui/deferred-panel-glow-controller";
+import { DeferredWebglBackground } from "@/components/ui/deferred-webgl-background";
 import { siteContent } from "@/content/site-content";
 
 export default function Home() {
@@ -22,7 +22,7 @@ export default function Home() {
         cta={siteContent.cta}
       />
 
-      <SiteWebglBackground />
+      <DeferredWebglBackground />
       <div className="pointer-events-none fixed inset-0 z-[1] bento-mask opacity-20" />
 
       <main className="relative z-10 overflow-x-hidden pb-28 md:pb-0">
@@ -31,7 +31,7 @@ export default function Home() {
           cta={siteContent.cta}
           toolLabels={siteContent.toolChips}
         />
-        <PanelGlowController />
+        <DeferredPanelGlowController />
         <PainPointsSection
           painPoints={siteContent.painPoints}
           toolLabels={siteContent.toolChips}

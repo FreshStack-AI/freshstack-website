@@ -3,9 +3,7 @@ export type CTAConfig = {
   bookingEmbedUrl: string | null;
   contactEmail: string;
   primaryLabel: string;
-  secondaryLabel: string;
   bookSectionHref: `#${string}`;
-  processHref: `#${string}`;
   hasLiveBookingUrl: boolean;
 };
 
@@ -26,7 +24,6 @@ export type CaseStudy = {
   intervention: string;
   outcomes: string[];
   quote: string | null;
-  logoLabel: string | null;
 };
 
 type NavItem = {
@@ -61,16 +58,6 @@ type ProcessStep = {
   description: string;
 };
 
-type FAQEntry = {
-  question: string;
-  answer: string;
-};
-
-type CredibilityPoint = {
-  title: string;
-  description: string;
-};
-
 export type SiteContent = {
   brandName: string;
   siteUrl: string;
@@ -94,22 +81,13 @@ export type SiteContent = {
   founder: FounderSectionContent;
   toolChips: string[];
   caseStudies: SectionIntro & {
-    disclaimer: string;
     items: CaseStudy[];
   };
   process: SectionIntro & {
     steps: ProcessStep[];
   };
-  about: SectionIntro & {
-    paragraphs: string[];
-    credibilityPoints: CredibilityPoint[];
-  };
-  faq: SectionIntro & {
-    items: FAQEntry[];
-  };
   booking: SectionIntro & {
     desktopLabel: string;
-    mobileLabel: string;
     fallbackLabel: string;
     checklist: string[];
   };
@@ -124,7 +102,6 @@ export type SiteContent = {
 const SITE_FALLBACK = "https://freshstack.ai";
 const BOOKING_PLACEHOLDER = "https://calendly.com/your-team/book-a-call";
 const BOOK_SECTION_ID = "book-a-call";
-const PROCESS_SECTION_ID = "process";
 
 function normalizeAbsoluteUrl(value: string | undefined, fallback: string) {
   const candidate = value?.trim() || fallback;
@@ -231,13 +208,13 @@ export const siteContent: SiteContent = {
       {
         name: "Baptiste",
         bio: "With over a decade inside some of the world's largest agencies, including WPP, and work delivered for brands like Binance and Adidas, Baptiste has seen how strong operations create speed, leverage, and commercial headroom. After building and automating his own business with AI, he now helps agency owners replace slow manual work with systems that scale delivery, free up leadership time, and create more room to grow.",
-        imageSrc: "/founder-portrait.png",
+        imageSrc: "/optimized/founder-portrait.jpg",
         imageAlt: "Black-and-white portrait of Baptiste, founder of FreshStack",
       },
       {
         name: "Lara",
         bio: "With over a decade in high-pressure agency environments, Lara has seen first-hand how delivery, profitability, and client confidence suffer when the operating layer cannot keep up. She now helps agency owners build clearer systems, tighter workflows, and stronger reporting so growth does not come with more chaos.",
-        imageSrc: "/lara-portrait.png",
+        imageSrc: "/optimized/lara-portrait.jpg",
         imageAlt: "Black-and-white portrait of Lara, co-founder of FreshStack",
       },
     ],
@@ -271,8 +248,6 @@ export const siteContent: SiteContent = {
     eyebrow: "Case studies",
     title: "Hear it from our happy clients.",
     description: "",
-    disclaimer:
-      "Placeholder content only. Swap in approved anonymized copy, verified metrics, and optional quote/logo text before launch.",
     items: [
       {
         id: "ops-reporting-placeholder",
@@ -314,7 +289,6 @@ export const siteContent: SiteContent = {
           "Zero client chasing once paid transactions were detected and surfaced to finance in real time.",
         ],
         quote: null,
-        logoLabel: null,
       },
       {
         id: "handoff-delivery-placeholder",
@@ -356,7 +330,6 @@ export const siteContent: SiteContent = {
           "One shared workflow eliminated rate inconsistencies, mispayments, and handoff friction between Sales and Ops.",
         ],
         quote: null,
-        logoLabel: null,
       },
       {
         id: "crm-tracker-movimentum",
@@ -399,7 +372,6 @@ export const siteContent: SiteContent = {
           "Fireflies summaries are attached automatically, with a scheduled backfill acting as a safety net if the webhook misses.",
         ],
         quote: null,
-        logoLabel: null,
       },
     ],
   },
@@ -426,70 +398,12 @@ export const siteContent: SiteContent = {
       },
     ],
   },
-  about: {
-    eyebrow: "About",
-    title: "Agency-owner experience changes the quality of the solution.",
-    description:
-      "FreshStack is positioned for operators who need systems that fit how agencies actually deliver work, not generic automation demos.",
-    paragraphs: [
-      "Generic automation shops often start with tooling. Agency owners start with margin pressure, delivery consistency, client expectations, and the reality of team capacity.",
-      "That difference matters. Better ops work comes from understanding the points where delivery gets delayed, reporting gets messy, founders become bottlenecks, and teams stop trusting the system around the work.",
-    ],
-    credibilityPoints: [
-      {
-        title: "Operational context first",
-        description: "The build starts with how your agency runs day to day, not with a preset stack or a canned AI workflow.",
-      },
-      {
-        title: "Closer to the commercial reality",
-        description: "The work is shaped around delivery quality, team leverage, client confidence, and whether the system reduces drag where it actually costs money.",
-      },
-      {
-        title: "Implementation that can be owned",
-        description: "The goal is a cleaner operating layer your team can keep using, not a fragile setup that depends on an external specialist forever.",
-      },
-    ],
-  },
-  faq: {
-    eyebrow: "Questions",
-    title: "What agency owners usually want to know before booking.",
-    description:
-      "The fit is generally strongest when the agency already has traction and needs cleaner operations more than another tool demo.",
-    items: [
-      {
-        question: "What kind of agency is this best for?",
-        answer:
-          "FreshStack is built for agencies that already have real delivery volume and are feeling operational drag in reporting, handoffs, QA, visibility, or founder load.",
-      },
-      {
-        question: "What does the engagement usually look like?",
-        answer:
-          "The work typically starts with an audit, moves into workflow and system design, then into implementation and short optimization cycles once the new setup is live.",
-      },
-      {
-        question: "Do you only work with a fixed tool stack?",
-        answer:
-          "No. The tooling is flexible. n8n, Make, Notion, Claude, Codex, and model-agnostic workflows are implementation details, not the product.",
-      },
-      {
-        question: "Who owns the implementation after launch?",
-        answer:
-          "The target state is shared ownership. FreshStack can build and document the system, but it should be understandable enough for your team to run and evolve.",
-      },
-      {
-        question: "How long does this take?",
-        answer:
-          "Timeline depends on scope, but v1 operational improvements are usually planned in weeks, not quarters. The first call is used to size that properly.",
-      },
-    ],
-  },
   booking: {
     eyebrow: "Let's Talk",
     title: "Let's Talk.",
     description:
       "Start with a focused conversation about where your operating layer is slowing delivery, limiting visibility, or capping growth.",
     desktopLabel: "Book a call",
-    mobileLabel: "Open Calendly",
     fallbackLabel: "Prefer email?",
     checklist: [
       "Book a free 30-minute working session. We’ll audit your operating layer, identify the main bottlenecks, and show you where AI can create the most leverage first.",
@@ -506,9 +420,7 @@ export const siteContent: SiteContent = {
     bookingEmbedUrl: buildCalendlyEmbedUrl(bookingUrl, hasLiveBookingUrl),
     contactEmail,
     primaryLabel: "Let's Talk",
-    secondaryLabel: "See How We Work",
     bookSectionHref: `#${BOOK_SECTION_ID}`,
-    processHref: `#${PROCESS_SECTION_ID}`,
     hasLiveBookingUrl,
   },
 };

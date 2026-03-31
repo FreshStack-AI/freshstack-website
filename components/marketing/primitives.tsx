@@ -59,7 +59,7 @@ export function BrandMark({ className }: { className?: string }) {
   return (
     <span aria-hidden="true" className={classNames("brand-mark", className)}>
       <Image
-        src="/fs-v2-logo.png"
+        src="/freshstack-brand-mark.svg"
         alt=""
         width={164}
         height={163}

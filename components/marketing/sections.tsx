@@ -3,7 +3,7 @@ import type { CTAConfig, SiteContent } from "@/content/site-content";
 import { CaseStudiesDialogGrid } from "@/components/marketing/case-studies-dialog-grid";
 import { FounderCarousel } from "@/components/marketing/founder-carousel";
 import { LinkButton, SectionShell } from "@/components/marketing/primitives";
-import { CalendlyInlineEmbed } from "@/components/ui/calendly-inline-embed";
+import { DeferredCalendlyInlineEmbed } from "@/components/ui/deferred-calendly-inline-embed";
 import { ExperienceHero } from "@/components/ui/experience-hero";
 import { ToolTypewriterBar } from "@/components/ui/tool-typewriter-bar";
 
@@ -201,9 +201,10 @@ export function BookingSection({ booking, cta }: BookingSectionProps) {
           <p className="section-label text-center">{booking.desktopLabel}</p>
           <div className="mt-5 overflow-hidden rounded-[1rem] border border-white/8 bg-black/35 p-2">
             {cta.bookingEmbedUrl ? (
-              <CalendlyInlineEmbed
+              <DeferredCalendlyInlineEmbed
                 url={cta.bookingEmbedUrl}
                 className="rounded-[0.9rem]"
+                warmupTargetId="process"
               />
             ) : (
               <div className="rounded-[1rem] border border-dashed border-white/18 p-5 text-sm leading-7 text-[var(--color-muted)]">

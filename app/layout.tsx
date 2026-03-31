@@ -1,13 +1,8 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { siteContent } from "@/content/site-content";
 
 import "./globals.css";
-
-import { siteContent } from "@/content/site-content";
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
-
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const metadataBase = new URL(siteContent.siteUrl);
 
@@ -85,7 +80,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn("font-sans", geist.variable)}>
+    <html lang="en">
+      <head>
+        <link rel="dns-prefetch" href="https://assets.calendly.com" />
+        <link rel="dns-prefetch" href="https://calendly.com" />
+        <link rel="preconnect" href="https://assets.calendly.com" crossOrigin="" />
+        <link rel="preconnect" href="https://calendly.com" crossOrigin="" />
+      </head>
       <body suppressHydrationWarning>
         {children}
         <Script

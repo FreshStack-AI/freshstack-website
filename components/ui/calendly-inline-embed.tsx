@@ -1,21 +1,9 @@
 "use client";
 
 import { useCallback, useEffect, useRef } from "react";
-import Script from "next/script";
 
+import { ensureCalendlyScript } from "@/components/ui/calendly-loader";
 import { cn } from "@/lib/utils";
-
-declare global {
-  interface Window {
-    Calendly?: {
-      initInlineWidget: (options: {
-        url: string;
-        parentElement: HTMLElement;
-        resize?: boolean;
-      }) => void;
-    };
-  }
-}
 
 type CalendlyInlineEmbedProps = {
   url: string;
@@ -44,27 +32,28 @@ export function CalendlyInlineEmbed({
   }, [url]);
 
   useEffect(() => {
-    initWidget();
+    let isActive = true;
+
+    void ensureCalendlyScript()
+      .then(() => {
+        if (!isActive) {
+          return;
+        }
+
+        initWidget();
+      })
+      .catch(() => {
+        // Keep the booking shell visible if the third-party script fails.
+      });
 
     const container = containerRef.current;
     return () => {
+      isActive = false;
       if (container) {
         container.innerHTML = "";
       }
     };
   }, [initWidget]);
 
-  return (
-    <>
-      <Script
-        src="https://assets.calendly.com/assets/external/widget.js"
-        strategy="afterInteractive"
-        onReady={initWidget}
-      />
-      <div
-        ref={containerRef}
-        className={cn("calendly-inline-shell w-full", className)}
-      />
-    </>
-  );
+  return <div ref={containerRef} className={cn("calendly-inline-shell w-full", className)} />;
 }

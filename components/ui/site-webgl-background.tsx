@@ -2,8 +2,9 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { Float, MeshDistortMaterial } from "@react-three/drei";
+import { Float } from "@react-three/drei";
 import * as THREE from "three";
+import { cn } from "@/lib/utils";
 
 function LiquidBackground({ reduceMotion }: { reduceMotion: boolean }) {
   const { viewport } = useThree();
@@ -67,38 +68,72 @@ function LiquidBackground({ reduceMotion }: { reduceMotion: boolean }) {
   );
 }
 
-function Monolith({ reduceMotion }: { reduceMotion: boolean }) {
-  const meshRef = useRef<THREE.Mesh>(null);
+function ChainLink({
+  position,
+  rotation,
+  scale,
+}: {
+  position: [number, number, number];
+  rotation: [number, number, number];
+  scale: [number, number, number];
+}) {
+  return (
+    <mesh position={position} rotation={rotation} scale={scale}>
+      <torusGeometry args={[5.7, 1.08, 48, 220]} />
+      <meshPhysicalMaterial
+        color="#202023"
+        metalness={0.95}
+        roughness={0.24}
+        clearcoat={0.95}
+        clearcoatRoughness={0.16}
+        reflectivity={1}
+      />
+    </mesh>
+  );
+}
 
-  useFrame((_, delta) => {
-    if (!meshRef.current) {
+function LinkedForms({ reduceMotion }: { reduceMotion: boolean }) {
+  const groupRef = useRef<THREE.Group>(null);
+
+  useFrame((state, delta) => {
+    if (!groupRef.current) {
       return;
     }
 
-    meshRef.current.rotation.y += reduceMotion ? delta * 0.04 : delta * 0.22;
+    const t = state.clock.getElapsedTime();
+
+    groupRef.current.rotation.y += reduceMotion ? delta * 0.045 : delta * 0.13;
+    groupRef.current.rotation.x = reduceMotion
+      ? -0.22
+      : -0.22 + Math.sin(t * 0.35) * 0.045;
+    groupRef.current.rotation.z = reduceMotion
+      ? 0.18
+      : 0.18 + Math.cos(t * 0.25) * 0.035;
   });
 
   return (
     <Float
-      speed={reduceMotion ? 0.5 : 2}
-      rotationIntensity={reduceMotion ? 0.12 : 0.5}
-      floatIntensity={reduceMotion ? 0.2 : 1}
+      speed={reduceMotion ? 0.35 : 0.95}
+      rotationIntensity={reduceMotion ? 0.04 : 0.12}
+      floatIntensity={reduceMotion ? 0.08 : 0.2}
     >
-      <mesh ref={meshRef} position={[17.5, -3.8, 0]}>
-        <icosahedronGeometry args={[13, 1]} />
-        <MeshDistortMaterial
-          color="#0a0a0a"
-          speed={reduceMotion ? 0.8 : 4}
-          distort={reduceMotion ? 0.12 : 0.4}
-          roughness={0.05}
-          metalness={1}
+      <group ref={groupRef} position={[16.8, 0.6, -2]}>
+        <ChainLink
+          position={[-4.9, -0.25, 0.1]}
+          rotation={[1.2, 0.18, -0.74]}
+          scale={[1.22, 2.05, 0.9]}
         />
-      </mesh>
+        <ChainLink
+          position={[4.8, 0.95, -0.4]}
+          rotation={[1.05, -0.44, 0.68]}
+          scale={[1.18, 1.96, 0.9]}
+        />
+      </group>
     </Float>
   );
 }
 
-export function SiteWebglBackground() {
+export function SiteWebglBackground({ className }: { className?: string }) {
   const [reduceMotion, setReduceMotion] = useState(false);
 
   useEffect(() => {
@@ -111,12 +146,17 @@ export function SiteWebglBackground() {
   }, []);
 
   return (
-    <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0">
+    <div
+      aria-hidden="true"
+      className={cn("pointer-events-none z-0", className)}
+    >
       <Canvas camera={{ position: [0, 0, 60], fov: 35 }}>
-        <ambientLight intensity={0.32} />
-        <spotLight position={[50, 50, 50]} intensity={2.4} />
+        <ambientLight intensity={0.22} />
+        <spotLight position={[38, 30, 48]} intensity={2.8} angle={0.38} penumbra={0.7} />
+        <spotLight position={[18, -14, 34]} intensity={1.45} angle={0.42} penumbra={0.95} />
+        <pointLight position={[12, 8, 16]} intensity={0.7} color="#f5f0e8" />
         <LiquidBackground reduceMotion={reduceMotion} />
-        <Monolith reduceMotion={reduceMotion} />
+        <LinkedForms reduceMotion={reduceMotion} />
       </Canvas>
     </div>
   );

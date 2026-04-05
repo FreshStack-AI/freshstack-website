@@ -5,17 +5,19 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --color-paper: #020202;
-  --color-white: #ffffff;
-  --color-void: #020202;
+  --color-paper: #0a0a0a;
+  --color-white: #f5f0e8;
+  --color-void: #0a0a0a;
   --color-obsidian: #0a0a0a;
-  --color-accent: #ffffff;
-  --color-accent-strong: rgba(255, 255, 255, 0.78);
-  --color-accent-tint: rgba(255, 255, 255, 0.04);
-  --color-ink: #ffffff;
-  --color-muted: rgba(255, 255, 255, 0.58);
-  --color-border: rgba(255, 255, 255, 0.08);
-  --color-border-strong: rgba(255, 255, 255, 0.18);
+  --color-surface: #1c1c1e;
+  --color-accent: #f5f0e8;
+  --color-accent-strong: rgba(245, 240, 232, 0.78);
+  --color-accent-tint: rgba(245, 240, 232, 0.04);
+  --color-ink: #f5f0e8;
+  --color-muted: #8e8e93;
+  --color-label: #c8c0b0;
+  --color-border: rgba(58, 58, 60, 0.95);
+  --color-border-strong: rgba(200, 192, 176, 0.22);
   --header-height: 5rem;
   --ease-standard: cubic-bezier(0.22, 1, 0.36, 1);
   --background: oklch(0.145 0 0);
@@ -64,18 +66,27 @@ html {
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at 50% 15%, rgba(255, 255, 255, 0.06), transparent 28%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0)),
+    radial-gradient(circle at 50% 15%, rgba(245, 240, 232, 0.055), transparent 28%),
+    linear-gradient(180deg, rgba(200, 192, 176, 0.02), rgba(245, 240, 232, 0)),
     var(--color-paper);
   color: var(--color-ink);
-  font-family:
-    "Helvetica Neue",
-    Helvetica,
-    Arial,
-    sans-serif;
+  font-family: var(--font-body), Arial, sans-serif;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading), Arial, sans-serif;
+}
+
+.font-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
 }
 
 body[data-case-study-open="true"] [data-mobile-book-bar] {
@@ -96,18 +107,14 @@ a {
 .font-heading,
 .section-title,
 .wordmark {
-  font-family:
-    "Helvetica Neue",
-    Helvetica,
-    Arial,
-    sans-serif;
+  font-family: var(--font-heading), Arial, sans-serif;
 }
 
 .section-label {
-  color: rgba(255, 255, 255, 0.38);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  color: var(--color-label);
+  font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.25em;
   text-transform: uppercase;
 }
@@ -147,16 +154,16 @@ a {
 .surface-card-muted,
 .surface-card-dark {
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--color-border);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.03)),
-    rgba(10, 10, 10, 0.72);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+    linear-gradient(180deg, rgba(245, 240, 232, 0.02), rgba(245, 240, 232, 0.012)),
+    rgba(28, 28, 30, 0.86);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   isolation: isolate;
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.04),
-    0 24px 80px rgba(0, 0, 0, 0.45);
+    inset 0 1px 0 rgba(245, 240, 232, 0.025),
+    0 20px 64px rgba(0, 0, 0, 0.42);
   border-radius: 1.4rem;
 }
 
@@ -215,7 +222,7 @@ a {
 
 .text-outline {
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.68);
+  -webkit-text-stroke: 1px rgba(245, 240, 232, 0.62);
 }
 
 .hero-outline-line {
@@ -226,8 +233,8 @@ a {
 
 .bento-mask {
   background:
-    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(200, 192, 176, 0.042) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 192, 176, 0.042) 1px, transparent 1px);
   background-size: 44px 44px;
   mask-image: radial-gradient(circle at center, black 30%, transparent 82%);
 }

@@ -10,7 +10,6 @@ import { ToolTypewriterBar } from "@/components/ui/tool-typewriter-bar";
 type HeroSectionProps = {
   hero: SiteContent["hero"];
   cta: CTAConfig;
-  toolLabels: SiteContent["toolChips"];
 };
 
 type PainPointsSectionProps = {
@@ -35,17 +34,13 @@ type BookingSectionProps = {
   cta: CTAConfig;
 };
 
-export function HeroSection({ hero, cta, toolLabels }: HeroSectionProps) {
+export function HeroSection({ hero, cta }: HeroSectionProps) {
   return (
     <ExperienceHero
       displayLines={hero.displayLines}
       description={hero.description}
-      proof={hero.proof}
       ctaLabel={cta.primaryLabel}
       ctaHref={cta.bookSectionHref}
-      supportTitle={hero.supportTitle}
-      supportItems={hero.supportItems}
-      toolLabels={toolLabels}
     />
   );
 }

@@ -12,6 +12,10 @@ export type CaseStudy = {
   clientType: string;
   automationType: string;
   title: string;
+  cardMetrics: Array<{
+    value: string;
+    label: string;
+  }>;
   summary: string;
   serviceTags: string[];
   workflow: {
@@ -158,6 +162,7 @@ export const siteContent: SiteContent = {
   },
   navigation: {
     links: [
+      { label: "Services", href: "#pain-points" },
       { label: "Case studies", href: "#case-studies" },
       { label: "Process", href: "#process" },
     ],
@@ -254,6 +259,10 @@ export const siteContent: SiteContent = {
         clientType: "Crypto-native service business",
         automationType: "Payment intelligence automation",
         title: "Crypto Payment Intelligence",
+        cardMetrics: [
+          { value: "$28K", label: "upside" },
+          { value: "52 hrs", label: "saved" },
+        ],
         summary:
           "By turning wallet scans, invoice matching, and finance alerts into one automated workflow, FreshStack gave the team real-time visibility on stablecoin payments without manual reconciliation.",
         serviceTags: [
@@ -295,6 +304,10 @@ export const siteContent: SiteContent = {
         clientType: "Creator marketing agency",
         automationType: "Sales-to-ops workflow automation",
         title: "Sales-to-Ops System",
+        cardMetrics: [
+          { value: "$352K", label: "upside" },
+          { value: "650 hrs", label: "saved" },
+        ],
         summary:
           "By replacing disconnected databases and manual proposal building with one connected workflow, FreshStack eliminated rate errors, sped up handoffs, and gave sales and operations a shared source of truth.",
         serviceTags: [
@@ -336,6 +349,10 @@ export const siteContent: SiteContent = {
         clientType: "Sales organization",
         automationType: "CRM workflow automation",
         title: "Multilayer CRM Tracker",
+        cardMetrics: [
+          { value: "0 manual", label: "data entry" },
+          { value: "Daily", label: "follow-ups" },
+        ],
         summary:
           "FreshStack connected Google Calendar, Fireflies, Notion, and Slack into one CRM workflow that auto-logs calls, surfaces follow-ups, and updates weekly sales scorecards with zero manual data entry.",
         serviceTags: [

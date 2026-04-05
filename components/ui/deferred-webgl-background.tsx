@@ -2,8 +2,13 @@
 
 import type { ComponentType } from "react";
 import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
 
-type BackgroundComponent = ComponentType;
+type DeferredWebglBackgroundProps = {
+  className?: string;
+};
+
+type BackgroundComponent = ComponentType<DeferredWebglBackgroundProps>;
 
 function requestWhenIdle(callback: () => void) {
   if ("requestIdleCallback" in globalThis) {
@@ -15,7 +20,9 @@ function requestWhenIdle(callback: () => void) {
   return () => globalThis.clearTimeout(timeoutId);
 }
 
-export function DeferredWebglBackground() {
+export function DeferredWebglBackground({
+  className,
+}: DeferredWebglBackgroundProps) {
   const [BackgroundComponent, setBackgroundComponent] =
     useState<BackgroundComponent | null>(null);
 
@@ -45,5 +52,7 @@ export function DeferredWebglBackground() {
     };
   }, []);
 
-  return BackgroundComponent ? <BackgroundComponent /> : null;
+  return BackgroundComponent ? (
+    <BackgroundComponent className={cn("fixed inset-0", className)} />
+  ) : null;
 }

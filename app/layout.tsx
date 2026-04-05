@@ -1,8 +1,28 @@
 import type { Metadata } from "next";
+import { Inter, Space_Grotesk, Space_Mono } from "next/font/google";
 import Script from "next/script";
 import { siteContent } from "@/content/site-content";
 
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-heading",
+  display: "swap",
+});
+
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 const metadataBase = new URL(siteContent.siteUrl);
 
@@ -11,7 +31,7 @@ export const metadata: Metadata = {
   title: siteContent.meta.title,
   description: siteContent.meta.description,
   icons: {
-    icon: "/favicon.svg",
+    icon: "/favicon-warm-neutral.png",
   },
   alternates: {
     canonical: "/",
@@ -80,7 +100,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${inter.variable} ${spaceGrotesk.variable} ${spaceMono.variable}`}
+    >
       <head>
         <link rel="dns-prefetch" href="https://assets.calendly.com" />
         <link rel="dns-prefetch" href="https://calendly.com" />

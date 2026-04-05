@@ -266,10 +266,22 @@ export function CaseStudiesDialogGrid({
             </div>
 
             <div className="mt-5">
-              <p className="max-w-[18rem] text-sm leading-6 text-[var(--color-muted)]">
-                {study.automationType}
-              </p>
-              <div className="mt-7 flex items-center justify-between gap-4">
+              <div className="grid min-h-[4.6rem] grid-cols-2 gap-4">
+                {study.cardMetrics.slice(0, 2).map((metric) => (
+                  <div
+                    key={`${study.id}-${metric.value}-${metric.label}`}
+                    className="border-t border-white/7 pt-3 text-center"
+                  >
+                    <p className="text-xl font-bold tracking-[-0.03em] text-[var(--color-ink)] sm:text-[1.45rem]">
+                      {metric.value}
+                    </p>
+                    <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-label)]">
+                      {metric.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-5 flex items-center justify-between gap-4">
                 <span className="text-sm text-[var(--color-muted)]">
                   View case study
                 </span>

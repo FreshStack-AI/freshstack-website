@@ -91,7 +91,7 @@ export function DeferredCalendlyInlineEmbed({
       {CalendlyInlineEmbedComponent ? (
         <CalendlyInlineEmbedComponent url={url} className="h-full w-full" />
       ) : (
-        <div className="flex min-h-[700px] w-full items-center justify-center rounded-[0.9rem] border border-white/8 bg-black/20 px-8 py-10">
+        <div className="flex min-h-[560px] w-full items-center justify-center rounded-[0.9rem] border border-white/8 bg-black/20 px-8 py-10">
           <div className="w-full max-w-sm text-center">
             <p className="section-label">Loading scheduler</p>
             <p className="mt-4 text-sm leading-7 text-[var(--color-muted)] sm:text-base">

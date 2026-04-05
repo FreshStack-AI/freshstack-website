@@ -1,6 +1,5 @@
+import Image from "next/image";
 import type { CTAConfig, SiteContent } from "@/content/site-content";
-
-import { BrandMark } from "@/components/marketing/primitives";
 
 type SiteFooterProps = {
   brandName: SiteContent["brandName"];
@@ -18,17 +17,16 @@ export function SiteFooter({
   return (
     <footer className="relative z-10 border-t border-white/10 px-5 py-10 sm:px-6 lg:px-8 lg:py-12">
       <div className="mx-auto flex max-w-6xl flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
-        <div className="max-w-xl">
-          <a
-            href="#hero"
-            className="brand-lockup wordmark text-[1.35rem] text-white sm:text-[1.5rem]"
-          >
-            <BrandMark />
-            <span>{brandName}</span>
+        <div>
+          <a href="#hero" className="inline-flex shrink-0 items-center">
+            <Image
+              src="/freshstack-navbar-logo-text.png"
+              alt={brandName}
+              width={2192}
+              height={500}
+              className="h-auto w-[10.25rem] sm:w-[11.625rem]"
+            />
           </a>
-          <p className="mt-4 max-w-lg text-sm leading-7 text-white/55">
-            {footer.blurb}
-          </p>
         </div>
 
         <div className="grid gap-8 sm:grid-cols-2">

@@ -14,7 +14,7 @@ export function FounderCarousel({ profiles }: FounderCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <article className="glass-panel card-stagger overflow-hidden p-6 sm:p-8 lg:p-10">
+    <article className="glass-panel card-stagger overflow-hidden p-6 sm:p-8 lg:p-10" style={{ borderRadius: 0 }}>
       <div className="overflow-hidden">
         <div
           className="flex transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
@@ -36,7 +36,7 @@ export function FounderCarousel({ profiles }: FounderCarouselProps) {
                   </p>
                 </div>
 
-                <div className="overflow-hidden rounded-[1.15rem] bg-black">
+                <div className="overflow-hidden bg-black">
                   <div className="relative aspect-[4/5]">
                     {profile.usePlaceholder || !profile.imageSrc ? (
                       <div className="flex h-full w-full items-center justify-center bg-black">

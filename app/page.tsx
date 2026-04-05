@@ -7,6 +7,9 @@ import {
   PainPointsSection,
   ProcessSection,
 } from "@/components/marketing/sections";
+import { ServicesSectionV2 } from "@/components/marketing/services-section-v2";
+import { TestimonialsSection } from "@/components/marketing/testimonials-section";
+import { ToolsSectionV2 } from "@/components/marketing/tools-section-v2";
 import { SiteFooter } from "@/components/marketing/site-footer";
 import { SiteHeader } from "@/components/marketing/site-header";
 import { DeferredPanelGlowController } from "@/components/ui/deferred-panel-glow-controller";
@@ -33,7 +36,10 @@ export default function Home() {
           painPoints={siteContent.painPoints}
           toolLabels={siteContent.toolChips}
         />
+        <ServicesSectionV2 />
+        <ToolsSectionV2 />
         <CaseStudiesSection caseStudies={siteContent.caseStudies} />
+        <TestimonialsSection />
         <FounderSection founder={siteContent.founder} />
         <ProcessSection process={siteContent.process} />
         <BookingSection booking={siteContent.booking} cta={siteContent.cta} />

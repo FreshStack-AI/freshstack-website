@@ -163,7 +163,8 @@ export const siteContent: SiteContent = {
   navigation: {
     links: [
       { label: "Services", href: "#pain-points" },
-      { label: "Case studies", href: "#case-studies" },
+      { label: "Work", href: "#case-studies" },
+      { label: "Testimonials", href: "#testimonials" },
       { label: "Process", href: "#process" },
     ],
   },
@@ -250,8 +251,8 @@ export const siteContent: SiteContent = {
     "OpenAI API",
   ],
   caseStudies: {
-    eyebrow: "Case studies",
-    title: "Hear it from our happy clients.",
+    eyebrow: "Our Work",
+    title: "Results from real operations.",
     description: "",
     items: [
       {
@@ -430,7 +431,7 @@ export const siteContent: SiteContent = {
     blurb:
       "FreshStack helps agencies use AI to build a stronger operating layer across systems, workflows, reporting, deliverables, and tracking.",
     contactLabel: "Contact",
-    legal: "© 2026 FreshStack. All rights reserved.",
+    legal: "© 2026 FreshStack. All rights reserved. FreshStack is a subsidiary of The Mighty Bean. Registered in UAE. License number ABCDEFG.",
   },
   cta: {
     bookingUrl,

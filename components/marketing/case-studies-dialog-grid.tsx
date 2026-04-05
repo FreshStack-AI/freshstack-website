@@ -2,9 +2,33 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import CountUp from "react-countup";
 
 import { CaseStudyWorkflowSlide } from "@/components/marketing/case-study-workflow-slide";
 import type { CaseStudy } from "@/content/site-content";
+
+function parseMetric(value: string): { prefix: string; end: number; suffix: string } | null {
+  const match = value.match(/^([^0-9]*)([0-9]+(?:\.[0-9]+)?)(.*)$/);
+  if (!match) return null;
+  const end = parseFloat(match[2]);
+  if (end === 0) return null;
+  return { prefix: match[1], end, suffix: match[3] };
+}
+
+function MetricValue({ value }: { value: string }) {
+  const parsed = parseMetric(value);
+  if (!parsed) return <>{value}</>;
+  return (
+    <CountUp
+      end={parsed.end}
+      prefix={parsed.prefix}
+      suffix={parsed.suffix}
+      duration={1.6}
+      enableScrollSpy
+      scrollSpyOnce
+    />
+  );
+}
 
 type CaseStudiesDialogGridProps = {
   items: CaseStudy[];
@@ -252,7 +276,7 @@ export function CaseStudiesDialogGrid({
               setActiveStudy(study);
             }}
             className="glass-panel card-stagger group flex h-full flex-col justify-between p-6 text-left transition-[border-color,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-white/18 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:p-7"
-            style={{ animationDelay: `${index * 90}ms` }}
+            style={{ animationDelay: `${index * 90}ms`, borderRadius: 0 }}
           >
             <div className="flex min-h-[13.75rem] flex-1 flex-col">
               <div className="min-h-[3.7rem]">
@@ -273,7 +297,7 @@ export function CaseStudiesDialogGrid({
                     className="border-t border-white/7 pt-3 text-center"
                   >
                     <p className="text-xl font-bold tracking-[-0.03em] text-[var(--color-ink)] sm:text-[1.45rem]">
-                      {metric.value}
+                      <MetricValue value={metric.value} />
                     </p>
                     <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-label)]">
                       {metric.label}

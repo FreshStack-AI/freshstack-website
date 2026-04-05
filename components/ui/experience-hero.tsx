@@ -1,6 +1,6 @@
 import React from "react";
 
-import { DeferredWebglBackground } from "@/components/ui/deferred-webgl-background";
+import { HeroVideoBackground } from "@/components/ui/hero-video-background";
 
 type ExperienceHeroProps = {
   displayLines: string[];
@@ -20,10 +20,10 @@ export function ExperienceHero({
       id="hero"
       className="relative min-h-screen w-full overflow-hidden bg-transparent selection:bg-white selection:text-black"
     >
-      <DeferredWebglBackground className="absolute inset-0" />
+      <HeroVideoBackground className="absolute inset-0" />
 
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_22%,rgba(245,240,232,0.07),transparent_20%),radial-gradient(circle_at_20%_18%,rgba(200,192,176,0.05),transparent_26%),linear-gradient(180deg,rgba(245,240,232,0.02),rgba(245,240,232,0))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_22%,rgba(245,240,232,0.07),transparent_20%),radial-gradient(circle_at_20%_18%,rgba(200,192,176,0.05),transparent_26%),linear-gradient(180deg,rgba(245,240,232,0.02),rgba(245,240,232,0)),linear-gradient(90deg,rgba(10,10,10,0.32),rgba(10,10,10,0.1)_34%,rgba(10,10,10,0.16)_60%,rgba(10,10,10,0.42))]" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(180deg,rgba(2,2,2,0),#020202)]" />
       </div>
 

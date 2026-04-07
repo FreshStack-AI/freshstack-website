@@ -1,27 +1,29 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import Image from "next/image";
 
 type Testimonial = {
   quote: string;
   name: string;
-  role: string;
+  role: ReactNode;
   avatarSrc?: string;
   isPlaceholder?: boolean;
 };
 
+/* eslint-disable react/jsx-key */
 const testimonials: Testimonial[] = [
   // Column 1
   {
     quote:
-      "[PLACEHOLDER — Tom Glasgow's quote here. Paste the full quote text.]",
+      "FreshStack been a huge unlock and a great resource for us. Highly recommend.",
     name: "Tom Glasgow",
-    role: "[Title, Company]",
+    role: (<>COO at <a href="https://x.com/wayfinderHQ" target="_blank" rel="noopener noreferrer" className="underline decoration-white/25 underline-offset-2 hover:decoration-white/50 transition-colors">WayfinderHQ</a></>),
     avatarSrc: "/tom-testimonial.jpg",
   },
   {
-    quote: "[PLACEHOLDER — client quote here.]",
-    name: "[Client Name]",
-    role: "[Title, Company]",
+    quote: "[Awaiting testimonial]",
+    name: "Declan",
+    role: (<>Co-Founder at <a href="https://r3ach.com/" target="_blank" rel="noopener noreferrer" className="underline decoration-white/25 underline-offset-2 hover:decoration-white/50 transition-colors">R3ACH NTWRK</a></>),
+    avatarSrc: "/declan-testimonial.png",
     isPlaceholder: true,
   },
   {

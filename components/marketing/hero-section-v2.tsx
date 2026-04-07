@@ -67,8 +67,8 @@ export function HeroSectionV2() {
           className="hero-fade-up mx-auto mb-12 max-w-2xl text-base leading-[1.8] text-[#8e8e93] sm:text-[1.0625rem]"
           style={{ animationDelay: "170ms" }}
         >
-          FreshStack designs and deploys AI automation workflows so your team
-          stops doing work that should never have been manual.
+          Your team should be doing the work that grows your business.
+          We automate everything else.
         </p>
 
         {/* CTAs */}

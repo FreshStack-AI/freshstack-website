@@ -76,6 +76,19 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Noise grain overlay — generated via JS, applied as pseudo-element */
+body.has-grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: var(--grain-url);
+  background-size: 256px 256px;
+  opacity: 0.18;
+  mix-blend-mode: overlay;
+}
+
 h1,
 h2,
 h3,

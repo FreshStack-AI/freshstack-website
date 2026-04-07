@@ -118,6 +118,17 @@ export default function RootLayout({
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+        <Script id="grain-texture" strategy="afterInteractive">{`
+          (function(){
+            var s=256,c=document.createElement('canvas');
+            c.width=s;c.height=s;
+            var x=c.getContext('2d'),d=x.createImageData(s,s),p=d.data;
+            for(var i=0;i<p.length;i+=4){var v=Math.random()*255;p[i]=v;p[i+1]=v;p[i+2]=v;p[i+3]=40;}
+            x.putImageData(d,0,0);
+            document.body.style.setProperty('--grain-url','url('+c.toDataURL('image/png')+')');
+            document.body.classList.add('has-grain');
+          })();
+        `}</Script>
       </body>
     </html>
   );

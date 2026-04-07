@@ -182,44 +182,44 @@ export const siteContent: SiteContent = {
     ],
   },
   painPoints: {
-    eyebrow: "Pain points",
-    title: "Are you busy with the wrong stuff?",
-    description: "",
+    eyebrow: "Still doing it manually?",
+    title: "This is what it's costing you.",
+    description: "Every hour your team spends on work that should be automated is an hour not spent growing the business. Here's where it shows up first.",
     items: [
       {
-        title: "Sales",
+        title: "Sales & Pipeline",
         description:
-          "Too much sales activity still runs on manual follow-up, scattered notes, and inconsistent handoff into delivery.",
+          "Your pipeline lives in someone's head. Deals move slowly, handoffs break down, and nothing gets followed up consistently. You're losing revenue you already earned.",
       },
       {
-        title: "Delivery",
+        title: "Client Onboarding",
         description:
-          "Weak handoffs and inconsistent execution reduce delivery capacity and create expensive rework.",
+          "Every new client means the same manual work. Folders, forms, emails, access. It takes days when it should take minutes. And the client notices.",
       },
       {
-        title: "Reporting",
+        title: "Finance Operations",
         description:
-          "Manual reporting wastes time, delays decisions, and weakens client confidence.",
+          "Invoices go out late. Payments get missed. Reconciliation happens at month end when the damage is already done. Cash flow suffers because the admin can't keep up.",
       },
       {
-        title: "Operations",
+        title: "Reporting & Visibility",
         description:
-          "Disconnected systems and repetitive admin work drag down efficiency, margin, and scalability.",
+          "Nobody knows where things stand until someone builds a report. By then the data is already old. Decisions get delayed. Clients lose confidence.",
       },
     ],
   },
   founder: {
-    eyebrow: "Meet the founders",
+    eyebrow: "Who we are",
     profiles: [
       {
         name: "Baptiste",
-        bio: "With over a decade inside some of the world's largest agencies, including WPP, and work delivered for brands like Binance and Adidas, Baptiste has seen how strong operations create speed, leverage, and commercial headroom. After building and automating his own business with AI, he now helps agency owners replace slow manual work with systems that scale delivery, free up leadership time, and create more room to grow.",
+        bio: "Baptiste spent over a decade inside some of the world's largest agencies, delivering work for brands like Shell, Ferrari, and Adidas. He's seen first-hand how operational infrastructure determines whether a growing business scales cleanly or collapses under its own weight. Before FreshStack, he built and exited two AI-powered businesses. Proof the systems work. Now he builds them for others.",
         imageSrc: "/optimized/founder-portrait.jpg",
         imageAlt: "Black-and-white portrait of Baptiste, founder of FreshStack",
       },
       {
         name: "Lara",
-        bio: "With over a decade in high-pressure agency environments, Lara has seen first-hand how delivery, profitability, and client confidence suffer when the operating layer cannot keep up. She now helps agency owners build clearer systems, tighter workflows, and stronger reporting so growth does not come with more chaos.",
+        bio: "Lara spent five years selling operational infrastructure to enterprise businesses. She knows what it takes for organisations to run without chaos, and what it costs when they don't. She now builds those same systems for growing service businesses that want enterprise-grade operations without the enterprise price tag.",
         imageSrc: "/optimized/lara-portrait.jpg",
         imageAlt: "Black-and-white portrait of Lara, co-founder of FreshStack",
       },
@@ -253,16 +253,16 @@ export const siteContent: SiteContent = {
   caseStudies: {
     eyebrow: "Our Work",
     title: "Results from real operations.",
-    description: "",
+    description: "Three builds. Three different problems. Real numbers from real clients. Every figure on these cards came directly from the client.",
     items: [
       {
-        id: "ops-reporting-placeholder",
-        clientType: "Crypto-native service business",
-        automationType: "Payment intelligence automation",
-        title: "Crypto Payment Intelligence",
+        id: "finance-ops-creator-agency",
+        clientType: "Creator Marketing Agency",
+        automationType: "Finance operations automation",
+        title: "Connected data. Confident delivery. No mispayments.",
         cardMetrics: [
-          { value: "$28K", label: "upside" },
-          { value: "52 hrs", label: "saved" },
+          { value: "$352K", label: "revenue upside" },
+          { value: "650 hrs", label: "hrs saved" },
         ],
         summary:
           "By turning wallet scans, invoice matching, and finance alerts into one automated workflow, FreshStack gave the team real-time visibility on stablecoin payments without manual reconciliation.",
@@ -301,13 +301,13 @@ export const siteContent: SiteContent = {
         quote: null,
       },
       {
-        id: "handoff-delivery-placeholder",
-        clientType: "Creator marketing agency",
-        automationType: "Sales-to-ops workflow automation",
-        title: "Sales-to-Ops System",
+        id: "sales-ops-service-biz",
+        clientType: "Service Business",
+        automationType: "Sales & operations automation",
+        title: "Revenue protected. Errors eliminated. Zero duplication.",
         cardMetrics: [
-          { value: "$352K", label: "upside" },
-          { value: "650 hrs", label: "saved" },
+          { value: "$4.2M", label: "revenue protected" },
+          { value: "156 hrs", label: "hrs saved" },
         ],
         summary:
           "By replacing disconnected databases and manual proposal building with one connected workflow, FreshStack eliminated rate errors, sped up handoffs, and gave sales and operations a shared source of truth.",
@@ -346,13 +346,13 @@ export const siteContent: SiteContent = {
         quote: null,
       },
       {
-        id: "crm-tracker-movimentum",
-        clientType: "Sales organization",
-        automationType: "CRM workflow automation",
-        title: "Multilayer CRM Tracker",
+        id: "reporting-perf-agency",
+        clientType: "Performance Marketing Agency",
+        automationType: "Reporting & visibility automation",
+        title: "Better reports. Clearer results. Higher retention.",
         cardMetrics: [
-          { value: "0 manual", label: "data entry" },
-          { value: "Daily", label: "follow-ups" },
+          { value: "$84K", label: "revenue upside" },
+          { value: "60 hrs", label: "hrs saved" },
         ],
         summary:
           "FreshStack connected Google Calendar, Fireflies, Notion, and Slack into one CRM workflow that auto-logs calls, surfaces follow-ups, and updates weekly sales scorecards with zero manual data entry.",
@@ -395,37 +395,35 @@ export const siteContent: SiteContent = {
   },
   process: {
     eyebrow: "Process",
-    title: "A clear timeline",
+    title: "How we work.",
     description: "",
     steps: [
       {
         title: "Audit",
-        description: "Map the operational bottlenecks slowing delivery, visibility, and growth so we know exactly where the leverage is.",
+        description: "We map where your operations are breaking down. Time lost, errors made, handoffs failing. We find the leverage points before we build anything.",
       },
       {
         title: "Design",
-        description: "Turn the findings into a leaner operating model with clearer handoffs, smarter automation, and sharper implementation priorities.",
+        description: "We turn the findings into a system architecture. What gets automated, in what order, connected to which tools. You approve before we build.",
       },
       {
         title: "Build",
-        description: "Implement the workflows, automations, reporting systems, and documentation that make the new operating layer real.",
+        description: "We build, test, and deploy. Every automation is documented so your team understands what runs and why.",
       },
       {
-        title: "Embed & optimize",
-        description: "Train the team, watch adoption, and optimize until the system is improving delivery, capacity, and visibility in live work.",
+        title: "Maintain",
+        description: "We don't hand over and disappear. We monitor, fix, and improve the system as your business changes. This is where the retainer begins.",
       },
     ],
   },
   booking: {
-    eyebrow: "Let's Talk",
-    title: "Let's Talk.",
+    eyebrow: "Let’s Talk",
+    title: "No pitch. No fluff.",
     description:
-      "Start with a focused conversation about where your operating layer is slowing delivery, limiting visibility, or capping growth.",
+      "Book a free 30-minute call. We’ll look at where your operations are breaking down and tell you exactly what we’d automate first.",
     desktopLabel: "Book a call",
     fallbackLabel: "Prefer email?",
-    checklist: [
-      "Book a free 30-minute working session. We’ll audit your operating layer, identify the main bottlenecks, and show you where AI can create the most leverage first.",
-    ],
+    checklist: [],
   },
   footer: {
     blurb:

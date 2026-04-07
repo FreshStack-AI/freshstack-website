@@ -48,13 +48,18 @@ export function FounderSection({ founder }: FounderSectionProps) {
   return (
     <section
       id="founder"
-      className="relative z-10 px-5 pb-[4.5rem] sm:px-6 lg:px-8 lg:pb-24"
+      className="relative z-10 px-5 pb-24 pt-0 sm:px-8 lg:px-10 lg:pb-32"
     >
       <div className="mx-auto max-w-6xl">
-        <p className="section-label mb-5">
-          {"// "}
-          {founder.eyebrow}
-        </p>
+        <div className="mb-16">
+          <p className="section-label mb-5">
+            <span className="mr-2 opacity-50">//</span>
+            {founder.eyebrow}
+          </p>
+          <h2 className="section-title text-3xl text-[var(--color-ink)] sm:text-4xl lg:text-[3rem]">
+            You get the founders, every time.
+          </h2>
+        </div>
         <FounderCarousel profiles={founder.profiles} />
       </div>
     </section>
@@ -67,25 +72,23 @@ export function CaseStudiesSection({
   return (
     <section
       id="case-studies"
-      className="relative z-10 bg-[#0a0a0a] px-5 pb-24 pt-0 sm:px-8 lg:px-10 lg:pb-32"
+      className="relative z-10 px-5 pb-24 pt-0 sm:px-8 lg:px-10 lg:pb-32"
     >
       <div className="mx-auto max-w-6xl">
         {/* Section header */}
         <div className="mb-16">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="section-label mb-5">
-                <span className="mr-2 opacity-50">//</span>
-                {caseStudies.eyebrow}
-              </p>
-              <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold leading-[1.08] tracking-[-0.03em] text-[#f5f0e8]">
-                {caseStudies.title}
-              </h2>
-            </div>
-            <p className="max-w-xs text-sm leading-[1.8] text-[#8e8e93] sm:text-right">
-              Three builds. Three different problems. The same outcome — less manual work, more leverage.
+          <p className="section-label mb-5">
+            <span className="mr-2 opacity-50">//</span>
+            {caseStudies.eyebrow}
+          </p>
+          <h2 className="section-title mb-5 text-3xl text-[var(--color-ink)] sm:text-4xl lg:text-[3rem]">
+            {caseStudies.title}
+          </h2>
+          {caseStudies.description && (
+            <p className="max-w-xl text-sm leading-[1.8] text-[#8e8e93] sm:text-base sm:leading-8">
+              {caseStudies.description}
             </p>
-          </div>
+          )}
         </div>
 
         <CaseStudiesDialogGrid items={caseStudies.items} />
@@ -95,13 +98,10 @@ export function CaseStudiesSection({
 }
 
 export function ProcessSection({ process }: ProcessSectionProps) {
-  const above = process.steps.filter((_, i) => i % 2 === 0); // 1, 3
-  const below = process.steps.filter((_, i) => i % 2 === 1); // 2, 4
-
   return (
     <section
       id="process"
-      className="relative z-10 bg-[#0a0a0a] px-5 pb-24 pt-0 sm:px-8 lg:px-10 lg:pb-32"
+      className="relative z-10 px-5 pb-24 pt-0 sm:px-8 lg:px-10 lg:pb-32"
     >
       <div className="mx-auto max-w-6xl">
         {/* Section header */}
@@ -110,9 +110,14 @@ export function ProcessSection({ process }: ProcessSectionProps) {
             <span className="mr-2 opacity-50">//</span>
             {process.eyebrow}
           </p>
-          <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold leading-[1.08] tracking-[-0.03em] text-[#f5f0e8]">
+          <h2 className="section-title mb-5 text-3xl text-[var(--color-ink)] sm:text-4xl lg:text-[3rem]">
             {process.title}
           </h2>
+          <p className="max-w-3xl text-sm leading-[1.8] text-[#8e8e93] sm:text-base sm:leading-8">
+            Every engagement follows the same four steps. No surprises, no open-ended timelines.
+            <br />
+            You know what happens next at every stage.
+          </p>
         </div>
 
         {/* Desktop timeline */}
@@ -122,10 +127,14 @@ export function ProcessSection({ process }: ProcessSectionProps) {
             {process.steps.map((step, i) =>
               i % 2 === 0 ? (
                 <div key={step.title} className="pb-10 pr-8">
-                  <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.22em] text-[#c8c0b0]/50">
+                  <p
+                    className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] text-[#c8c0b0]"
+                  >
                     0{i + 1}
                   </p>
-                  <h3 className="text-xl font-bold tracking-[-0.025em] text-[#f5f0e8]">
+                  <h3
+                    className="font-[family-name:var(--font-space-grotesk),ui-sans-serif] text-[26px] font-bold leading-[1.15] tracking-[-0.025em] text-[#f5f0e8]"
+                  >
                     {step.title}
                   </h3>
                   <p className="mt-3 text-sm leading-[1.75] text-[#8e8e93]">
@@ -138,32 +147,42 @@ export function ProcessSection({ process }: ProcessSectionProps) {
             )}
           </div>
 
-          {/* The line with dots */}
+          {/* The line with dots and arrow */}
           <div className="relative flex items-center">
-            <div className="h-px w-full bg-[rgba(245,240,232,0.15)]" />
-            {/* Arrow at right end */}
+            <div
+              className="h-px w-full"
+              style={{
+                background:
+                  "linear-gradient(90deg, rgba(200,192,176,0.1), rgba(200,192,176,0.25), rgba(200,192,176,0.15))",
+              }}
+            />
+            {/* Filled arrow at right end */}
             <svg
-              width="8"
-              height="10"
-              viewBox="0 0 8 10"
+              width="12"
+              height="14"
+              viewBox="0 0 12 14"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
               className="shrink-0"
               aria-hidden="true"
             >
               <path
-                d="M1 1L7 5L1 9"
-                stroke="rgba(245,240,232,0.4)"
-                strokeWidth="1.5"
-                strokeLinecap="round"
+                d="M1 1L11 7L1 13V1Z"
+                fill="#c8c0b0"
+                stroke="#c8c0b0"
+                strokeWidth="2"
                 strokeLinejoin="round"
               />
             </svg>
-            {/* Dots aligned with left edge of each column */}
+            {/* Dots — first dot larger and accent colour */}
             {process.steps.map((_, i) => (
               <div
                 key={i}
-                className="absolute z-10 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 top-1/2 rounded-full border border-[rgba(245,240,232,0.2)] bg-[#f5f0e8]/70"
+                className={`absolute z-10 -translate-x-1/2 -translate-y-1/2 top-1/2 rounded-full ${
+                  i === 0
+                    ? "h-3.5 w-3.5 bg-[#f5f0e8] shadow-[0_0_8px_rgba(245,240,232,0.3)]"
+                    : "h-2.5 w-2.5 border border-[rgba(200,192,176,0.3)] bg-[#8e8e93]/50"
+                }`}
                 style={{ left: `${(i / process.steps.length) * 100}%` }}
               />
             ))}
@@ -173,11 +192,19 @@ export function ProcessSection({ process }: ProcessSectionProps) {
           <div className="grid grid-cols-4">
             {process.steps.map((step, i) =>
               i % 2 === 1 ? (
-                <div key={step.title} className="pt-10 pr-8">
-                  <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.22em] text-[#c8c0b0]/50">
+                <div
+                  key={step.title}
+                  className="rounded-lg pt-10 pr-8 pb-6 pl-4"
+                  style={{ background: "rgba(28,28,30,0.5)" }}
+                >
+                  <p
+                    className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] text-[#c8c0b0]"
+                  >
                     0{i + 1}
                   </p>
-                  <h3 className="text-xl font-bold tracking-[-0.025em] text-[#f5f0e8]">
+                  <h3
+                    className="font-[family-name:var(--font-space-grotesk),ui-sans-serif] text-[26px] font-bold leading-[1.15] tracking-[-0.025em] text-[#f5f0e8]"
+                  >
                     {step.title}
                   </h3>
                   <p className="mt-3 text-sm leading-[1.75] text-[#8e8e93]">
@@ -196,16 +223,32 @@ export function ProcessSection({ process }: ProcessSectionProps) {
           {process.steps.map((step, i) => (
             <div key={step.title} className="flex gap-6">
               <div className="flex flex-col items-center">
-                <div className="mt-1.5 h-2.5 w-2.5 shrink-0 rounded-full border border-[rgba(245,240,232,0.2)] bg-[#f5f0e8]/70" />
+                <div
+                  className={`mt-1.5 shrink-0 rounded-full ${
+                    i === 0
+                      ? "h-3.5 w-3.5 bg-[#f5f0e8] shadow-[0_0_8px_rgba(245,240,232,0.3)]"
+                      : "h-2.5 w-2.5 border border-[rgba(200,192,176,0.3)] bg-[#8e8e93]/50"
+                  }`}
+                />
                 {i < process.steps.length - 1 && (
-                  <div className="mt-1 w-px flex-1 bg-[rgba(245,240,232,0.15)]" />
+                  <div
+                    className="mt-1 w-px flex-1"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, rgba(200,192,176,0.2), rgba(200,192,176,0.08))",
+                    }}
+                  />
                 )}
               </div>
               <div className="pb-10">
-                <p className="mb-2 font-mono text-[11px] uppercase tracking-[0.22em] text-[#c8c0b0]/50">
+                <p
+                  className="mb-1 font-mono text-[11px] uppercase tracking-[0.22em] text-[#c8c0b0]"
+                >
                   0{i + 1}
                 </p>
-                <h3 className="text-xl font-bold tracking-[-0.025em] text-[#f5f0e8]">
+                <h3
+                  className="font-[family-name:var(--font-space-grotesk),ui-sans-serif] text-[26px] font-bold leading-[1.15] tracking-[-0.025em] text-[#f5f0e8]"
+                >
                   {step.title}
                 </h3>
                 <p className="mt-3 text-sm leading-[1.75] text-[#8e8e93]">
@@ -214,6 +257,20 @@ export function ProcessSection({ process }: ProcessSectionProps) {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Pricing statement */}
+        <div className="mt-16">
+          <div
+            className="h-px w-full mb-8"
+            style={{
+              background:
+                "linear-gradient(90deg, transparent, rgba(200,200,210,0.2), transparent)",
+            }}
+          />
+          <p className="text-center text-sm leading-[1.8] text-[#8e8e93]">
+            Every engagement starts with a fixed setup fee. Every system we build is covered by a monthly retainer. No open-ended billing. No surprises.
+          </p>
         </div>
       </div>
     </section>
@@ -230,28 +287,28 @@ export function BookingSection({ booking, cta }: BookingSectionProps) {
       className="pb-28 md:pb-24"
     >
       <div className="grid gap-6 xl:grid-cols-[minmax(0,0.78fr)_minmax(22rem,1.22fr)]">
-        <div className="glass-panel p-6 sm:p-7" style={{ borderRadius: 0 }}>
-          <p className="section-label">What to expect</p>
-          <ul className="mt-6 space-y-4 text-sm leading-7 text-[var(--color-muted)] sm:text-base">
-            {booking.checklist.map((item) => (
-              <li key={item} className="flex gap-3">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-white" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+        <div className="flex flex-col glass-panel rounded-xl p-6 sm:p-7">
+          <div>
+            <p className="section-label">What to expect</p>
+            <div className="mt-6 space-y-1 text-sm leading-7 text-[#8e8e93] sm:text-base">
+              <p>30 minutes.</p>
+              <p>No preparation needed from you.</p>
+              <p>You&apos;ll leave knowing what to fix first.</p>
+            </div>
+          </div>
 
           <div className="mt-8">
             <p className="section-label">{booking.fallbackLabel}</p>
-            <p className="mt-3 text-sm leading-7 text-[var(--color-muted)] sm:text-base">
-              Reach FreshStack directly at{" "}
+            <p className="mt-3 text-sm leading-7 text-[#8e8e93] sm:text-base">
               <a
                 href={`mailto:${cta.contactEmail}`}
                 className="font-medium text-[var(--color-ink)] underline decoration-white/25 underline-offset-4"
               >
                 {cta.contactEmail}
               </a>
-              .
+            </p>
+            <p className="mt-1 text-sm leading-7 text-[#8e8e93]">
+              We reply within one business day.
             </p>
           </div>
 
@@ -267,11 +324,13 @@ export function BookingSection({ booking, cta }: BookingSectionProps) {
               </div>
             )}
           </div>
+
+          {/* Spacer to match right column height */}
+          <div className="hidden flex-1 md:block" />
         </div>
 
-        <div className="glass-panel hidden p-6 md:block" style={{ borderRadius: 0 }}>
-          <p className="section-label text-center">{booking.desktopLabel}</p>
-          <div className="mt-5 overflow-hidden rounded-[1rem] border border-white/8 bg-black/35 p-2">
+        <div className="glass-panel hidden rounded-xl p-6 md:block">
+          <div className="overflow-hidden rounded-[1rem] border border-white/8 bg-black/35 p-2">
             {cta.bookingEmbedUrl ? (
               <DeferredCalendlyInlineEmbed
                 url={cta.bookingEmbedUrl}

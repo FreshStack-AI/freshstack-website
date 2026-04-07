@@ -111,6 +111,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://calendly.com" crossOrigin="" />
       </head>
       <body suppressHydrationWarning>
+        {/* Parallax background layer */}
+        <div id="bg-parallax" aria-hidden="true" />
         {children}
         <Script
           id="structured-data"
@@ -118,6 +120,25 @@ export default function RootLayout({
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+        <Script id="parallax-scroll" strategy="afterInteractive">{`
+          (function(){
+            var el = document.getElementById('bg-parallax');
+            if (!el) return;
+            var speed = 0.15;
+            var ticking = false;
+            function update() {
+              if (window.innerWidth < 768) { ticking = false; return; }
+              el.style.transform = 'translateY(' + (window.scrollY * speed) + 'px)';
+              ticking = false;
+            }
+            window.addEventListener('scroll', function() {
+              if (!ticking) {
+                requestAnimationFrame(update);
+                ticking = true;
+              }
+            }, { passive: true });
+          })();
+        `}</Script>
         <Script id="grain-texture" strategy="afterInteractive">{`
           (function(){
             var s=256,c=document.createElement('canvas');

@@ -56,6 +56,12 @@ function getFocusableElements(container: HTMLElement | null) {
   });
 }
 
+const CATEGORY_LABELS: Record<string, string> = {
+  "finance-ops-creator-agency": "// Finance Operations",
+  "sales-ops-service-biz": "// Sales & Pipeline",
+  "reporting-perf-agency": "// Reporting & Visibility",
+};
+
 export function CaseStudiesDialogGrid({
   items,
 }: CaseStudiesDialogGridProps) {
@@ -266,7 +272,7 @@ export function CaseStudiesDialogGrid({
 
   return (
     <>
-      <div className="grid gap-5 xl:grid-cols-3">
+      <div className="grid gap-6 lg:grid-cols-3">
         {items.map((study, index) => (
           <button
             key={study.id}
@@ -275,44 +281,110 @@ export function CaseStudiesDialogGrid({
               triggerRef.current = event.currentTarget;
               setActiveStudy(study);
             }}
-            className="glass-panel card-stagger group flex h-full flex-col justify-between p-6 text-left transition-[border-color,transform] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-white/18 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:p-7"
-            style={{ animationDelay: `${index * 90}ms`, borderRadius: 0 }}
+            className="group relative flex h-full flex-col justify-between overflow-hidden rounded-xl border border-[rgba(80,80,85,0.6)] p-7 text-left backdrop-blur-[12px] transition-all duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:border-[rgba(160,160,170,0.25)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:p-8"
+            style={{
+              animationDelay: `${index * 90}ms`,
+              background:
+                "linear-gradient(135deg, rgba(200,200,210,0.03) 0%, transparent 40%, rgba(200,200,210,0.02) 70%, transparent 100%), linear-gradient(180deg, rgba(245,240,232,0.02), rgba(245,240,232,0.005)), rgba(20,20,22,0.92)",
+              boxShadow:
+                "inset 0 1px 0 rgba(245,240,232,0.025), 0 8px 32px rgba(0,0,0,0.3)",
+            }}
           >
-            <div className="flex min-h-[13.75rem] flex-1 flex-col">
-              <div className="min-h-[3.7rem]">
-                <p className="section-label max-w-[16rem] leading-[1.5]">
-                  {study.clientType}
-                </p>
-              </div>
-              <h3 className="mt-5 text-[1.9rem] font-bold tracking-[-0.045em] text-[var(--color-ink)] sm:text-[2.1rem]">
+            {/* Left chrome accent bar */}
+            <div
+              className="pointer-events-none absolute bottom-6 left-0 top-6 w-[2px]"
+              style={{
+                background:
+                  "linear-gradient(180deg, transparent, rgba(200,200,210,0.3), rgba(255,255,255,0.5), rgba(200,200,210,0.3), transparent)",
+              }}
+            />
+
+            {/* Diagonal light sweep on hover */}
+            <div
+              className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+              style={{
+                background:
+                  "linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.03) 48%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03) 52%, transparent 70%)",
+              }}
+            />
+
+            {/* Category right-aligned, client type on new line */}
+            <div className="relative z-10">
+              <p className="text-right font-mono text-[10px] font-normal uppercase tracking-[0.2em] text-[#c8c0b0]/50">
+                {CATEGORY_LABELS[study.id] || `// ${study.automationType}`}
+              </p>
+              <p className="mt-2 text-[13px] font-medium tracking-wide text-[#8e8e93]">
+                {study.clientType}
+              </p>
+            </div>
+
+            {/* Title — chrome gradient */}
+            <div className="relative z-10 mt-8 flex flex-1 flex-col">
+              <h3
+                className="text-[1.2rem] font-bold leading-[1.35] tracking-[-0.02em] sm:text-[1.3rem]"
+                style={{
+                  background:
+                    "linear-gradient(135deg, #9a9a9a 0%, #d4d4d4 18%, #f0f0f0 32%, #a8a8a8 48%, #e0e0e0 62%, #b0b0b0 78%, #c8c8c8 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
                 {study.title}
               </h3>
             </div>
 
-            <div className="mt-5">
-              <div className="grid min-h-[4.6rem] grid-cols-2 gap-4">
-                {study.cardMetrics.slice(0, 2).map((metric) => (
+            {/* Bottom section — pinned to bottom */}
+            <div className="relative z-10 mt-auto pt-5">
+              {/* Chrome divider */}
+              <div
+                className="mb-5 h-px w-full"
+                style={{
+                  background:
+                    "linear-gradient(90deg, transparent, rgba(200,200,210,0.25), rgba(255,255,255,0.4), rgba(200,200,210,0.25), transparent)",
+                }}
+              />
+
+              {/* Metrics */}
+              <div className="flex justify-between">
+                {study.cardMetrics.slice(0, 2).map((metric, mi) => (
                   <div
                     key={`${study.id}-${metric.value}-${metric.label}`}
-                    className="border-t border-white/7 pt-3 text-center"
+                    className={mi === 1 ? "text-right" : ""}
                   >
-                    <p className="text-xl font-bold tracking-[-0.03em] text-[var(--color-ink)] sm:text-[1.45rem]">
+                    <p
+                      className="text-[1.35rem] font-bold tracking-[-0.03em] sm:text-[1.5rem]"
+                      style={{
+                        background:
+                          "linear-gradient(135deg, #b0b0b0 0%, #e0e0e0 40%, #f5f5f5 60%, #c0c0c0 100%)",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        backgroundClip: "text",
+                      }}
+                    >
                       <MetricValue value={metric.value} />
                     </p>
-                    <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--color-label)]">
+                    <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-[#8e8e93]/50">
                       {metric.label}
                     </p>
                   </div>
                 ))}
               </div>
-              <div className="mt-5 flex items-center justify-between gap-4">
-                <span className="text-sm text-[var(--color-muted)]">
+
+              {/* View case study */}
+              <div className="mt-7 flex items-center gap-3">
+                <span className="text-[13px] font-medium text-[#c8c0b0]/50 transition-colors duration-300 group-hover:text-[#c8c0b0]">
                   View case study
                 </span>
-                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/12 text-white transition-colors duration-300 group-hover:bg-white group-hover:text-black">
+                <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-[rgba(100,100,110,0.4)] text-[#c8c0b0]/40 transition-all duration-300 group-hover:border-[rgba(160,160,170,0.4)] group-hover:text-[#f5f0e8]"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, rgba(40,40,45,0.8) 0%, rgba(25,25,28,0.8) 50%, rgba(40,40,45,0.8) 100%)",
+                  }}
+                >
                   <svg
-                    width="18"
-                    height="18"
+                    width="12"
+                    height="12"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -321,7 +393,7 @@ export function CaseStudiesDialogGrid({
                     <path
                       d="M7 17L17 7M17 7H8M17 7V16"
                       stroke="currentColor"
-                      strokeWidth="2.2"
+                      strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />

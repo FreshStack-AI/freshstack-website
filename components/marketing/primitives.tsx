@@ -40,7 +40,7 @@ export function SectionShell({
             {"// "}
             {eyebrow}
           </p>
-          <h2 className="section-title mt-5 max-w-5xl text-3xl text-balance text-[var(--color-ink)] sm:text-4xl lg:text-[4.25rem]">
+          <h2 className="section-title mt-5 max-w-5xl text-3xl text-[var(--color-ink)] sm:text-4xl lg:text-[3rem]">
             {title}
           </h2>
           {description ? (

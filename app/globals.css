@@ -65,15 +65,37 @@ html {
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at 50% 15%, rgba(245, 240, 232, 0.055), transparent 28%),
-    linear-gradient(180deg, rgba(200, 192, 176, 0.02), rgba(245, 240, 232, 0)),
-    var(--color-paper);
+  background: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-body), Arial, sans-serif;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* Parallax background texture */
+#bg-parallax {
+  position: fixed;
+  top: -75%;
+  left: 0;
+  width: 100%;
+  height: 400%;
+  background-image: url('/images/bg-texture.jpg');
+  background-size: cover;
+  background-position: center center;
+  opacity: 0.025;
+  z-index: 0;
+  will-change: transform;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  #bg-parallax {
+    position: fixed;
+    top: 0;
+    height: 100%;
+    transform: none !important;
+  }
 }
 
 /* Noise grain overlay — generated via JS, applied as pseudo-element */
@@ -312,7 +334,7 @@ a {
 }
 
 .animate-marquee {
-  animation: marquee 28s linear infinite;
+  animation: marquee 54s linear infinite;
 }
 
 .animate-marquee:hover {

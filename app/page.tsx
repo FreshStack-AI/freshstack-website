@@ -4,9 +4,9 @@ import {
   CaseStudiesSection,
   FounderSection,
   HeroSection,
-  PainPointsSection,
   ProcessSection,
 } from "@/components/marketing/sections";
+import { PainPointsSectionV2 } from "@/components/marketing/pain-points-section-v2";
 import { ServicesSectionV2 } from "@/components/marketing/services-section-v2";
 import { TestimonialsSection } from "@/components/marketing/testimonials-section";
 import { ToolsSectionV2 } from "@/components/marketing/tools-section-v2";
@@ -24,18 +24,13 @@ export default function Home() {
         cta={siteContent.cta}
       />
 
-      <div className="pointer-events-none fixed inset-0 z-[1] bento-mask opacity-20" />
-
       <main className="relative z-10 overflow-x-hidden pb-28 md:pb-0">
         <HeroSection
           hero={siteContent.hero}
           cta={siteContent.cta}
         />
         <DeferredPanelGlowController />
-        <PainPointsSection
-          painPoints={siteContent.painPoints}
-          toolLabels={siteContent.toolChips}
-        />
+        <PainPointsSectionV2 />
         <ServicesSectionV2 />
         <ToolsSectionV2 />
         <CaseStudiesSection caseStudies={siteContent.caseStudies} />

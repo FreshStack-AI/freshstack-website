@@ -57,9 +57,9 @@ function getFocusableElements(container: HTMLElement | null) {
 }
 
 const CATEGORY_LABELS: Record<string, string> = {
-  "finance-ops-creator-agency": "// Finance Operations",
-  "sales-ops-service-biz": "// Sales & Pipeline",
-  "reporting-perf-agency": "// Reporting & Visibility",
+  "sales-ops-creator-agency": "// Sales",
+  "reporting-ops-service-biz": "// Reports",
+  "finance-ops-marketing-agency": "// Finance",
 };
 
 export function CaseStudiesDialogGrid({
@@ -313,25 +313,23 @@ export function CaseStudiesDialogGrid({
               <p className="text-right font-mono text-[10px] font-normal uppercase tracking-[0.2em] text-[#c8c0b0]/50">
                 {CATEGORY_LABELS[study.id] || `// ${study.automationType}`}
               </p>
-              <p className="mt-2 text-[13px] font-medium tracking-wide text-[#8e8e93]">
+              <p className="mt-2 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#8e8e93]">
                 {study.clientType}
               </p>
             </div>
 
-            {/* Title — chrome gradient */}
-            <div className="relative z-10 mt-8 flex flex-1 flex-col">
+            {/* Title + Description */}
+            <div className="relative z-10 mt-6 flex flex-1 flex-col">
               <h3
-                className="text-[1.2rem] font-bold leading-[1.35] tracking-[-0.02em] sm:text-[1.3rem]"
-                style={{
-                  background:
-                    "linear-gradient(135deg, #9a9a9a 0%, #d4d4d4 18%, #f0f0f0 32%, #a8a8a8 48%, #e0e0e0 62%, #b0b0b0 78%, #c8c8c8 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
+                className="text-[1.2rem] font-bold leading-[1.35] tracking-[-0.02em] sm:text-[1.3rem] text-[#f5f0e8]"
               >
                 {study.title}
               </h3>
+              {study.cardDescription && (
+                <p className="mt-3 text-[0.9rem] leading-[1.7] text-[#8e8e93]">
+                  {study.cardDescription}
+                </p>
+              )}
             </div>
 
             {/* Bottom section — pinned to bottom */}
@@ -350,7 +348,7 @@ export function CaseStudiesDialogGrid({
                 {study.cardMetrics.slice(0, 2).map((metric, mi) => (
                   <div
                     key={`${study.id}-${metric.value}-${metric.label}`}
-                    className={mi === 1 ? "text-right" : ""}
+                    className="text-center"
                   >
                     <p
                       className="text-[1.35rem] font-bold tracking-[-0.03em] sm:text-[1.5rem]"
@@ -374,7 +372,7 @@ export function CaseStudiesDialogGrid({
               {/* View case study */}
               <div className="mt-7 flex items-center gap-3">
                 <span className="text-[13px] font-medium text-[#c8c0b0]/50 transition-colors duration-300 group-hover:text-[#c8c0b0]">
-                  View case study
+                  See more details
                 </span>
                 <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-[rgba(100,100,110,0.4)] text-[#c8c0b0]/40 transition-all duration-300 group-hover:border-[rgba(160,160,170,0.4)] group-hover:text-[#f5f0e8]"
                   style={{

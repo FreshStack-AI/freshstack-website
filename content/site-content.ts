@@ -12,6 +12,7 @@ export type CaseStudy = {
   clientType: string;
   automationType: string;
   title: string;
+  cardDescription?: string;
   cardMetrics: Array<{
     value: string;
     label: string;
@@ -253,16 +254,17 @@ export const siteContent: SiteContent = {
   caseStudies: {
     eyebrow: "Our Work",
     title: "Results from real operations.",
-    description: "Three builds. Three different problems. Real numbers from real clients. Every figure on these cards came directly from the client.",
+    description: "Three builds. Three different problems. Each one with a measurable return from day one.",
     items: [
       {
-        id: "finance-ops-creator-agency",
-        clientType: "Creator Marketing Agency",
-        automationType: "Finance operations automation",
-        title: "Connected data. Confident delivery. No mispayments.",
+        id: "sales-ops-creator-agency",
+        clientType: "Creator Agency",
+        automationType: "Sales",
+        title: "Data Duplication",
+        cardDescription: "One person. Two systems. Manually synced every week. That single bottleneck was holding together 50% of monthly revenue.",
         cardMetrics: [
-          { value: "$352K", label: "revenue upside" },
-          { value: "650 hrs", label: "hrs saved" },
+          { value: "$4M", label: "revenue protected" },
+          { value: "156", label: "hours saved" },
         ],
         summary:
           "By turning wallet scans, invoice matching, and finance alerts into one automated workflow, FreshStack gave the team real-time visibility on stablecoin payments without manual reconciliation.",
@@ -301,13 +303,14 @@ export const siteContent: SiteContent = {
         quote: null,
       },
       {
-        id: "sales-ops-service-biz",
+        id: "reporting-ops-service-biz",
         clientType: "Service Business",
-        automationType: "Sales & operations automation",
-        title: "Revenue protected. Errors eliminated. Zero duplication.",
+        automationType: "Reports",
+        title: "Manual Reporting",
+        cardDescription: "Content analytics collected manually several times a week, outdated metrics. Underreported results costs renewal and upsell opportunities.",
         cardMetrics: [
-          { value: "$4.2M", label: "revenue protected" },
-          { value: "156 hrs", label: "hrs saved" },
+          { value: "$84K", label: "revenue upside" },
+          { value: "92", label: "hours saved" },
         ],
         summary:
           "By replacing disconnected databases and manual proposal building with one connected workflow, FreshStack eliminated rate errors, sped up handoffs, and gave sales and operations a shared source of truth.",
@@ -346,13 +349,14 @@ export const siteContent: SiteContent = {
         quote: null,
       },
       {
-        id: "reporting-perf-agency",
-        clientType: "Performance Marketing Agency",
-        automationType: "Reporting & visibility automation",
-        title: "Better reports. Clearer results. Higher retention.",
+        id: "finance-ops-marketing-agency",
+        clientType: "Marketing Agency",
+        automationType: "Finance",
+        title: "No Payment Visibility",
+        cardDescription: "Daily manual checks matching transactions to invoices. No automatic payment visibility, accounting delayed and visibility on cash flows stalled.",
         cardMetrics: [
-          { value: "$84K", label: "revenue upside" },
-          { value: "60 hrs", label: "hrs saved" },
+          { value: "$28K", label: "revenue upside" },
+          { value: "52", label: "hours saved" },
         ],
         summary:
           "FreshStack connected Google Calendar, Fireflies, Notion, and Slack into one CRM workflow that auto-logs calls, surfaces follow-ups, and updates weekly sales scorecards with zero manual data entry.",

@@ -15,51 +15,59 @@ export function SiteFooter({
   cta,
 }: SiteFooterProps) {
   return (
-    <footer className="relative z-10 border-t border-white/10 px-5 py-10 sm:px-6 lg:px-8 lg:py-12">
-      <div className="mx-auto flex max-w-6xl flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
-        <div>
-          <a href="#hero" className="inline-flex shrink-0 items-center">
-            <Image
-              src="/freshstack-navbar-logo-text.png"
-              alt={brandName}
-              width={2192}
-              height={500}
-              className="h-auto w-[10.25rem] sm:w-[11.625rem]"
-            />
-          </a>
+    <footer className="relative z-10 border-t border-white/10 px-5 py-8 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-6xl">
+        {/* Top row: logo + tagline | nav links | contact */}
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+          {/* Logo + tagline */}
+          <div className="shrink-0">
+            <a href="#hero" className="inline-flex items-center">
+              <Image
+                src="/freshstack-navbar-logo-text.png"
+                alt={brandName}
+                width={2192}
+                height={500}
+                className="h-auto w-[13rem] sm:w-[14.5rem]"
+              />
+            </a>
+            <p className="mt-2 text-[13px] tracking-wide text-[#8e8e93]">
+              Your AI &amp; Automation Partner
+            </p>
+          </div>
+
+          {/* Nav links — horizontal */}
+          <nav className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            {links.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-white/45 transition-colors duration-150 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Contact */}
+          <div className="shrink-0 text-right max-lg:text-left">
+            <a
+              href={`mailto:${cta.contactEmail}`}
+              className="inline-flex items-center gap-2 text-sm text-white/55 transition-colors duration-150 hover:text-white"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M2 7l10 7 10-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              {cta.contactEmail}
+            </a>
+          </div>
         </div>
 
-        <div className="grid gap-8 sm:grid-cols-2">
-          <div>
-            <p className="section-label">Navigate</p>
-            <ul className="mt-4 space-y-3 text-sm text-white/55">
-              {links.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-150 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p className="section-label">{footer.contactLabel}</p>
-            <div className="mt-4 space-y-3 text-sm text-white/55">
-              <p>
-                <a
-                  href={`mailto:${cta.contactEmail}`}
-                  className="transition-colors duration-150 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-                >
-                  {cta.contactEmail}
-                </a>
-              </p>
-              <p>{footer.legal}</p>
-            </div>
-          </div>
+        {/* Bottom row: legal */}
+        <div className="mt-6 border-t border-white/6 pt-5">
+          <p className="text-[11px] leading-5 text-[#8e8e93]/50">
+            {footer.legal}
+          </p>
         </div>
       </div>
     </footer>

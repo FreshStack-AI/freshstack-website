@@ -137,13 +137,13 @@ export function SiteHeader({ brandName, links, cta }: SiteHeaderProps) {
             alt={brandName}
             width={2192}
             height={500}
-            className="h-auto w-[8.2rem] sm:w-[9.3rem] lg:w-[9.9rem]"
+            className="h-auto w-[7rem] sm:w-[7.8rem] lg:w-[8.2rem]"
             priority
           />
         </a>
 
         {/* Right side: nav links + pill grouped together */}
-        <div className="hidden items-center gap-8 lg:flex">
+        <div className="hidden items-center gap-12 lg:flex">
           <nav className="relative flex items-center gap-6">
             {links.map((item) => (
               <a

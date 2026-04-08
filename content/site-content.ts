@@ -220,7 +220,7 @@ export const siteContent: SiteContent = {
       },
       {
         name: "Lara",
-        bio: "Lara spent five years selling operational infrastructure to enterprise businesses. She knows what it takes for organisations to run without chaos, and what it costs when they don't. She now builds those same systems for growing service businesses that want enterprise-grade operations without the enterprise price tag.",
+        bio: "Lara spent five years selling operational technology infrastructure to enterprise businesses at a FTSE 250 company in the UK. She knows what it takes for organisations to run without chaos, and what it costs when they don't. She now builds those same systems for growing service businesses that want enterprise-grade operations without the enterprise price tag.",
         imageSrc: "/optimized/lara-portrait.jpg",
         imageAlt: "Black-and-white portrait of Lara, co-founder of FreshStack",
       },
@@ -424,7 +424,7 @@ export const siteContent: SiteContent = {
     eyebrow: "Let’s Talk",
     title: "No pitch. No fluff.",
     description:
-      "Book a free 30-minute call. We’ll look at where your operations are breaking down and tell you exactly what we’d automate first.",
+      "Book a free 30-minute audit. We’ll identify where your operations are holding the business back and tell you exactly where to leverage automations.",
     desktopLabel: "Book a call",
     fallbackLabel: "Prefer email?",
     checklist: [],
@@ -433,7 +433,7 @@ export const siteContent: SiteContent = {
     blurb:
       "FreshStack helps agencies use AI to build a stronger operating layer across systems, workflows, reporting, deliverables, and tracking.",
     contactLabel: "Contact",
-    legal: "© 2026 FreshStack. All rights reserved. FreshStack is a subsidiary of The Mighty Bean. Registered in UAE. License number ABCDEFG.",
+    legal: "© 2026 FreshStack. All rights reserved. FreshStack is a subsidiary of The Mighty Bean LLC. Registered in the United Arab Emirates, 2023. Licence number 2326490.01.",
   },
   cta: {
     bookingUrl,

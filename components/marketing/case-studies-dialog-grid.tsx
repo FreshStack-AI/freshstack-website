@@ -370,7 +370,7 @@ export function CaseStudiesDialogGrid({
               </div>
 
               {/* View case study */}
-              <div className="mt-7 flex items-center gap-3">
+              <div className="mt-7 flex items-center justify-end gap-3">
                 <span className="text-[13px] font-medium text-[#c8c0b0]/50 transition-colors duration-300 group-hover:text-[#c8c0b0]">
                   See more details
                 </span>

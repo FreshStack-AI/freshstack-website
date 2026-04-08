@@ -56,9 +56,12 @@ export function FounderSection({ founder }: FounderSectionProps) {
             <span className="mr-2 opacity-50">//</span>
             {founder.eyebrow}
           </p>
-          <h2 className="section-title text-3xl text-[var(--color-ink)] sm:text-4xl lg:text-[3rem]">
+          <h2 className="section-title mb-5 text-3xl text-[var(--color-ink)] sm:text-4xl lg:text-[3rem]">
             You get the founders, every time.
           </h2>
+          <p className="max-w-3xl text-sm leading-[1.8] text-[#8e8e93] sm:text-base sm:leading-8">
+            FreshStack is based in the UAE, one of the fastest-moving regions in the world for technology adoption. Our clients operate in an environment that expects speed, scale, and modern infrastructure.
+          </p>
         </div>
         <FounderCarousel profiles={founder.profiles} />
       </div>
@@ -287,49 +290,80 @@ export function BookingSection({ booking, cta }: BookingSectionProps) {
       className="pb-28 md:pb-24"
     >
       <div className="grid gap-6 xl:grid-cols-[minmax(0,0.78fr)_minmax(22rem,1.22fr)]">
-        <div className="flex flex-col glass-panel rounded-xl p-6 sm:p-7">
-          <div>
+        <div
+          className="group relative overflow-hidden rounded-xl border border-[rgba(80,80,85,0.6)] p-7 backdrop-blur-[12px] sm:p-8"
+          style={{
+            background:
+              "linear-gradient(135deg, rgba(200,200,210,0.03) 0%, transparent 40%, rgba(200,200,210,0.02) 70%, transparent 100%), linear-gradient(180deg, rgba(245,240,232,0.02), rgba(245,240,232,0.005)), rgba(20,20,22,0.92)",
+            boxShadow:
+              "inset 0 1px 0 rgba(245,240,232,0.025), 0 8px 32px rgba(0,0,0,0.3)",
+          }}
+        >
+          {/* Left chrome accent bar */}
+          <div
+            className="pointer-events-none absolute bottom-6 left-0 top-6 w-[2px]"
+            style={{
+              background:
+                "linear-gradient(180deg, transparent, rgba(200,200,210,0.3), rgba(255,255,255,0.5), rgba(200,200,210,0.3), transparent)",
+            }}
+          />
+
+          {/* Diagonal light sweep */}
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.02) 48%, rgba(255,255,255,0.04) 50%, rgba(255,255,255,0.02) 52%, transparent 70%)",
+            }}
+          />
+
+          <div className="relative z-10">
             <p className="section-label">What to expect</p>
-            <div className="mt-6 space-y-1 text-sm leading-7 text-[#8e8e93] sm:text-base">
+            <div className="mt-5 space-y-1 text-sm leading-7 text-[#8e8e93] sm:text-base">
               <p>30 minutes.</p>
               <p>No preparation needed from you.</p>
               <p>You&apos;ll leave knowing what to fix first.</p>
             </div>
-          </div>
 
-          <div className="mt-8">
-            <p className="section-label">{booking.fallbackLabel}</p>
-            <p className="mt-3 text-sm leading-7 text-[#8e8e93] sm:text-base">
-              <a
-                href={`mailto:${cta.contactEmail}`}
-                className="font-medium text-[var(--color-ink)] underline decoration-white/25 underline-offset-4"
-              >
-                {cta.contactEmail}
-              </a>
-            </p>
-            <p className="mt-1 text-sm leading-7 text-[#8e8e93]">
-              We reply within one business day.
-            </p>
-          </div>
+            <div className="mt-6">
+              <p className="section-label">{booking.fallbackLabel}</p>
+              <p className="mt-3 text-sm leading-7 text-[#8e8e93] sm:text-base">
+                <a
+                  href={`mailto:${cta.contactEmail}`}
+                  className="font-medium text-[var(--color-ink)] underline decoration-white/25 underline-offset-4"
+                >
+                  {cta.contactEmail}
+                </a>
+              </p>
+              <p className="mt-1 text-sm leading-7 text-[#8e8e93]">
+                We reply within one business day.
+              </p>
+            </div>
 
-          <div className="mt-8 md:hidden">
-            {cta.hasLiveBookingUrl ? (
-              <LinkButton href={cta.bookingUrl} className="w-full" variant="secondary">
-                {cta.primaryLabel}
-              </LinkButton>
-            ) : (
-              <div className="rounded-[1rem] border border-dashed border-white/18 p-5 text-sm leading-7 text-[var(--color-muted)]">
-                Add `NEXT_PUBLIC_CALENDLY_URL` to enable the mobile external
-                booking button.
-              </div>
-            )}
+            <div className="mt-6 md:hidden">
+              {cta.hasLiveBookingUrl ? (
+                <LinkButton href={cta.bookingUrl} className="w-full" variant="secondary">
+                  {cta.primaryLabel}
+                </LinkButton>
+              ) : (
+                <div className="rounded-[1rem] border border-dashed border-white/18 p-5 text-sm leading-7 text-[var(--color-muted)]">
+                  Add `NEXT_PUBLIC_CALENDLY_URL` to enable the mobile external
+                  booking button.
+                </div>
+              )}
+            </div>
           </div>
-
-          {/* Spacer to match right column height */}
-          <div className="hidden flex-1 md:block" />
         </div>
 
-        <div className="glass-panel hidden rounded-xl p-6 md:block">
+        <div
+          className="relative hidden overflow-hidden rounded-xl border border-[rgba(80,80,85,0.6)] p-6 backdrop-blur-[12px] md:block"
+          style={{
+            background:
+              "linear-gradient(135deg, rgba(200,200,210,0.03) 0%, transparent 40%, rgba(200,200,210,0.02) 70%, transparent 100%), linear-gradient(180deg, rgba(245,240,232,0.02), rgba(245,240,232,0.005)), rgba(20,20,22,0.92)",
+            boxShadow:
+              "inset 0 1px 0 rgba(245,240,232,0.025), 0 8px 32px rgba(0,0,0,0.3)",
+          }}
+        >
           <div className="overflow-hidden rounded-[1rem] border border-white/8 bg-black/35 p-2">
             {cta.bookingEmbedUrl ? (
               <DeferredCalendlyInlineEmbed

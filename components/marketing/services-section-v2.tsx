@@ -91,8 +91,8 @@ export function ServicesSectionV2() {
           <h2 className="section-title mb-5 text-3xl text-[var(--color-ink)] sm:text-4xl lg:text-[3rem]">
             Systems that run themselves.
           </h2>
-          <p className="max-w-xl text-sm leading-[1.8] text-[#8e8e93] sm:text-base sm:leading-8">
-            Four operational areas. Each one a place where manual work is quietly draining your time, your margin, and your team&apos;s attention. We&apos;ve built the fix for all of them.
+          <p className="max-w-3xl text-sm leading-[1.8] text-[#8e8e93] sm:text-base sm:leading-8">
+            Four operational areas. Each one a place where manual work is quietly draining your time,<br className="hidden lg:block" /> your margin, and your team&apos;s attention. We&apos;ve built the fix for all of them.
           </p>
         </div>
 

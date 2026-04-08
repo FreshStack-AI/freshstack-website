@@ -61,15 +61,18 @@ export function ToolsSectionV2() {
   return (
     <section
       id="tools"
-      className="relative z-10 px-5 pb-24 pt-4 sm:px-8 lg:px-10 lg:pb-32 lg:pt-6"
+      className="relative z-10 px-5 pb-24 pt-0 sm:px-8 lg:px-10 lg:pb-32 lg:pt-0"
     >
       <div className="mx-auto max-w-6xl">
         {/* Title */}
-        <div className="mb-10 text-center">
-          <p className="section-label mb-3">
+        <div className="mb-10">
+          <p className="section-label mb-5">
             <span className="mr-2 opacity-50">//</span>
-            Your stack. Connected.
+            Integrations
           </p>
+          <h2 className="section-title text-3xl text-[var(--color-ink)] sm:text-4xl lg:text-[3rem]">
+            Your stack. Connected.
+          </h2>
         </div>
       </div>
 

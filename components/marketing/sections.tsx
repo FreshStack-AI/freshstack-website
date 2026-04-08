@@ -1,6 +1,7 @@
 import type { CTAConfig, SiteContent } from "@/content/site-content";
 
 import { CaseStudiesDialogGrid } from "@/components/marketing/case-studies-dialog-grid";
+import { ChecklistEmailCapture } from "@/components/marketing/checklist-email-capture";
 import { FounderCarousel } from "@/components/marketing/founder-carousel";
 import { HeroSectionV2 } from "@/components/marketing/hero-section-v2";
 import { PainPointsSectionV2 } from "@/components/marketing/pain-points-section-v2";
@@ -64,6 +65,19 @@ export function FounderSection({ founder }: FounderSectionProps) {
           </p>
         </div>
         <FounderCarousel profiles={founder.profiles} />
+
+        {/* Accreditations */}
+        <div className="mt-12 flex flex-wrap items-center justify-center gap-x-2 gap-y-1">
+          <span className="font-mono text-[10px] font-normal uppercase tracking-[0.2em] text-[#c8c0b0]/40">
+            <span className="mr-1.5 opacity-50">//</span>
+            Certified in
+          </span>
+          {["n8n", "Make", "Claude AI", "Notion"].map((cert, i) => (
+            <span key={cert} className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#8e8e93]">
+              {cert}{i < 3 && <span className="ml-2 text-[#c8c0b0]/30">·</span>}
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -96,21 +110,15 @@ export function CaseStudiesSection({
 
         <CaseStudiesDialogGrid items={caseStudies.items} />
 
-        {/* CTA */}
-        <div className="mt-16 flex flex-col items-center gap-5 text-center">
+        {/* CTA — email capture */}
+        <div className="mt-16 flex flex-col items-center gap-4 text-center">
           <p className="text-base leading-relaxed text-[#8e8e93] sm:text-lg">
-            Seen enough? Let&apos;s find what&apos;s slowing you down.
+            Not ready to talk yet? Get our 5-minute ops audit checklist.
           </p>
-          <a
-            href="#book-a-call"
-            className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border-strong)] bg-[var(--color-accent)] px-6 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[var(--color-white)]"
-            style={{ color: "#1c1c1e" }}
-          >
-            Book a free audit
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
+          <p className="text-sm text-[#6e6e73]">
+            Find the bottleneck before we do.
+          </p>
+          <ChecklistEmailCapture />
         </div>
       </div>
     </section>
@@ -342,20 +350,16 @@ export function BookingSection({ booking, cta }: BookingSectionProps) {
               <p>You&apos;ll leave knowing what to fix first.</p>
             </div>
 
-            <div className="mt-6">
-              <p className="section-label">{booking.fallbackLabel}</p>
-              <p className="mt-3 text-sm leading-7 text-[#8e8e93] sm:text-base">
-                <a
-                  href={`mailto:${cta.contactEmail}`}
-                  className="font-medium text-[var(--color-ink)] underline decoration-white/25 underline-offset-4"
-                >
-                  {cta.contactEmail}
-                </a>
-              </p>
-              <p className="mt-1 text-sm leading-7 text-[#8e8e93]">
-                We reply within one business day.
-              </p>
-            </div>
+            <p className="mt-6 text-[13px] leading-6 text-[#6e6e73]">
+              Prefer email?{" "}
+              <a
+                href={`mailto:${cta.contactEmail}`}
+                className="text-[#8e8e93] underline decoration-white/20 underline-offset-4 hover:text-[var(--color-ink)]"
+              >
+                {cta.contactEmail}
+              </a>
+              {" "}— we reply within one business day.
+            </p>
 
             <div className="mt-6 md:hidden">
               {cta.hasLiveBookingUrl ? (

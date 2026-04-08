@@ -79,7 +79,7 @@ export function ServicesSectionV2() {
   return (
     <section
       id="services"
-      className="relative z-10 px-5 pb-24 pt-12 sm:px-8 lg:px-10 lg:pb-32"
+      className="relative z-10 px-5 pb-24 pt-0 sm:px-8 lg:px-10 lg:pb-32"
     >
       <div className="mx-auto max-w-6xl">
         {/* Section header */}

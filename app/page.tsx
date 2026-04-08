@@ -29,14 +29,14 @@ export default function Home() {
           hero={siteContent.hero}
           cta={siteContent.cta}
         />
+        <ToolsSectionV2 />
         <DeferredPanelGlowController />
         <PainPointsSectionV2 />
         <ServicesSectionV2 />
-        <ToolsSectionV2 />
         <CaseStudiesSection caseStudies={siteContent.caseStudies} />
         <TestimonialsSection />
-        <FounderSection founder={siteContent.founder} />
         <ProcessSection process={siteContent.process} />
+        <FounderSection founder={siteContent.founder} />
         <BookingSection booking={siteContent.booking} cta={siteContent.cta} />
       </main>
 

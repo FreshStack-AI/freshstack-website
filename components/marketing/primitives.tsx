@@ -32,7 +32,7 @@ export function SectionShell({
   return (
     <section
       id={id}
-      className={classNames("relative z-10 px-5 py-[4.5rem] sm:px-6 lg:px-8 lg:py-24", className)}
+      className={classNames("relative z-10 px-5 pb-24 pt-0 sm:px-8 lg:px-10 lg:pb-32", className)}
     >
       <div className="mx-auto max-w-6xl">
         <div className="max-w-[54rem]">

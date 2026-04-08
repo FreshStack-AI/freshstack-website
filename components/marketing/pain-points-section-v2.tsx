@@ -6,7 +6,7 @@ export function PainPointsSectionV2() {
   return (
     <section
       id="pain-points"
-      className="relative z-10 px-5 pb-24 pt-12 sm:px-8 lg:px-10 lg:pb-32 lg:pt-16"
+      className="relative z-10 px-5 pb-24 pt-24 sm:px-8 lg:px-10 lg:pb-32 lg:pt-32"
     >
       {/* Section glow — positioned behind cards */}
       <div className="pointer-events-none absolute inset-x-0 top-[40%] h-[400px] bg-[radial-gradient(ellipse_60%_45%_at_center,rgba(200,192,176,0.05)_0%,rgba(200,192,176,0.02)_40%,transparent_70%)]" />

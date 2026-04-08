@@ -34,10 +34,11 @@ const testimonials: Testimonial[] = [
   },
   // Column 2
   {
-    quote: "[PLACEHOLDER — client quote here.]",
-    name: "[Client Name]",
-    role: "[Title, Company]",
-    isPlaceholder: true,
+    quote:
+      "You've gone above and beyond on everything you ship and it all pretty much works right out the gate too, which is nice because I'm used to working with devs where they send me something and it's like, oh yeah, this is broken, this doesn't work. And I don't really run into that with you. Anytime I request feature adds, they always come through. You guys have been super quick to resolve anything. You are on top of your game. Probably some of the best automation engineers I've ever worked with.",
+    name: "Garett Graham",
+    role: "Finance Director",
+    avatarSrc: "/garett-testimonial.png",
   },
   {
     quote: "[PLACEHOLDER — client quote here.]",

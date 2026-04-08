@@ -291,7 +291,7 @@ export function BookingSection({ booking, cta }: BookingSectionProps) {
     >
       <div className="grid gap-6 xl:grid-cols-[minmax(0,0.78fr)_minmax(22rem,1.22fr)]">
         <div
-          className="group relative overflow-hidden rounded-xl border border-[rgba(80,80,85,0.6)] p-7 backdrop-blur-[12px] sm:p-8"
+          className="group relative overflow-hidden rounded-xl border border-[rgba(80,80,85,0.6)] p-7 backdrop-blur-[12px] self-start sm:p-8"
           style={{
             background:
               "linear-gradient(135deg, rgba(200,200,210,0.03) 0%, transparent 40%, rgba(200,200,210,0.02) 70%, transparent 100%), linear-gradient(180deg, rgba(245,240,232,0.02), rgba(245,240,232,0.005)), rgba(20,20,22,0.92)",

@@ -95,6 +95,23 @@ export function CaseStudiesSection({
         </div>
 
         <CaseStudiesDialogGrid items={caseStudies.items} />
+
+        {/* CTA */}
+        <div className="mt-16 flex flex-col items-center gap-5 text-center">
+          <p className="text-base leading-relaxed text-[#8e8e93] sm:text-lg">
+            Seen enough? Let&apos;s find what&apos;s slowing you down.
+          </p>
+          <a
+            href="#book-a-call"
+            className="inline-flex items-center gap-2 rounded-full border border-[var(--color-border-strong)] bg-[var(--color-accent)] px-6 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-[var(--color-white)]"
+            style={{ color: "#1c1c1e" }}
+          >
+            Book a free audit
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+        </div>
       </div>
     </section>
   );

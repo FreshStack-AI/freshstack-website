@@ -41,10 +41,11 @@ const testimonials: Testimonial[] = [
     avatarSrc: "/garett-testimonial.png",
   },
   {
-    quote: "[PLACEHOLDER — client quote here.]",
-    name: "[Client Name]",
-    role: "[Title, Company]",
-    isPlaceholder: true,
+    quote:
+      "FreshStack operates at a level most automation teams can't touch. They're in the top 1% that know how to drive results in both complex and simple builds.",
+    name: "Sean Conerly",
+    role: "Agency Owner",
+    avatarSrc: "/sean-testimonial.jpg",
   },
   {
     quote: "[PLACEHOLDER — client quote here.]",

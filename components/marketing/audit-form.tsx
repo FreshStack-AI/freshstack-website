@@ -450,39 +450,47 @@ export function AuditForm({ bookingUrl }: { bookingUrl: string }) {
             {tier.body}
           </p>
 
-          <a
-            href={bookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex h-12 items-center gap-2 rounded-xl border border-[var(--color-border-strong)] bg-[var(--color-accent)] px-8 font-mono text-[12px] font-bold uppercase tracking-[0.18em] transition-all duration-300 hover:opacity-90"
-            style={{ color: "#0a0a0a" }}
-          >
-            Book a call
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              aria-hidden="true"
+          <div className="flex flex-col items-center gap-6">
+            <a
+              href={bookingUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex h-12 items-center gap-2 rounded-xl border border-[var(--color-border-strong)] bg-[var(--color-accent)] px-8 font-mono text-[12px] font-bold uppercase tracking-[0.18em] transition-all duration-300 hover:opacity-90"
+              style={{ color: "#0a0a0a" }}
             >
-              <path
-                d="M5 12h14M12 5l7 7-7 7"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </a>
+              Book a call
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M5 12h14M12 5l7 7-7 7"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </a>
 
-          {/* Score detail intentionally omitted — percentage circle is sufficient */}
+            <a
+              href="/"
+              className="font-mono text-[11px] font-bold uppercase tracking-[0.15em] text-[var(--color-muted)] transition-colors hover:text-[var(--color-ink)]"
+            >
+              Back to website
+            </a>
+          </div>
         </div>
       </div>
     );
   }
 
   /* Questions Phase */
-  const q = QUESTIONS[currentQ];
+  const safeIndex = Math.min(currentQ, QUESTIONS.length - 1);
+  const q = QUESTIONS[safeIndex];
   const selectedSingle = answers[q.id] as string | undefined;
   const selectedMulti = (answers[q.id] as string[] | undefined) ?? [];
   const canAdvanceMulti = q.type === "multi" && selectedMulti.length > 0;
@@ -539,7 +547,7 @@ export function AuditForm({ bookingUrl }: { bookingUrl: string }) {
               : "slide-in-from-left-4"
           }`}
         >
-          <h2 className="font-heading mb-8 text-2xl font-bold leading-snug text-[var(--color-ink)] sm:text-3xl">
+          <h2 className="font-heading mb-8 text-lg font-bold leading-snug text-[var(--color-ink)] sm:text-xl">
             {q.label}
           </h2>
 

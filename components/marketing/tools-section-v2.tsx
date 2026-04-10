@@ -1,64 +1,38 @@
-type Tool = {
-  name: string;
-  icon?: string; // simple-icons slug (served via jsdelivr)
+import { InfiniteSlider } from "@/components/ui/infinite-slider";
+
+type Logo = {
+  src: string;
+  alt: string;
 };
 
-const CDN = "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons";
-
-const TOOLS: Tool[] = [
-  // Niche / less common — scroll in later
-  { name: "Twilio",               icon: "twilio" },
-  { name: "DocuSign",             icon: "docusign" },
-  { name: "Intercom",             icon: "intercom" },
-  { name: "Zendesk",              icon: "zendesk" },
-  { name: "Typeform",             icon: "typeform" },
-  { name: "Dropbox",              icon: "dropbox" },
-  { name: "OneDrive",             icon: "microsoftonedrive" },
-  { name: "Telegram",             icon: "telegram" },
-  { name: "Trello",               icon: "trello" },
-  { name: "Outlook Calendar",     icon: "microsoftoutlook" },
-  // Mid-tier — recognisable but not headliners
-  { name: "ClickUp",              icon: "clickup" },
-  { name: "Mailchimp",            icon: "mailchimp" },
-  { name: "Asana",                icon: "asana" },
-  { name: "LinkedIn",             icon: "linkedin" },
-  { name: "Calendly",             icon: "calendly" },
-  { name: "Airtable",             icon: "airtable" },
-  { name: "WhatsApp Business",    icon: "whatsapp" },
-  { name: "Microsoft Teams",      icon: "microsoftteams" },
-  { name: "Outlook",              icon: "microsoftoutlook" },
-  // Most prominent — visible first on screen
-  { name: "Google Drive",         icon: "googledrive" },
-  { name: "Google Calendar",      icon: "googlecalendar" },
-  { name: "Zoom",                 icon: "zoom" },
-  { name: "Stripe",               icon: "stripe" },
-  { name: "Gmail",                icon: "gmail" },
-  { name: "Google Sheets",        icon: "googlesheets" },
-  { name: "HubSpot",              icon: "hubspot" },
-  { name: "Notion",               icon: "notion" },
-  { name: "Slack",                icon: "slack" },
+const logos: Logo[] = [
+  // Tier 1 — Highest recognition (appear first in scroll)
+  { src: "/logos/slack.svg", alt: "Slack" },
+  { src: "/logos/google-sheets.svg", alt: "Google Sheets" },
+  { src: "/logos/gmail.svg", alt: "Gmail" },
+  { src: "/logos/hubspot.svg", alt: "HubSpot" },
+  { src: "/logos/notion.svg", alt: "Notion" },
+  { src: "/logos/stripe.svg", alt: "Stripe" },
+  { src: "/logos/zoom.svg", alt: "Zoom" },
+  { src: "/logos/salesforce.svg", alt: "Salesforce" },
+  // Tier 2 — Strong recognition
+  { src: "/logos/google-drive.svg", alt: "Google Drive" },
+  { src: "/logos/google-calendar.svg", alt: "Google Calendar" },
+  { src: "/logos/microsoft-teams.svg", alt: "Microsoft Teams" },
+  { src: "/logos/outlook.svg", alt: "Outlook" },
+  { src: "/logos/airtable.svg", alt: "Airtable" },
+  { src: "/logos/intercom.svg", alt: "Intercom" },
+  { src: "/logos/zendesk.svg", alt: "Zendesk" },
+  { src: "/logos/quickbooks.svg", alt: "QuickBooks" },
+  // Tier 3 — Category specific
+  { src: "/logos/calendly.svg", alt: "Calendly" },
+  { src: "/logos/pipedrive.svg", alt: "Pipedrive" },
+  { src: "/logos/asana.svg", alt: "Asana" },
+  { src: "/logos/clickup.svg", alt: "ClickUp" },
+  { src: "/logos/typeform.svg", alt: "Typeform" },
+  { src: "/logos/xero.svg", alt: "Xero" },
+  { src: "/logos/whatsapp.svg", alt: "WhatsApp Business" },
 ];
-
-function ToolItem({ tool }: { tool: Tool }) {
-  return (
-    <span className="inline-flex shrink-0 items-center gap-2.5 px-6">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={`${CDN}/${tool.icon}.svg`}
-        alt={tool.name}
-        width={16}
-        height={16}
-        className="h-4 w-4 shrink-0"
-        style={{ filter: "brightness(0) invert(1)", opacity: 0.45 }}
-        aria-hidden="true"
-      />
-      <span className="whitespace-nowrap font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#c8c0b0]/60">
-        {tool.name}
-      </span>
-      <span className="ml-4 h-3 w-px shrink-0 bg-[rgba(245,240,232,0.1)]" />
-    </span>
-  );
-}
 
 export function ToolsSectionV2() {
   return (
@@ -66,24 +40,29 @@ export function ToolsSectionV2() {
       {/* Top rule */}
       <div className="h-px w-full bg-[rgba(245,240,232,0.07)]" />
 
-      <div className="relative overflow-hidden py-4" style={{ background: "rgba(17,17,17,0.6)" }}>
-        {/* Left edge fade */}
-        <div
-          className="pointer-events-none absolute inset-y-0 left-0 z-10 w-40"
-          style={{ background: "linear-gradient(to right, rgba(10,10,10,0.95) 5%, transparent 100%)" }}
-        />
-        {/* Right edge fade */}
-        <div
-          className="pointer-events-none absolute inset-y-0 right-0 z-10 w-40"
-          style={{ background: "linear-gradient(to left, rgba(10,10,10,0.95) 5%, transparent 100%)" }}
-        />
-
-        {/* Marquee */}
-        <div className="animate-marquee flex w-max items-center">
-          {[...TOOLS, ...TOOLS].map((tool, i) => (
-            <ToolItem key={`${tool.name}-${i}`} tool={tool} />
+      <div
+        className="relative py-5"
+        style={{
+          background: "rgba(17,17,17,0.6)",
+          maskImage:
+            "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
+        }}
+      >
+        <InfiniteSlider gap={48} speed={40} speedOnHover={15} reverse>
+          {logos.map((logo) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={logo.alt}
+              src={logo.src}
+              alt={logo.alt}
+              loading="lazy"
+              className="pointer-events-none h-5 w-auto shrink-0 select-none opacity-50 transition-opacity duration-300 hover:opacity-90 md:h-6"
+              style={{ filter: "brightness(0) invert(0.85) sepia(0.08)" }}
+            />
           ))}
-        </div>
+        </InfiniteSlider>
       </div>
 
       {/* Bottom rule */}

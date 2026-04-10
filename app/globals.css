@@ -315,6 +315,19 @@ a {
   }
 }
 
+@keyframes slider {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-slider {
+  animation: slider var(--slider-duration, 30s) linear infinite;
+}
+
+.animate-slider:hover {
+  animation-duration: var(--slider-duration-hover, 90s);
+}
+
 @keyframes marquee {
   from { transform: translateX(-50%); }
   to   { transform: translateX(0); }

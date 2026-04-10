@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 120" width="350" height="120">
+  <g transform="translate(10,10) scale(4.0)">
+    <circle cx="12.5" cy="12.5" r="12.5" fill="#13B5EA"/>
+    <path d="M12.5 7.5l-3.2 3.2L6 7.5 4.5 9l3.3 3.2-3.3 3.3L6 17l3.3-3.2 3.2 3.2 1.5-1.5-3.2-3.3L14 9z" fill="#fff"/>
+    <circle cx="19" cy="12.5" r="2.8" fill="#fff" stroke="#13B5EA" stroke-width=".5"/>
+  </g>
+  <text x="118" y="80" font-family="'Inter', system-ui, sans-serif" font-size="68" font-weight="700" fill="#13B5EA" letter-spacing="-2">xero</text>
+</svg>

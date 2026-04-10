@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 120" width="620" height="120">
+  <g transform="translate(10,12) scale(3.8)">
+    <path d="M7.71 0L0 13.41l3.86 6.7L11.57 6.7z" fill="#0066DA"/>
+    <path d="M24 13.41L16.29 0H7.71l7.71 13.41z" fill="#00AC47"/>
+    <path d="M20.14 20.11H3.86L0 13.41h16.29z" fill="#EA4335"/>
+    <path d="M12 8.47L7.71 0 3.86 6.7 8.14 13.41z" fill="#00832D"/>
+    <path d="M16.29 13.41l3.85 6.7H12l-3.86-6.7z" fill="#2684FC"/>
+    <path d="M16.29 13.41L12 6.7l-3.86 6.71z" fill="#FFBA00"/>
+  </g>
+  <text x="115" y="78" font-family="'Google Sans', 'Product Sans', 'Inter', system-ui, sans-serif" font-size="56" font-weight="400" fill="#5F6368" letter-spacing="-1">Google Drive</text>
+</svg>

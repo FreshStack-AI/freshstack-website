@@ -66,7 +66,7 @@ export function HeroSectionV2() {
           className="hero-fade-up mx-auto mb-12 max-w-2xl text-base leading-[1.8] text-[#8e8e93] sm:text-[1.0625rem]"
           style={{ animationDelay: "170ms" }}
         >
-          Your team focuses on growth, we automate everything else.
+          Your team focuses on work that grows the business. We automate everything else.
         </p>
 
         {/* CTA */}

@@ -6,18 +6,14 @@ type Logo = {
 };
 
 const logos: Logo[] = [
-  // Tier 1 — Highest recognition (appear first in scroll)
+  // Tier 1 — Highest recognition
   { src: "/logos/slack.svg", alt: "Slack" },
-  { src: "/logos/google-sheets.svg", alt: "Google Sheets" },
-  { src: "/logos/gmail.svg", alt: "Gmail" },
   { src: "/logos/hubspot.svg", alt: "HubSpot" },
   { src: "/logos/notion.svg", alt: "Notion" },
   { src: "/logos/stripe.svg", alt: "Stripe" },
   { src: "/logos/zoom.svg", alt: "Zoom" },
-  { src: "/logos/salesforce.svg", alt: "Salesforce" },
-  // Tier 2 — Strong recognition
-  { src: "/logos/google-drive.svg", alt: "Google Drive" },
   { src: "/logos/mailchimp.svg", alt: "Mailchimp" },
+  // Tier 2 — Strong recognition
   { src: "/logos/monday.svg", alt: "Monday.com" },
   { src: "/logos/outlook.svg", alt: "Outlook" },
   { src: "/logos/airtable.svg", alt: "Airtable" },

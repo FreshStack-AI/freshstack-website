@@ -72,9 +72,9 @@ export function FounderSection({ founder }: FounderSectionProps) {
             <span className="mr-1.5 opacity-50">//</span>
             Certified in
           </span>
-          {["n8n", "Make", "Claude AI", "Notion"].map((cert, i) => (
+          {["n8n", "Make", "Claude AI"].map((cert, i) => (
             <span key={cert} className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#8e8e93]">
-              {cert}{i < 3 && <span className="ml-2 text-[#c8c0b0]/30">·</span>}
+              {cert}{i < 2 && <span className="ml-2 text-[#c8c0b0]/30">·</span>}
             </span>
           ))}
         </div>

@@ -32,10 +32,17 @@ const testimonials: Testimonial[] = [
     role: "Agency Owner",
     avatarSrc: "/sean-testimonial.jpg",
   },
+  {
+    quote: "[Awaiting testimonial]",
+    name: "Declan",
+    role: (<>Co-Founder at <a href="https://r3ach.com/" target="_blank" rel="noopener noreferrer" className="underline decoration-white/25 underline-offset-2 hover:decoration-white/50 transition-colors">R3ACH NTWRK</a></>),
+    avatarSrc: "/declan-testimonial.png",
+    isPlaceholder: true,
+  },
 ];
 
 const COLUMNS = [
-  [testimonials[0]],
+  [testimonials[0], testimonials[3]],
   [testimonials[1]],
   [testimonials[2]],
 ];

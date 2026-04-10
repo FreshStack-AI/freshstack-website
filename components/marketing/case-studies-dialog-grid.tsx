@@ -57,9 +57,9 @@ function getFocusableElements(container: HTMLElement | null) {
 }
 
 const CATEGORY_LABELS: Record<string, string> = {
-  "sales-ops-creator-agency": "// Sales",
-  "reporting-ops-service-biz": "// Operations",
-  "finance-ops-marketing-agency": "// Finance",
+  "cross-workspace-sync-creator-agency": "// Operations",
+  "reporting-ops-service-biz": "// Sales",
+  "finance-automation-agency": "// Finance",
 };
 
 export function CaseStudiesDialogGrid({
@@ -166,15 +166,29 @@ export function CaseStudiesDialogGrid({
               aria-labelledby={`case-study-title-${activeStudy.id}`}
               ref={dialogRef}
               tabIndex={-1}
-              className="relative mx-auto flex h-full w-full max-w-[90rem] flex-col overflow-hidden rounded-[1.25rem] border border-white/10 bg-[#0c0c0c] shadow-[0_40px_120px_rgba(0,0,0,0.65)] outline-none"
+              className="relative mx-auto flex h-full w-full max-w-[90rem] flex-col overflow-hidden border border-white/10 bg-[#0c0c0c] shadow-[0_40px_120px_rgba(0,0,0,0.65)] outline-none"
               onClick={(event) => event.stopPropagation()}
             >
-              <div className="flex items-center justify-between gap-4 border-b border-white/6 px-5 py-3 sm:px-8 lg:px-12">
-                <p className="section-label">{"// "}Case studies</p>
+              {/* Header bar: label + pills + close */}
+              <div className="flex items-center gap-2.5 border-b border-white/6 px-5 py-1.5 sm:px-8 lg:px-12">
+                <p className="section-label shrink-0">{"// "}Case studies</p>
+                <div className="flex flex-wrap items-center gap-1.5 overflow-hidden">
+                  <span className="rounded-full border border-white/12 bg-white/[0.04] px-2.5 py-1 font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-[#c8c0b0]">
+                    {activeStudy.clientType}
+                  </span>
+                  {activeStudy.serviceTags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="hidden rounded-full border border-white/12 px-2.5 py-1 font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-white/50 sm:inline-flex"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
                 <button
                   type="button"
                   onClick={closeDialog}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/12 bg-[rgba(18,18,18,0.92)] text-white transition-colors duration-300 hover:bg-white hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+                  className="ml-auto inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/12 bg-[rgba(18,18,18,0.92)] text-white transition-colors duration-300 hover:bg-white hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                   aria-label="Close case study"
                 >
                   <svg
@@ -196,50 +210,66 @@ export function CaseStudiesDialogGrid({
                 </button>
               </div>
 
-              <div className="case-study-modal-scroll min-h-0 flex-1 overflow-y-auto overflow-x-hidden overscroll-contain px-5 pb-5 pt-5 sm:px-8 sm:pb-8 sm:pt-6 lg:px-12 lg:pb-10 lg:pt-8">
-                <p className="max-w-5xl text-lg leading-8 text-[var(--color-ink)] sm:text-[1.4rem] sm:leading-9">
-                  {activeStudy.summary}
-                </p>
+              <div className="case-study-modal-scroll min-h-0 flex-1 overflow-y-auto overflow-x-hidden overscroll-contain px-5 pb-5 pt-2 sm:px-8 sm:pb-8 sm:pt-2 lg:px-12 lg:pb-10 lg:pt-3">
+                {/* Title + Metrics — single row on desktop */}
+                <div className="flex flex-col gap-2 lg:flex-row lg:items-end lg:justify-between lg:gap-6">
+                  <h3
+                    id={`case-study-title-${activeStudy.id}`}
+                    className="section-title shrink-0 text-2xl sm:text-3xl lg:text-[2.6rem]"
+                  >
+                    {activeStudy.title}
+                  </h3>
 
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {activeStudy.serviceTags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-white/12 px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-white/78"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                  <div className="flex gap-6 sm:gap-8 lg:gap-10">
+                    {activeStudy.cardMetrics.map((metric) => (
+                      <div key={metric.label} className="text-right">
+                        <p
+                          className="text-[1.6rem] font-bold tracking-[-0.04em] sm:text-[2rem]"
+                          style={{
+                            background:
+                              "linear-gradient(135deg, #b0b0b0 0%, #e0e0e0 40%, #f5f5f5 60%, #c0c0c0 100%)",
+                            WebkitBackgroundClip: "text",
+                            WebkitTextFillColor: "transparent",
+                            backgroundClip: "text",
+                          }}
+                        >
+                          <MetricValue value={metric.value} />
+                        </p>
+                        <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-[#8e8e93]/60">
+                          {metric.label}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
-                <h3
-                  id={`case-study-title-${activeStudy.id}`}
-                  className="section-title mt-8 text-3xl sm:text-4xl lg:text-[4rem]"
-                >
-                  {activeStudy.title}
-                </h3>
+                {/* Chrome divider */}
+                <div
+                  className="mt-6 h-px w-full"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, transparent, rgba(200,200,210,0.25), rgba(255,255,255,0.4), rgba(200,200,210,0.25), transparent)",
+                  }}
+                />
 
-                <p className="mt-3 text-base text-[var(--color-muted)] sm:text-lg">
-                  {activeStudy.clientType}
-                </p>
-
-                <div className="mt-8">
-                  <CaseStudyWorkflowSlide study={activeStudy} />
-                </div>
-
-                <div className="mt-10 space-y-8 pb-10">
+                {/* Challenge → Solution → Workflow → Impact → Quote */}
+                <div className="mt-6 space-y-8">
                   <div>
-                    <p className="section-label">Challenge</p>
+                    <p className="section-label">The Problem</p>
                     <p className="mt-3 max-w-5xl text-base leading-8 text-[var(--color-muted)] sm:text-lg">
                       {activeStudy.challenge}
                     </p>
                   </div>
 
                   <div>
-                    <p className="section-label">Solution</p>
+                    <p className="section-label">What We Built</p>
                     <p className="mt-3 max-w-5xl text-base leading-8 text-[var(--color-muted)] sm:text-lg">
                       {activeStudy.intervention}
                     </p>
+                  </div>
+
+                  <div>
+                    <CaseStudyWorkflowSlide study={activeStudy} />
                   </div>
 
                   <div>
@@ -262,6 +292,21 @@ export function CaseStudiesDialogGrid({
                       {activeStudy.quote}
                     </blockquote>
                   ) : null}
+
+                  {/* CTA */}
+                  <div className="pt-2 pb-6">
+                    <a
+                      href="#book-a-call"
+                      onClick={closeDialog}
+                      className="inline-flex h-12 items-center gap-3 rounded-full bg-[#f5f0e8] px-8 font-mono text-[11px] font-bold uppercase tracking-[0.18em] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-white hover:shadow-[0_0_32px_rgba(245,240,232,0.2)]"
+                      style={{ color: "#0a0a0a" }}
+                    >
+                      Let&apos;s Talk
+                      <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+                        <path d="M1 5.5H10M10 5.5L6 1.5M10 5.5L6 9.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

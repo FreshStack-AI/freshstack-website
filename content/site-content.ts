@@ -257,60 +257,15 @@ export const siteContent: SiteContent = {
     description: "Three builds. Three different problems. Each one with a measurable return from day one.",
     items: [
       {
-        id: "sales-ops-creator-agency",
-        clientType: "Creator Agency",
-        automationType: "Sales",
-        title: "Data Duplication",
-        cardDescription: "One person. Two systems. Manually synced every week. That single bottleneck was holding together 50% of monthly revenue.",
-        cardMetrics: [
-          { value: "$4M", label: "revenue protected" },
-          { value: "156", label: "hours saved" },
-        ],
-        summary:
-          "By turning wallet scans, invoice matching, and finance alerts into one automated workflow, FreshStack gave the team real-time visibility on stablecoin payments without manual reconciliation.",
-        serviceTags: [
-          "Payment intelligence",
-          "Invoice matching",
-          "Finance alerts",
-        ],
-        workflow: {
-          inputs: [
-            "Stablecoin payments",
-            "Wallet transaction data",
-            "Invoice records in Notion",
-          ],
-          automationLabel: "Payment intelligence layer",
-          automationSteps: [
-            "Scan the wallet for incoming payments",
-            "Match each transaction to the right invoice",
-            "Alert finance the moment a payment lands",
-          ],
-          outputs: [
-            "Slack finance notification",
-            "Invoice marked paid faster",
-            "Real-time payment visibility",
-          ],
-        },
-        challenge:
-          "The business received multiple stablecoin payments every day, but payment confirmations were scattered across Telegram chats and manual wallet checks. Finance had to reconcile payments by hand, which slowed accounting, obscured cash flow, and created awkward client follow-ups for invoices that had already been paid.",
-        intervention:
-          "FreshStack built an automated payment intelligence workflow that scans the wallet for incoming stablecoin transactions, matches them against invoice records in Notion, and alerts finance in Slack with the payer, amount, and a direct action to mark the invoice as paid.",
-        outcomes: [
-          "$28K per year in revenue upside unlocked through faster payment visibility and cleaner accounting.",
-          "52 hours per year saved by removing manual wallet checks and invoice matching.",
-          "Zero client chasing once paid transactions were detected and surfaced to finance in real time.",
-        ],
-        quote: null,
-      },
-      {
         id: "reporting-ops-service-biz",
         clientType: "Service Business",
         automationType: "Operations",
-        title: "Manual Reporting",
-        cardDescription: "Content analytics collected manually several times a week, outdated metrics. Underreported results costs renewal and upsell opportunities.",
+        title: "Real-Time Sales Reporting",
+        cardDescription: "Sales and Ops working from disconnected databases. Inconsistent rates, slow proposals, and multiple versions of the truth on every deal.",
         cardMetrics: [
-          { value: "$84K", label: "revenue upside" },
-          { value: "92", label: "hours saved" },
+          { value: "$352K", label: "revenue upside" },
+          { value: "650", label: "hours saved" },
+          { value: "1", label: "source of truth" },
         ],
         summary:
           "By replacing disconnected databases and manual proposal building with one connected workflow, FreshStack eliminated rate errors, sped up handoffs, and gave sales and operations a shared source of truth.",
@@ -349,49 +304,95 @@ export const siteContent: SiteContent = {
         quote: null,
       },
       {
-        id: "finance-ops-marketing-agency",
-        clientType: "Marketing Agency",
-        automationType: "Finance",
-        title: "No Payment Visibility",
-        cardDescription: "Daily manual checks matching transactions to invoices. No automatic payment visibility, accounting delayed and visibility on cash flows stalled.",
+        id: "cross-workspace-sync-creator-agency",
+        clientType: "Creator Agency",
+        automationType: "Operations",
+        title: "Cross-Workspace Sync Engine",
+        cardDescription: "4,000+ deliverables across two workspaces with no way to keep them in sync. Every missed update risked stale data and broken visibility.",
         cardMetrics: [
-          { value: "$28K", label: "revenue upside" },
-          { value: "52", label: "hours saved" },
+          { value: "$4M", label: "revenue protected" },
+          { value: "156", label: "hours saved" },
+          { value: "0", label: "manual syncs" },
         ],
         summary:
-          "FreshStack connected Google Calendar, Fireflies, Notion, and Slack into one CRM workflow that auto-logs calls, surfaces follow-ups, and updates weekly sales scorecards with zero manual data entry.",
+          "FreshStack built a fully automated sync engine that exports deliverables, briefs, and client data from one workspace into a partner's — and keeps everything aligned on a rolling schedule.",
         serviceTags: [
-          "CRM tracker",
-          "Follow-up automation",
-          "Sales scorecards",
+          "Cross-platform sync",
+          "Workflow automation",
+          "Error alerting",
         ],
         workflow: {
           inputs: [
-            "Google Calendar events",
-            "Notion leads and calls databases",
-            "Fireflies transcripts and summaries",
+            "Deliverables database",
+            "Briefs database",
+            "Client records",
           ],
-          automationLabel: "CRM operating layer",
+          automationLabel: "Cross-workspace sync engine",
           automationSteps: [
-            "Log every new call into Notion automatically",
-            "Sync setters, follow-up dates, and Fireflies summaries",
-            "Push reminders and scorecards into Slack on schedule",
+            "Match clients across workspaces automatically",
+            "Export new briefs and deliverables to partner",
+            "Sync statuses, dates, and permissions on schedule",
           ],
           outputs: [
-            "Auto-updated call records",
-            "Daily follow-up reminders",
-            "Weekly rep scorecards",
+            "Live deliverable mirror for partner",
+            "Auto-corrected permissions",
+            "Instant alerts for mismatches",
           ],
         },
         challenge:
-          "Sales activity was spread across Google Calendar, Notion, Fireflies, and Slack. New calls had to be logged manually, setter attribution could break, follow-ups were easy to miss, and weekly reporting depended on admin work instead of a live CRM layer.",
+          "The agency managed 4,000+ creator deliverables in their own workspace, but an affiliate partner needed live visibility into a filtered subset. Two separate environments had to stay in sync without anyone copying and pasting.",
         intervention:
-          "FreshStack built a suite of five connected automations that poll three Google Calendars, create and update call records in Notion, propagate setters from linked leads, attach Fireflies summaries and transcript links, post daily follow-up reminders in Slack, and refresh weekly scorecards for every sales rep.",
+          "We built a fully automated sync engine that keeps both workspaces aligned around the clock. Records match, deliverables export, permissions stay correct, and alerts fire the moment something needs attention — all without a single manual update.",
         outcomes: [
-          "Zero manual data entry for logging new calls into the CRM.",
-          "Daily Slack digests now surface overdue and due-today follow-ups automatically.",
-          "Weekly rep scorecards update with calls, no-shows, closes, and revenue without manual reporting.",
-          "Fireflies summaries are attached automatically, with a scheduled backfill acting as a safety net if the webhook misses.",
+          "Built for the agency's largest partner. Accurate, real-time data was non-negotiable to retain the relationship.",
+          "Permission enforcement ensures the right people always have access.",
+        ],
+        quote: null,
+      },
+      {
+        id: "finance-automation-agency",
+        clientType: "Marketing Agency",
+        automationType: "Finance",
+        title: "AI Finance Automation",
+        cardDescription: "Invoices passed around as PDFs, payments checked by hand, no real-time visibility on what was paid vs unpaid.",
+        cardMetrics: [
+          { value: "0", label: "manual reconciliation" },
+          { value: "100%", label: "visibility" },
+          { value: "AI", label: "invoice reading" },
+        ],
+        summary:
+          "FreshStack built a complete finance automation layer — AI reads invoices on drop, payments are detected the moment they land, and everything reconciles automatically.",
+        serviceTags: [
+          "AI invoice processing",
+          "Payment detection",
+          "Finance automation",
+        ],
+        workflow: {
+          inputs: [
+            "Invoice PDFs and images",
+            "Incoming payment events",
+            "Finance database records",
+          ],
+          automationLabel: "AI finance layer",
+          automationSteps: [
+            "AI extracts invoice fields from dropped files",
+            "Detect payments in real-time across accounts",
+            "Match payments to invoices and reconcile",
+          ],
+          outputs: [
+            "Auto-logged invoices from AI",
+            "Instant payment confirmations",
+            "One-click payment links",
+          ],
+        },
+        challenge:
+          "Finance was entirely manual. Invoices arrived as PDFs and images with no structured way to log them. Payments landed but nobody knew until someone manually checked. Reconciliation meant cross-referencing spreadsheets, and there was zero real-time visibility on what was paid vs unpaid.",
+        intervention:
+          "We built two connected systems. First, an AI-powered invoice ingestion layer — drop a PDF or image into a chat channel and AI extracts every field, posts an interactive approval, and logs confirmed invoices instantly. Second, a real-time payment detection engine that monitors multiple accounts, matches incoming payments to open invoices, and lets the team confirm or reject with one click. Outgoing invoices get auto-generated payment links.",
+        outcomes: [
+          "Easy invoice logging from Slack.",
+          "Real-time payment detection across multiple accounts with instant team alerts.",
+          "Auto-generated payment links for every outgoing invoice.",
         ],
         quote: null,
       },

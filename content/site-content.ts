@@ -421,11 +421,11 @@ export const siteContent: SiteContent = {
     ],
   },
   booking: {
-    eyebrow: "Book an Audit",
+    eyebrow: "Book a Call",
     title: "No pitch. No fluff.",
     description:
       "Book a free 30-minute audit. We’ll identify where your operations are holding the business back and tell you exactly where to leverage automations.",
-    desktopLabel: "Book an audit",
+    desktopLabel: "Book a call",
     fallbackLabel: "Prefer email?",
     checklist: [],
   },

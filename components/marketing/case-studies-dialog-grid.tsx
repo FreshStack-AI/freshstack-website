@@ -58,7 +58,7 @@ function getFocusableElements(container: HTMLElement | null) {
 
 const CATEGORY_LABELS: Record<string, string> = {
   "sales-ops-creator-agency": "// Sales",
-  "reporting-ops-service-biz": "// Reports",
+  "reporting-ops-service-biz": "// Operations",
   "finance-ops-marketing-agency": "// Finance",
 };
 

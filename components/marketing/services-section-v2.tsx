@@ -12,14 +12,13 @@ type Service = {
 const services: Service[] = [
   {
     index: "// 01",
-    title: "Sales & Pipeline",
+    title: "Sales",
     description:
-      "Your deals move through the pipeline without manual chasing. The handoff from won to working starts itself. Nothing falls through the gap.",
+      "We automate the repetitive parts of your sales process, from first contact to signed deal.\nSo your salespeople spend time selling, not administrating.",
     pills: [
-      "CRM Setup & Automation",
-      "Deal Stage Notifications",
-      "Pipeline Visibility Dashboard",
-      "Sales-to-Ops Handoff",
+      "Lead Generation",
+      "Lead Enrichment",
+      "Proposal Generation",
     ],
   },
   {
@@ -92,7 +91,7 @@ export function ServicesSectionV2() {
             Systems that run themselves.
           </h2>
           <p className="max-w-3xl text-sm leading-[1.8] text-[#8e8e93] sm:text-base sm:leading-8">
-            Four operational areas. Each one a place where manual work is quietly draining your time,<br className="hidden lg:block" /> your margin, and your team&apos;s attention. We&apos;ve built the fix for all of them.
+            Four business areas. Each one quietly draining your time, your margin, and your team&apos;s attention.<br />We&apos;ve mapped the problem, built the fix, and packaged it so it runs in your business in weeks.
           </p>
         </div>
 
@@ -190,7 +189,7 @@ export function ServicesSectionV2() {
               >
                 {current.title}
               </h3>
-              <p className="mb-7 max-w-[560px] text-[0.9375rem] leading-[1.85] text-[#c8c0b0]">
+              <p className="mb-7 whitespace-pre-line text-[0.9375rem] leading-[1.85] text-[#c8c0b0]">
                 {current.description}
               </p>
 

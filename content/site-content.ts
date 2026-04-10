@@ -163,9 +163,9 @@ export const siteContent: SiteContent = {
   },
   navigation: {
     links: [
-      { label: "Services", href: "#pain-points" },
+      { label: "Services", href: "#services" },
       { label: "Work", href: "#case-studies" },
-      { label: "Testimonials", href: "#testimonials" },
+      { label: "Results", href: "#testimonials" },
       { label: "Process", href: "#process" },
     ],
   },
@@ -421,7 +421,7 @@ export const siteContent: SiteContent = {
     ],
   },
   booking: {
-    eyebrow: "Let’s Talk",
+    eyebrow: "Book a Call",
     title: "No pitch. No fluff.",
     description:
       "Book a free 30-minute audit. We’ll identify where your operations are holding the business back and tell you exactly where to leverage automations.",
@@ -439,7 +439,7 @@ export const siteContent: SiteContent = {
     bookingUrl,
     bookingEmbedUrl: buildCalendlyEmbedUrl(bookingUrl, hasLiveBookingUrl),
     contactEmail,
-    primaryLabel: "Let's Talk",
+    primaryLabel: "Book a Call",
     bookSectionHref: `#${BOOK_SECTION_ID}`,
     hasLiveBookingUrl,
   },

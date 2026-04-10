@@ -56,10 +56,9 @@ export function HeroSectionV2() {
           className="hero-fade-up mx-auto mb-7 max-w-4xl text-[clamp(2.6rem,6.5vw,4.75rem)] font-bold leading-[1.04] tracking-[-0.035em] text-[#f5f0e8]"
           style={{ animationDelay: "90ms" }}
         >
-          We build the systems
-          <br />
-          that run your{" "}
-          <span className="text-[#c8c0b0]">operations.</span>
+          We build the systems<br />
+          You keep the{" "}
+          <span className="text-[#c8c0b0]">leverage.</span>
         </h1>
 
         {/* Subheadline */}
@@ -67,8 +66,7 @@ export function HeroSectionV2() {
           className="hero-fade-up mx-auto mb-12 max-w-2xl text-base leading-[1.8] text-[#8e8e93] sm:text-[1.0625rem]"
           style={{ animationDelay: "170ms" }}
         >
-          Your team should be doing the work that grows your business.
-          We automate everything else.
+          Your team focuses on growth, we automate everything else.
         </p>
 
         {/* CTAs */}
@@ -81,7 +79,7 @@ export function HeroSectionV2() {
             className="inline-flex h-12 items-center rounded-full bg-[#f5f0e8] px-8 font-mono text-[11px] font-bold uppercase tracking-[0.18em] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-white hover:shadow-[0_0_32px_rgba(245,240,232,0.2)]"
             style={{ color: "#0a0a0a" }}
           >
-            Let&apos;s Talk
+            Book an Audit
           </a>
           <a
             href="#case-studies"

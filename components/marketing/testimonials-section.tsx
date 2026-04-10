@@ -157,7 +157,7 @@ export function TestimonialsSection() {
         <div className="mb-14">
           <p className="section-label mb-5">
             <span className="mr-2 opacity-50">//</span>
-            Testimonials
+            Results
           </p>
           <h2 className="text-[clamp(2rem,4vw,3rem)] font-bold leading-[1.08] tracking-[-0.03em] text-[#f5f0e8]">
             Straight from the people

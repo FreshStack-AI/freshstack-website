@@ -61,7 +61,7 @@ export function FounderSection({ founder }: FounderSectionProps) {
             You get the founders, every time.
           </h2>
           <p className="max-w-3xl text-sm leading-[1.8] text-[#8e8e93] sm:text-base sm:leading-8">
-            FreshStack is based in the UAE, one of the fastest-moving regions in the world for technology adoption. Our clients operate in an environment that expects speed, scale, and modern infrastructure.
+            Based in the UAE, one of the fastest-moving regions in the world for technology adoption, our clients operate in an environment that expects speed, scale, and modern infrastructure.
           </p>
         </div>
         <FounderCarousel profiles={founder.profiles} />

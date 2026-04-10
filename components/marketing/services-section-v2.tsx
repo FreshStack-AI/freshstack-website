@@ -23,7 +23,7 @@ const services: Service[] = [
   },
   {
     index: "// 02",
-    title: "Client Onboarding",
+    title: "Operations",
     description:
       "The moment a client signs, the process starts without you. Every step triggered, tracked, and completed\u2026 before the first call.",
     pills: [
@@ -35,7 +35,7 @@ const services: Service[] = [
   },
   {
     index: "// 03",
-    title: "Finance Operations",
+    title: "Finance",
     description:
       "Your invoices go out on time. Late payments get flagged automatically. And your books close without anyone touching a spreadsheet.",
     pills: [
@@ -48,7 +48,7 @@ const services: Service[] = [
   },
   {
     index: "// 04",
-    title: "Reporting & Visibility",
+    title: "Customer Success",
     description:
       "The numbers are ready before you need them. No pulling data, no building slides. Just the answer, waiting in your inbox.",
     pills: [

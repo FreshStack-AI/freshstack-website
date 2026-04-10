@@ -185,27 +185,27 @@ export const siteContent: SiteContent = {
   painPoints: {
     eyebrow: "Still doing it manually?",
     title: "This is what it's costing you.",
-    description: "Every hour your team spends on work that should be automated is an hour not spent growing the business. Here's where it shows up first.",
+    description: "Every hour your team spends on work that should be automated is an hour not spent growing the business. Here's where it shows up.",
     items: [
       {
-        title: "Sales & Pipeline",
+        title: "Too much depends on too few",
         description:
-          "Your pipeline lives in someone's head. Deals move slowly, handoffs break down, and nothing gets followed up consistently. You're losing revenue you already earned.",
+          "Key people are stretched thin. When they're out, things slow. When they leave, you scramble to recover.",
       },
       {
-        title: "Client Onboarding",
+        title: "Deals slip through the cracks",
         description:
-          "Every new client means the same manual work. Folders, forms, emails, access. It takes days when it should take minutes. And the client notices.",
+          "Follow-ups get missed. Handoffs break down. You're losing revenue you already earned.",
       },
       {
-        title: "Finance Operations",
+        title: "Your team is buried in admin",
         description:
-          "Invoices go out late. Payments get missed. Reconciliation happens at month end when the damage is already done. Cash flow suffers because the admin can't keep up.",
+          "Talented people doing repetitive work. Not because they should, but because there's no system to do it for them.",
       },
       {
-        title: "Reporting & Visibility",
+        title: "Clients leave before you see it coming",
         description:
-          "Nobody knows where things stand until someone builds a report. By then the data is already old. Decisions get delayed. Clients lose confidence.",
+          "No early warning signs. No health scores. By the time you notice, they've already made the decision.",
       },
     ],
   },
@@ -305,7 +305,7 @@ export const siteContent: SiteContent = {
       {
         id: "reporting-ops-service-biz",
         clientType: "Service Business",
-        automationType: "Reports",
+        automationType: "Operations",
         title: "Manual Reporting",
         cardDescription: "Content analytics collected manually several times a week, outdated metrics. Underreported results costs renewal and upsell opportunities.",
         cardMetrics: [
@@ -421,11 +421,11 @@ export const siteContent: SiteContent = {
     ],
   },
   booking: {
-    eyebrow: "Book a Call",
+    eyebrow: "Book an Audit",
     title: "No pitch. No fluff.",
     description:
       "Book a free 30-minute audit. We’ll identify where your operations are holding the business back and tell you exactly where to leverage automations.",
-    desktopLabel: "Book a call",
+    desktopLabel: "Book an audit",
     fallbackLabel: "Prefer email?",
     checklist: [],
   },
@@ -439,7 +439,7 @@ export const siteContent: SiteContent = {
     bookingUrl,
     bookingEmbedUrl: buildCalendlyEmbedUrl(bookingUrl, hasLiveBookingUrl),
     contactEmail,
-    primaryLabel: "Book a Call",
+    primaryLabel: "Book an Audit",
     bookSectionHref: `#${BOOK_SECTION_ID}`,
     hasLiveBookingUrl,
   },

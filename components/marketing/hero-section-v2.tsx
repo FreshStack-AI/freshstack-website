@@ -69,18 +69,11 @@ export function HeroSectionV2() {
           Your team focuses on growth, we automate everything else.
         </p>
 
-        {/* CTAs */}
+        {/* CTA */}
         <div
-          className="hero-fade-up flex flex-col items-center justify-center gap-4 sm:flex-row"
+          className="hero-fade-up flex items-center justify-center"
           style={{ animationDelay: "250ms" }}
         >
-          <a
-            href="#book-a-call"
-            className="inline-flex h-12 items-center rounded-full bg-[#f5f0e8] px-8 font-mono text-[11px] font-bold uppercase tracking-[0.18em] transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:bg-white hover:shadow-[0_0_32px_rgba(245,240,232,0.2)]"
-            style={{ color: "#0a0a0a" }}
-          >
-            Book an Audit
-          </a>
           <a
             href="#case-studies"
             className="inline-flex h-12 items-center gap-2 rounded-full border border-[rgba(245,240,232,0.16)] px-8 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#f5f0e8]/60 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-[rgba(245,240,232,0.35)] hover:text-[#f5f0e8]"

@@ -12,16 +12,32 @@ export function ChecklistEmailCapture() {
 
     setStatus("sending");
 
-    // TODO: wire up to actual email service (e.g. Notion, Mailchimp, or API route)
-    // For now, simulate a short delay
-    await new Promise((resolve) => setTimeout(resolve, 800));
-    setStatus("sent");
+    try {
+      const res = await fetch("/api/checklist-signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+
+      if (!res.ok) throw new Error("Signup failed");
+      setStatus("sent");
+    } catch {
+      setStatus("error");
+    }
   }
 
   if (status === "sent") {
     return (
       <p className="text-sm font-medium text-[var(--color-ink)]">
         Check your inbox — it&apos;s on the way.
+      </p>
+    );
+  }
+
+  if (status === "error") {
+    return (
+      <p className="text-sm font-medium text-red-400">
+        Something went wrong — try <button type="button" onClick={() => setStatus("idle")} className="underline underline-offset-2 hover:text-red-300">again</button> or email us at hello@freshstack.ai
       </p>
     );
   }

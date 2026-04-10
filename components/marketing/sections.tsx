@@ -113,7 +113,7 @@ export function CaseStudiesSection({
         {/* CTA — email capture */}
         <div className="mt-16 flex flex-col items-center gap-4 text-center">
           <p className="text-base leading-relaxed text-[#8e8e93] sm:text-lg">
-            Not ready to talk yet? Get our 5-minute ops audit checklist.
+            Not ready to talk yet? Get our 5-minute audit checklist.
           </p>
           <p className="text-sm text-[#6e6e73]">
             Find the bottleneck before we do.

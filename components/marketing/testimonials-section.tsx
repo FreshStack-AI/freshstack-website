@@ -11,7 +11,13 @@ type Testimonial = {
 
 /* eslint-disable react/jsx-key */
 const testimonials: Testimonial[] = [
-  // Column 1
+  {
+    quote:
+      "You've gone above and beyond on everything you ship and it all pretty much works right out the gate too, which is nice because I'm used to working with devs where they send me something and it's like, oh yeah, this is broken, this doesn't work. And I don't really run into that with you. Anytime I request feature adds, they always come through. You're quick to resolve anything. You are on top of your game. Probably some of the best automation engineers I've ever worked with.",
+    name: "Garett Graham",
+    role: "Finance Director",
+    avatarSrc: "/garett-testimonial.png",
+  },
   {
     quote:
       "FreshStack been a huge unlock and a great resource for us. Highly recommend.",
@@ -20,67 +26,21 @@ const testimonials: Testimonial[] = [
     avatarSrc: "/tom-testimonial.jpg",
   },
   {
-    quote: "[Awaiting testimonial]",
-    name: "Declan",
-    role: (<>Co-Founder at <a href="https://r3ach.com/" target="_blank" rel="noopener noreferrer" className="underline decoration-white/25 underline-offset-2 hover:decoration-white/50 transition-colors">R3ACH NTWRK</a></>),
-    avatarSrc: "/declan-testimonial.png",
-    isPlaceholder: true,
-  },
-  {
-    quote: "[PLACEHOLDER — client quote here.]",
-    name: "[Client Name]",
-    role: "[Title, Company]",
-    isPlaceholder: true,
-  },
-  // Column 2
-  {
-    quote:
-      "You've gone above and beyond on everything you ship and it all pretty much works right out the gate too, which is nice because I'm used to working with devs where they send me something and it's like, oh yeah, this is broken, this doesn't work. And I don't really run into that with you. Anytime I request feature adds, they always come through. You guys have been super quick to resolve anything. You are on top of your game. Probably some of the best automation engineers I've ever worked with.",
-    name: "Garett Graham",
-    role: "Finance Director",
-    avatarSrc: "/garett-testimonial.png",
-  },
-  {
     quote:
       "FreshStack operates at a level most automation teams can't touch. They're in the top 1% that know how to drive results in both complex and simple builds.",
     name: "Sean Conerly",
     role: "Agency Owner",
     avatarSrc: "/sean-testimonial.jpg",
   },
-  {
-    quote: "[PLACEHOLDER — client quote here.]",
-    name: "[Client Name]",
-    role: "[Title, Company]",
-    isPlaceholder: true,
-  },
-  // Column 3
-  {
-    quote: "[PLACEHOLDER — client quote here.]",
-    name: "[Client Name]",
-    role: "[Title, Company]",
-    isPlaceholder: true,
-  },
-  {
-    quote: "[PLACEHOLDER — client quote here.]",
-    name: "[Client Name]",
-    role: "[Title, Company]",
-    isPlaceholder: true,
-  },
-  {
-    quote: "[PLACEHOLDER — client quote here.]",
-    name: "[Client Name]",
-    role: "[Title, Company]",
-    isPlaceholder: true,
-  },
 ];
 
 const COLUMNS = [
-  testimonials.slice(0, 3),
-  testimonials.slice(3, 6),
-  testimonials.slice(6, 9),
+  [testimonials[0]],
+  [testimonials[1]],
+  [testimonials[2]],
 ];
 
-const COLUMN_DURATIONS = ["17.6s", "22.4s", "15.2s"];
+const COLUMN_DURATIONS = ["18s", "14s", "16s"];
 
 function TestimonialCard({
   testimonial,

@@ -71,9 +71,16 @@ export function FounderSection({ founder }: FounderSectionProps) {
             <span className="mr-1.5 opacity-50">//</span>
             Certified in
           </span>
-          {["n8n", "Make", "Claude AI"].map((cert, i) => (
-            <span key={cert} className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#8e8e93]">
-              {cert}{i < 2 && <span className="ml-2 text-[#c8c0b0]/30">·</span>}
+          {[
+            { label: "n8n", href: null },
+            { label: "Make (Advanced)", href: "https://www.credly.com/badges/75637d76-1330-4641-9340-119fd0d89f7f/public_url" },
+            { label: "Claude AI", href: null },
+          ].map((cert, i, arr) => (
+            <span key={cert.label} className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#8e8e93]">
+              {cert.href ? (
+                <a href={cert.href} target="_blank" rel="noopener noreferrer" className="transition-colors duration-150 hover:text-white hover:underline hover:underline-offset-4 hover:decoration-white/30">{cert.label}</a>
+              ) : cert.label}
+              {i < arr.length - 1 && <span className="ml-2 text-[#c8c0b0]/30">·</span>}
             </span>
           ))}
         </div>

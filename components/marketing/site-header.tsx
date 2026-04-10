@@ -199,7 +199,9 @@ export function SiteHeader({ brandName, links, cta }: SiteHeaderProps) {
             <a
               key={item.href}
               href={item.href}
-              className="shrink-0 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-white/55 transition-colors duration-150 hover:bg-white hover:text-black focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              className="shrink-0 rounded-full border border-white/10 bg-white/5 px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-white/55 transition-colors duration-150 hover:bg-[var(--color-accent)] hover:border-[var(--color-border-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              onMouseEnter={(e) => { e.currentTarget.style.color = "#1c1c1e"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.color = ""; }}
             >
               {item.label}
             </a>

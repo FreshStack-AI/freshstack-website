@@ -1,4 +1,5 @@
 import { siteContent } from "@/content/site-content";
+import { LinkButton } from "@/components/marketing/primitives";
 
 export function PainPointsSectionV2() {
   const { painPoints } = siteContent;
@@ -91,6 +92,14 @@ export function PainPointsSectionV2() {
               </p>
             </div>
           ))}
+        </div>
+
+        {/* Soft CTA */}
+        <div className="mt-14 flex flex-col items-center gap-3 text-center">
+          <p className="text-sm leading-relaxed text-[#8e8e93] sm:text-base">
+            Sound familiar? See how much you could automate.
+          </p>
+          <LinkButton href="/audit" variant="secondary">Take the Audit</LinkButton>
         </div>
 
       </div>

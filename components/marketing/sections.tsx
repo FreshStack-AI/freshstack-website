@@ -1,7 +1,6 @@
 import type { CTAConfig, SiteContent } from "@/content/site-content";
 
 import { CaseStudiesDialogGrid } from "@/components/marketing/case-studies-dialog-grid";
-import { ChecklistEmailCapture } from "@/components/marketing/checklist-email-capture";
 import { FounderCarousel } from "@/components/marketing/founder-carousel";
 import { HeroSectionV2 } from "@/components/marketing/hero-section-v2";
 import { PainPointsSectionV2 } from "@/components/marketing/pain-points-section-v2";
@@ -110,15 +109,12 @@ export function CaseStudiesSection({
 
         <CaseStudiesDialogGrid items={caseStudies.items} />
 
-        {/* CTA — email capture */}
+        {/* CTA — audit */}
         <div className="mt-16 flex flex-col items-center gap-4 text-center">
           <p className="text-base leading-relaxed text-[#8e8e93] sm:text-lg">
-            Not ready to talk yet? Get our 5-minute audit checklist.
+            Not ready to talk yet? Quickly assess if AI &amp; Automation is right for your business.
           </p>
-          <p className="text-sm text-[#6e6e73]">
-            Find the bottleneck before we do.
-          </p>
-          <ChecklistEmailCapture />
+          <LinkButton href="/audit" variant="secondary">Take the Audit</LinkButton>
         </div>
       </div>
     </section>
@@ -358,8 +354,20 @@ export function BookingSection({ booking, cta }: BookingSectionProps) {
               >
                 {cta.contactEmail}
               </a>
-              {" "}— we reply within one business day.
+              {" "}. We reply within one business day.
             </p>
+
+            <div className="mt-5 border-t border-white/8 pt-5">
+              <p className="text-[13px] leading-6 text-[#6e6e73]">
+                Not sure yet?{" "}
+                <a
+                  href="/audit"
+                  className="text-[#8e8e93] underline decoration-white/20 underline-offset-4 hover:text-[var(--color-ink)]"
+                >
+                  Take our free audit first
+                </a>
+              </p>
+            </div>
 
             <div className="mt-6 md:hidden">
               {cta.hasLiveBookingUrl ? (

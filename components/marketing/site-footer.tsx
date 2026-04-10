@@ -46,10 +46,16 @@ export function SiteFooter({
                 {item.label}
               </a>
             ))}
+            <a
+              href="/audit"
+              className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-white/45 transition-colors duration-150 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+            >
+              Free Audit
+            </a>
           </nav>
 
           {/* Contact */}
-          <div className="shrink-0 text-right max-lg:text-left">
+          <div className="shrink-0 text-right max-lg:text-left max-lg:mt-2">
             <a
               href={`mailto:${cta.contactEmail}`}
               className="inline-flex items-center gap-2 text-sm text-white/55 transition-colors duration-150 hover:text-white"

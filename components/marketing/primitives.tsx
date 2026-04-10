@@ -1,3 +1,5 @@
+"use client";
+
 import type { ReactNode } from "react";
 import Image from "next/image";
 
@@ -80,17 +82,25 @@ export function LinkButton({
 
   const variants = {
     primary:
-      "border-white/12 bg-white text-black hover:bg-white/90",
+      "border-white/12 bg-[var(--color-accent)] hover:opacity-90",
     accent:
-      "border-white/12 bg-white text-black hover:bg-white/90",
+      "border-white/12 bg-[var(--color-accent)] hover:opacity-90",
     secondary:
-      "border-white/12 bg-white/5 text-white hover:bg-white hover:text-black",
+      "border-white/12 bg-white/5 text-white hover:bg-[var(--color-accent)]",
     ghost:
       "border-transparent bg-transparent px-0 py-0 text-white/75 hover:text-white",
   } satisfies Record<NonNullable<LinkButtonProps["variant"]>, string>;
 
+  const solidBg = variant === "primary" || variant === "accent";
+
   return (
-    <a href={href} className={classNames(shared, variants[variant], className)}>
+    <a
+      href={href}
+      className={classNames(shared, variants[variant], className)}
+      style={solidBg ? { color: "#1c1c1e" } : undefined}
+      onMouseEnter={variant === "secondary" ? (e) => { e.currentTarget.style.color = "#1c1c1e"; } : undefined}
+      onMouseLeave={variant === "secondary" ? (e) => { e.currentTarget.style.color = ""; } : undefined}
+    >
       {children}
     </a>
   );

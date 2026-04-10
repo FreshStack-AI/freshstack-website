@@ -69,9 +69,9 @@ export function HeroSectionV2() {
           Your team focuses on work that grows the business. We automate everything else.
         </p>
 
-        {/* CTA */}
+        {/* CTAs */}
         <div
-          className="hero-fade-up flex items-center justify-center"
+          className="hero-fade-up flex flex-wrap items-center justify-center gap-4"
           style={{ animationDelay: "250ms" }}
         >
           <a
@@ -82,6 +82,14 @@ export function HeroSectionV2() {
             <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
               <path d="M2 9L9 2M9 2H2.5M9 2V8.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
+          </a>
+          <a
+            href="/audit"
+            className="inline-flex h-12 items-center gap-2 rounded-full border border-[rgba(245,240,232,0.16)] bg-white/5 px-8 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-[#f5f0e8]/60 transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-[rgba(245,240,232,0.35)] hover:bg-[var(--color-accent)]"
+            onMouseEnter={(e) => { e.currentTarget.style.color = "#1c1c1e"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = ""; }}
+          >
+            Take an Audit
           </a>
         </div>
       </div>

@@ -439,7 +439,7 @@ export const siteContent: SiteContent = {
     bookingUrl,
     bookingEmbedUrl: buildCalendlyEmbedUrl(bookingUrl, hasLiveBookingUrl),
     contactEmail,
-    primaryLabel: "Book an Audit",
+    primaryLabel: "Book a Call",
     bookSectionHref: `#${BOOK_SECTION_ID}`,
     hasLiveBookingUrl,
   },

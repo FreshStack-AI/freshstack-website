@@ -83,7 +83,7 @@ body {
   background-image: url('/images/bg-texture.jpg');
   background-size: cover;
   background-position: center center;
-  opacity: 0.12;
+  opacity: 0.10;
   z-index: 0;
   will-change: transform;
   pointer-events: none;
